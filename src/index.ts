@@ -1,1 +1,2 @@
-// Component library entry point
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
