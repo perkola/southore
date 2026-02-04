@@ -1,0 +1,57 @@
+@import './tokens.css';
+
+.badge {
+  /* Reset */
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  text-decoration: none;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+
+  /* Size */
+  padding: var(--spacing-0-5) var(--spacing-2);
+  border-radius: var(--radius-full);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Circular variant */
+.badge[data-variant='circular'] {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  padding: 0;
+}
+
+/* Colors: dark text on light background */
+.badge[data-color='gray'] {
+  background: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+.badge[data-color='red'] {
+  background: var(--color-red-100);
+  color: var(--color-red-700);
+}
+
+.badge[data-color='green'] {
+  background: var(--color-green-100);
+  color: var(--color-green-700);
+}
+
+.badge[data-color='amber'] {
+  background: var(--color-amber-100);
+  color: var(--color-amber-700);
+}
+
+.badge[data-color='blue'] {
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+}
