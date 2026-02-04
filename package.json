@@ -12,7 +12,9 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -b && vite build",
     "lint": "eslint .",
@@ -21,33 +23,34 @@
   },
   "dependencies": {
     "react": "^19.2.0",
+    "react-aria-components": "^1.15.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.0.0",
     "@eslint/js": "^9.39.1",
+    "@storybook/addon-a11y": "^10.2.6",
+    "@storybook/addon-docs": "^10.2.6",
+    "@storybook/addon-vitest": "^10.2.6",
+    "@storybook/react-vite": "^10.2.6",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
+    "@vitest/browser-playwright": "^4.0.18",
+    "@vitest/coverage-v8": "^4.0.18",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "eslint-plugin-storybook": "^10.2.6",
     "globals": "^16.5.0",
+    "playwright": "^1.58.1",
+    "storybook": "^10.2.6",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "npm:rolldown-vite@latest",
-    "storybook": "^10.2.6",
-    "@storybook/react-vite": "^10.2.6",
-    "@chromatic-com/storybook": "^5.0.0",
-    "@storybook/addon-vitest": "^10.2.6",
-    "@storybook/addon-a11y": "^10.2.6",
-    "@storybook/addon-docs": "^10.2.6",
-    "eslint-plugin-storybook": "^10.2.6",
-    "vitest": "^4.0.18",
-    "playwright": "^1.58.1",
-    "@vitest/browser-playwright": "^4.0.18",
-    "@vitest/coverage-v8": "^4.0.18"
+    "vitest": "^4.0.18"
   },
   "overrides": {
     "vite": "npm:rolldown-vite@latest"
