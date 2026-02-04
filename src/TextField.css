@@ -1,0 +1,119 @@
+@import './tokens.css';
+
+.react-aria-TextField {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.react-aria-TextField .react-aria-Label {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-gray-700);
+  margin-bottom: var(--spacing-1);
+}
+
+.text-field {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  /* Size */
+  height: var(--spacing-9);
+  padding: 0 var(--spacing-3);
+  box-sizing: border-box;
+
+  /* Appearance */
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius);
+  background: var(--color-white);
+
+  /* Transition */
+  transition: border-color 0.15s;
+}
+
+.text-field[data-hovered] {
+  border-color: var(--color-gray-400);
+}
+
+.text-field:has(.react-aria-Input[data-focused]) {
+  border-color: var(--color-primary-500);
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: -1px;
+}
+
+.text-field[data-disabled] {
+  background: var(--color-gray-100);
+  border-color: var(--color-gray-200);
+  cursor: default;
+}
+
+.text-field[data-invalid] {
+  border-color: var(--color-red-700);
+}
+
+/* Tighten padding when adornment contains a button */
+.text-field:has(.text-field-adornment:last-child .react-aria-Button) {
+  padding-right: var(--spacing-1-5);
+}
+
+.text-field:has(.text-field-adornment:first-child .react-aria-Button) {
+  padding-left: var(--spacing-1-5);
+}
+
+/* Input reset */
+.text-field .react-aria-Input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.text-field .react-aria-Input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.text-field .react-aria-Input[data-disabled] {
+  color: var(--color-gray-500);
+}
+
+.text-field .react-aria-Input[data-disabled]::placeholder {
+  color: var(--color-gray-400);
+}
+
+/* Description */
+.react-aria-TextField .react-aria-Text[slot='description'] {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-500);
+  margin-top: var(--spacing-1);
+}
+
+/* Error message */
+.react-aria-TextField .react-aria-FieldError {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-red-700);
+  margin-top: var(--spacing-1);
+}
+
+/* Adornments */
+.text-field-adornment {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-gray-500);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}

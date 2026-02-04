@@ -11,8 +11,19 @@ export interface ButtonProps extends RACButtonProps {
    * @default 'solid'
    */
   variant?: "solid" | "outlined" | "text";
+
+  /**
+   * The size of the button.
+   *
+   * @default 'medium'
+   */
+  size?: "small" | "medium";
 }
 
-export function Button({ variant = "solid", ...props }: ButtonProps) {
-  return <RACButton {...props} data-variant={variant} />;
+export function Button({
+  variant = "solid",
+  size = "medium",
+  ...props
+}: ButtonProps) {
+  return <RACButton {...props} data-variant={variant} data-size={size} />;
 }

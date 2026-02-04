@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Pencil } from 'lucide-react';
+import { Copy, Pencil } from 'lucide-react';
 import { fn } from 'storybook/test';
 import { Button } from './Button';
 
@@ -36,6 +36,15 @@ export const WithIcon: Story = {
   args: {
     variant: 'solid',
     children: [<Pencil key="icon" size={16} />, 'Edit'],
+  },
+};
+
+export const Small: Story = {
+  args: {
+    variant: 'text',
+    size: 'small',
+    'aria-label': 'Copy',
+    children: <Copy size={14} />,
   },
 };
 
