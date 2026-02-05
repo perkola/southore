@@ -50,3 +50,4 @@ src/
 
 - The React Aria MCP server is available for looking up React Aria Components documentation
 - The `/react-aria` agent skill can be used for building components with React Aria
+- **Always consult the Storybook MCP server** (`get-storybook-story-instructions`) before writing or updating stories to get the correct patterns and imports
