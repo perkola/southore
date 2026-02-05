@@ -8,3 +8,5 @@ export { CheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps } from './CheckboxGroup';
 export { TextField } from './TextField';
 export type { TextFieldProps } from './TextField';
+export { Radio, RadioGroup } from './RadioGroup';
+export type { RadioProps, RadioGroupProps } from './RadioGroup';
