@@ -24,6 +24,13 @@ export const Colors: Story = {
       <Badge color="blue">Blue</Badge>
     </div>
   ),
+  parameters: {
+    docs: {
+      source: {
+        type: 'dynamic',
+      },
+    },
+  },
 };
 
 export const Circular: Story = {
@@ -36,5 +43,12 @@ export const Circular: Story = {
       <Badge variant="circular" color="blue">2</Badge>
     </div>
   ),
+  parameters: {
+    docs: {
+      source: {
+        type: 'dynamic',
+      },
+    },
+  },
 };
 

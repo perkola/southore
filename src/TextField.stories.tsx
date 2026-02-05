@@ -65,6 +65,13 @@ export const CopyToClipboard: Story = {
       />
     );
   },
+  parameters: {
+    docs: {
+      source: {
+        type: 'dynamic',
+      },
+    },
+  },
 };
 
 export const WithDescription: Story = {
