@@ -11,8 +11,7 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 
 ## Current Focus
 
-- Building accessible, unstyled components using React Aria Components
-- Styling and testing are not in scope yet
+- Building accessible, styled components using React Aria Components
 
 ## Commands
 
@@ -24,15 +23,28 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 
 ```
 src/
-  index.ts          # Library entry point — export all components here
-  stories/          # Storybook stories (default examples, will be replaced)
+  index.ts           # Library entry point — export all components here
+  tokens.css         # Design tokens (colors, spacing, radius, font sizes)
+  Button.tsx         # Component implementations
+  Button.css         # Component styles
+  Button.stories.tsx
+  ...
 ```
 
 ## Conventions
 
 - Components should wrap or compose React Aria Components, not reimplement accessibility primitives
 - Export every public component from `src/index.ts`
-- Each component gets a corresponding `*.stories.ts` file
+- Each component gets a corresponding `*.stories.tsx` file
+
+## Styling
+
+- Design tokens are defined as CSS custom properties in `src/tokens.css`
+- Each component has a corresponding `.css` file that imports tokens
+- Styles target React Aria's default class names (e.g. `.react-aria-Button`) and data attributes (e.g. `[data-hovered]`, `[data-pressed]`, `[data-focus-visible]`, `[data-disabled]`)
+- Custom variants are passed via `data-*` attributes (e.g. `data-variant`, `data-size`)
+- Use `:has()` selectors for conditional styling based on descendants
+- Each component includes browser resets as needed (e.g. `appearance: none`, `margin: 0`, `padding: 0`, `font: inherit`, `color: inherit`, `outline: none`, `-webkit-tap-highlight-color: transparent`)
 
 ## Tools
 
