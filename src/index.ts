@@ -8,6 +8,8 @@ export { Checkbox } from './Checkbox';
 export type { CheckboxProps } from './Checkbox';
 export { CheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps } from './CheckboxGroup';
+export { Form } from './Form';
+export type { FormProps } from './Form';
 export { Menu } from './Menu';
 export type {
   MenuProps,
