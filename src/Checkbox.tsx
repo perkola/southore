@@ -23,7 +23,7 @@ export function Checkbox({ children, ...props }: CheckboxProps) {
               )}
             </svg>
           </div>
-          {children}
+          {children && <span>{children}</span>}
         </>
       )}
     </RACCheckbox>
