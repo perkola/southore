@@ -9,6 +9,7 @@ import { Checkbox } from "./Checkbox";
 import { CheckboxGroup } from "./CheckboxGroup";
 import { RadioGroup, Radio } from "./RadioGroup";
 import { Button } from "./Button";
+import { Link } from "./Link";
 
 const meta = {
   component: Form,
@@ -91,7 +92,7 @@ export const Default: Story = {
         <Checkbox value="push">Push notifications</Checkbox>
       </CheckboxGroup>
 
-      <Checkbox name="terms">I agree to the <a href="/terms">terms and conditions</a></Checkbox>
+      <Checkbox name="terms">I agree to the <Link href="/terms">terms and conditions</Link></Checkbox>
 
       <div className="form-buttons">
         <Button type="reset" variant="text">

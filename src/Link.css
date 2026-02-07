@@ -1,0 +1,31 @@
+@import './tokens.css';
+
+.react-aria-Link {
+  color: var(--color-primary-600);
+  font-family: system-ui, sans-serif;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  outline: none;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.react-aria-Link[data-hovered] {
+  color: var(--color-primary-700);
+  text-decoration-color: var(--color-primary-700);
+}
+
+.react-aria-Link[data-pressed] {
+  color: var(--color-primary-800);
+}
+
+.react-aria-Link[data-focus-visible] {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 2px;
+}
+
+.react-aria-Link[data-disabled] {
+  color: var(--color-gray-400);
+  cursor: default;
+}
