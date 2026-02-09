@@ -26,7 +26,7 @@
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   line-height: 1.4;
-  color: var(--color-gray-900);
+  color: var(--color-text);
   text-align: left;
   outline: none;
   cursor: default;
@@ -35,20 +35,20 @@
 
 .listbox .react-aria-ListBoxItem[data-hovered],
 .listbox .react-aria-ListBoxItem[data-focused] {
-  background: var(--color-gray-100);
+  background: var(--color-bg-muted);
 }
 
 .listbox .react-aria-ListBoxItem[data-pressed] {
-  background: var(--color-gray-200);
+  background: var(--color-border);
 }
 
 .listbox .react-aria-ListBoxItem[data-focus-visible] {
-  outline: 2px solid var(--color-primary-400);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: -2px;
 }
 
 .listbox .react-aria-ListBoxItem[data-disabled] {
-  color: var(--color-gray-400);
+  color: var(--color-text-subtle);
 }
 
 .listbox .react-aria-ListBoxItem[data-selected]::before {
@@ -56,5 +56,5 @@
   position: absolute;
   left: var(--spacing-2);
   font-size: 0.75em;
-  color: var(--color-primary-600);
+  color: var(--color-primary);
 }

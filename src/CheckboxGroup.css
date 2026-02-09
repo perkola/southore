@@ -10,7 +10,7 @@
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--color-gray-700);
+  color: var(--color-text-muted);
 }
 
 .checkbox-group-items {
@@ -22,11 +22,11 @@
 .react-aria-CheckboxGroup .react-aria-Text[slot='description'] {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
-  color: var(--color-gray-500);
+  color: var(--color-text-subtle);
 }
 
 .react-aria-CheckboxGroup .react-aria-FieldError {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
-  color: var(--color-red-700);
+  color: var(--color-error);
 }

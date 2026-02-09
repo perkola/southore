@@ -10,21 +10,21 @@
     font-family: system-ui, sans-serif;
     font-size: var(--font-size-sm);
     font-weight: 500;
-    color: var(--color-gray-700);
+    color: var(--color-text-muted);
     margin-bottom: var(--spacing-1);
   }
 
   & .react-aria-Text[slot='description'] {
     font-family: system-ui, sans-serif;
     font-size: var(--font-size-sm);
-    color: var(--color-gray-500);
+    color: var(--color-text-subtle);
     margin-top: var(--spacing-1);
   }
 
   & .react-aria-FieldError {
     font-family: system-ui, sans-serif;
     font-size: var(--font-size-sm);
-    color: var(--color-red-700);
+    color: var(--color-error);
     margin-top: var(--spacing-1);
   }
 }
@@ -34,9 +34,9 @@
   appearance: none;
   margin: 0;
   padding: 0 var(--spacing-3);
-  border: 1px solid var(--color-gray-300);
+  border: 1px solid var(--color-border-muted);
   border-radius: var(--radius);
-  background: var(--color-white);
+  background: var(--color-bg);
   min-width: 150px;
   height: var(--spacing-8);
   display: flex;
@@ -47,7 +47,7 @@
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   line-height: 1;
-  color: inherit;
+  color: var(--color-text);
   text-align: left;
   outline: none;
   cursor: pointer;
@@ -56,23 +56,23 @@
   -webkit-tap-highlight-color: transparent;
 
   &[data-hovered] {
-    border-color: var(--color-gray-400);
+    border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
   }
 
   &[data-focus-visible] {
-    border-color: var(--color-primary-500);
-    outline: 2px solid var(--color-primary-400);
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-focus-ring);
     outline-offset: -1px;
   }
 
   &[data-pressed] {
-    background: var(--color-gray-50);
+    background: var(--color-bg-subtle);
   }
 
   &[data-disabled] {
-    background: var(--color-gray-100);
-    border-color: var(--color-gray-200);
-    color: var(--color-gray-500);
+    background: var(--color-bg-muted);
+    border-color: var(--color-border);
+    color: var(--color-text-subtle);
     cursor: default;
   }
 
@@ -83,19 +83,19 @@
     white-space: nowrap;
 
     &[data-placeholder] {
-      color: var(--color-gray-400);
+      color: var(--color-text-subtle);
     }
   }
 }
 
 .react-aria-Select[data-invalid] .select-trigger {
-  border-color: var(--color-red-700);
+  border-color: var(--color-error);
 }
 
 /* Chevron icon */
 .select-trigger svg {
   flex-shrink: 0;
-  color: var(--color-gray-500);
+  color: var(--color-text-subtle);
   transition: transform 0.15s;
 }
 

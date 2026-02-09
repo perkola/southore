@@ -1,4 +1,10 @@
 :root {
+  color-scheme: light dark;
+
+  /* ========================================
+     Primitive color scales
+     ======================================== */
+
   /* Gray scale (Tailwind neutral) */
   --color-gray-50: #fafafa;
   --color-gray-100: #f5f5f5;
@@ -28,20 +34,74 @@
   /* Red scale (Tailwind red) */
   --color-red-50: #fef2f2;
   --color-red-100: #fee2e2;
+  --color-red-300: #fca5a5;
   --color-red-700: #b91c1c;
+  --color-red-900: #7f1d1d;
 
   /* Green scale (Tailwind green) */
   --color-green-50: #f0fdf4;
   --color-green-100: #dcfce7;
+  --color-green-400: #4ade80;
   --color-green-700: #15803d;
+  --color-green-900: #14532d;
 
   /* Amber scale (Tailwind amber) */
   --color-amber-50: #fffbeb;
   --color-amber-100: #fef3c7;
+  --color-amber-400: #fbbf24;
   --color-amber-700: #b45309;
+  --color-amber-900: #78350f;
 
   --color-white: #ffffff;
   --color-black: #000000;
+
+  /* ========================================
+     Semantic tokens (core design system)
+     ======================================== */
+
+  /* Surfaces */
+  --color-bg: light-dark(var(--color-white), var(--color-gray-950));
+  --color-bg-subtle: light-dark(var(--color-gray-50), var(--color-gray-900));
+  --color-bg-muted: light-dark(var(--color-gray-100), var(--color-gray-800));
+
+  /* Borders */
+  --color-border: light-dark(var(--color-gray-200), var(--color-gray-700));
+  --color-border-muted: light-dark(var(--color-gray-300), var(--color-gray-600));
+
+  /* Text (all meet WCAG AA 4.5:1) */
+  --color-text: light-dark(var(--color-gray-900), var(--color-gray-50));
+  --color-text-muted: light-dark(var(--color-gray-700), var(--color-gray-300));
+  --color-text-subtle: light-dark(var(--color-gray-500), var(--color-gray-400));
+
+  /* Primary */
+  --color-primary: light-dark(var(--color-primary-600), var(--color-primary-400));
+  --color-primary-hover: light-dark(var(--color-primary-700), var(--color-primary-300));
+
+  /* Status */
+  --color-error: light-dark(var(--color-red-700), var(--color-red-300));
+  --color-success: light-dark(var(--color-green-700), var(--color-green-400));
+  --color-warning: light-dark(var(--color-amber-700), var(--color-amber-400));
+
+  /* Focus */
+  --color-focus-ring: var(--color-primary-400);
+
+  /* Shadows (stronger in dark mode for visibility) */
+  --shadow-sm: light-dark(
+    0 1px 2px rgb(0 0 0 / 0.05),
+    0 1px 2px rgb(0 0 0 / 0.4)
+  );
+  --shadow: light-dark(
+    0 1px 3px rgb(0 0 0 / 0.1),
+    0 1px 3px rgb(0 0 0 / 0.5)
+  );
+  --shadow-lg: light-dark(
+    0 4px 6px -1px rgb(0 0 0 / 0.1),
+    0 4px 6px -1px rgb(0 0 0 / 0.5)
+  );
+
+  /* ========================================
+     Spacing, radius, typography
+     ======================================== */
 
   /* Spacing (Tailwind 4px base unit) */
   --spacing-px: 1px;

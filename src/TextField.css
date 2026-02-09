@@ -10,7 +10,7 @@
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   font-weight: 500;
-  color: var(--color-gray-700);
+  color: var(--color-text-muted);
   margin-bottom: var(--spacing-1);
 }
 
@@ -26,32 +26,33 @@
   box-sizing: border-box;
 
   /* Appearance */
-  border: 1px solid var(--color-gray-300);
+  border: 1px solid var(--color-border-muted);
   border-radius: var(--radius);
-  background: var(--color-white);
+  background: var(--color-bg);
+  color: var(--color-text);
 
   /* Transition */
   transition: border-color 0.15s;
 }
 
 .text-field[data-hovered] {
-  border-color: var(--color-gray-400);
+  border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
 }
 
 .text-field:has(.react-aria-Input[data-focused]) {
-  border-color: var(--color-primary-500);
-  outline: 2px solid var(--color-primary-400);
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: -1px;
 }
 
 .text-field[data-disabled] {
-  background: var(--color-gray-100);
-  border-color: var(--color-gray-200);
+  background: var(--color-bg-muted);
+  border-color: var(--color-border);
   cursor: default;
 }
 
 .text-field[data-invalid] {
-  border-color: var(--color-red-700);
+  border-color: var(--color-error);
 }
 
 /* Tighten padding when adornment contains a button */
@@ -80,22 +81,18 @@
 }
 
 .text-field .react-aria-Input::placeholder {
-  color: var(--color-gray-400);
+  color: var(--color-text-subtle);
 }
 
 .text-field .react-aria-Input[data-disabled] {
-  color: var(--color-gray-500);
-}
-
-.text-field .react-aria-Input[data-disabled]::placeholder {
-  color: var(--color-gray-400);
+  color: var(--color-text-subtle);
 }
 
 /* Description */
 .react-aria-TextField .react-aria-Text[slot='description'] {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
-  color: var(--color-gray-500);
+  color: var(--color-text-subtle);
   margin-top: var(--spacing-1);
 }
 
@@ -103,7 +100,7 @@
 .react-aria-TextField .react-aria-FieldError {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
-  color: var(--color-red-700);
+  color: var(--color-error);
   margin-top: var(--spacing-1);
 }
 
@@ -112,7 +109,7 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  color: var(--color-gray-500);
+  color: var(--color-text-subtle);
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   line-height: 1;

@@ -30,28 +30,32 @@
   padding: 0;
 }
 
-/* Colors: dark text on light background */
+/* Gray */
 .badge[data-color='gray'] {
-  background: var(--color-gray-100);
-  color: var(--color-gray-700);
+  background: var(--color-bg-muted);
+  color: var(--color-text-muted);
 }
 
+/* Red - using colors with good contrast on muted backgrounds */
 .badge[data-color='red'] {
-  background: var(--color-red-100);
-  color: var(--color-red-700);
+  background: light-dark(var(--color-red-100), var(--color-red-900));
+  color: var(--color-error);
 }
 
+/* Green */
 .badge[data-color='green'] {
-  background: var(--color-green-100);
-  color: var(--color-green-700);
+  background: light-dark(var(--color-green-100), var(--color-green-900));
+  color: var(--color-success);
 }
 
+/* Amber */
 .badge[data-color='amber'] {
-  background: var(--color-amber-100);
-  color: var(--color-amber-700);
+  background: light-dark(var(--color-amber-100), var(--color-amber-900));
+  color: var(--color-warning);
 }
 
+/* Blue - needs specific colors for contrast on muted backgrounds */
 .badge[data-color='blue'] {
-  background: var(--color-primary-100);
-  color: var(--color-primary-700);
+  background: light-dark(var(--color-primary-100), var(--color-primary-900));
+  color: light-dark(var(--color-primary-800), var(--color-primary-200));
 }
