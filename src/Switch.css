@@ -1,0 +1,84 @@
+@import './tokens.css';
+
+.react-aria-Switch {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2); /* 8px */
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-700);
+  forced-color-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.switch-track {
+  width: var(--spacing-10); /* 40px */
+  height: var(--spacing-6); /* 24px */
+  border-radius: var(--radius-full);
+  background: var(--color-gray-300);
+  padding: var(--spacing-0-5); /* 2px */
+  box-sizing: border-box;
+  transition: background 0.15s;
+}
+
+.switch-handle {
+  width: var(--spacing-5); /* 20px */
+  height: var(--spacing-5); /* 20px */
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.1);
+  transition: transform 0.15s;
+}
+
+/* Hover */
+.react-aria-Switch[data-hovered] .switch-track {
+  background: var(--color-gray-400);
+}
+
+/* Focus */
+.react-aria-Switch[data-focus-visible] .switch-track {
+  outline: 2px solid var(--color-primary-400);
+  outline-offset: 2px;
+}
+
+/* Selected */
+.react-aria-Switch[data-selected] .switch-track {
+  background: var(--color-primary-600);
+}
+
+.react-aria-Switch[data-selected][data-hovered] .switch-track {
+  background: var(--color-primary-700);
+}
+
+.react-aria-Switch[data-selected] .switch-handle {
+  transform: translateX(var(--spacing-4)); /* 16px */
+}
+
+/* Pressed */
+.react-aria-Switch[data-pressed] .switch-handle {
+  width: var(--spacing-6); /* 24px - stretch on press */
+}
+
+.react-aria-Switch[data-selected][data-pressed] .switch-handle {
+  transform: translateX(var(--spacing-3)); /* 12px - adjust for stretch */
+}
+
+/* Disabled */
+.react-aria-Switch[data-disabled] {
+  color: var(--color-gray-400);
+  cursor: default;
+}
+
+.react-aria-Switch[data-disabled] .switch-track {
+  background: var(--color-gray-200);
+}
+
+.react-aria-Switch[data-disabled] .switch-handle {
+  background: var(--color-gray-100);
+  box-shadow: none;
+}
+
+.react-aria-Switch[data-disabled][data-selected] .switch-track {
+  background: var(--color-gray-300);
+}

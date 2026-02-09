@@ -26,5 +26,7 @@ export { Radio, RadioGroup } from './RadioGroup';
 export type { RadioProps, RadioGroupProps } from './RadioGroup';
 export { Select } from './Select';
 export type { SelectProps, SelectItemProps } from './Select';
+export { Switch } from './Switch';
+export type { SwitchProps } from './Switch';
 export { TextField } from './TextField';
 export type { TextFieldProps } from './TextField';
