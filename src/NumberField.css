@@ -1,0 +1,189 @@
+@import './tokens.css';
+
+.react-aria-NumberField {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label */
+.react-aria-NumberField .react-aria-Label {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-1);
+}
+
+.number-field {
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  /* Size */
+  height: var(--spacing-8);
+  box-sizing: border-box;
+
+  /* Appearance */
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  /* Transition */
+  transition: border-color 0.15s;
+}
+
+/* Without stepper: same padding as TextField */
+.number-field:not([data-has-stepper]) {
+  padding: 0 var(--spacing-3);
+}
+
+/* With stepper: no outer padding (buttons sit at edges) */
+.number-field[data-has-stepper] {
+  padding: 0;
+}
+
+.number-field[data-hovered] {
+  border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+}
+
+.number-field[data-focus-within] {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -1px;
+}
+
+.number-field[data-disabled] {
+  background: var(--color-bg-muted);
+  border-color: var(--color-border);
+  cursor: default;
+}
+
+.react-aria-NumberField[data-invalid] .number-field {
+  border-color: var(--color-error);
+}
+
+/* Input reset */
+.number-field .react-aria-Input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  /* Right-align numbers for easier comparison and decimal alignment */
+  text-align: right;
+  /* Hide native spinner */
+  -moz-appearance: textfield;
+}
+
+.number-field .react-aria-Input::-webkit-outer-spin-button,
+.number-field .react-aria-Input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-field .react-aria-Input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.number-field .react-aria-Input[data-disabled] {
+  color: var(--color-text-subtle);
+}
+
+/* Description */
+.react-aria-NumberField .react-aria-Text[slot='description'] {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-subtle);
+  margin-top: var(--spacing-1);
+}
+
+/* Error message */
+.react-aria-NumberField .react-aria-FieldError {
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-1);
+}
+
+/* Adornments */
+.number-field-adornment {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+/* Stepper buttons - 30x30px for accessibility (exceeds 24px minimum) */
+.number-field-stepper-button {
+  /* Reset */
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+
+  /* Layout - full height, square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--spacing-8) - 2px); /* 30px (32px - 2px border) */
+  height: calc(var(--spacing-8) - 2px); /* 30px */
+  flex-shrink: 0;
+
+  /* Appearance */
+  color: var(--color-text-subtle);
+
+  /* Transition */
+  transition: background 0.1s, color 0.1s;
+}
+
+.number-field-stepper-button[data-hovered] {
+  background: var(--color-bg-muted);
+  color: var(--color-text-muted);
+}
+
+.number-field-stepper-button[data-pressed] {
+  background: var(--color-border);
+  color: var(--color-text);
+}
+
+.number-field-stepper-button[data-focus-visible] {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.number-field-stepper-button[data-disabled] {
+  color: light-dark(var(--color-gray-300), var(--color-gray-600));
+  cursor: default;
+}
+
+/* Decrement button (left side) */
+.number-field-stepper-button[slot='decrement'] {
+  border-top-left-radius: calc(var(--radius) - 1px);
+  border-bottom-left-radius: calc(var(--radius) - 1px);
+  border-right: 1px solid var(--color-border-muted);
+}
+
+/* Increment button (right side) */
+.number-field-stepper-button[slot='increment'] {
+  border-top-right-radius: calc(var(--radius) - 1px);
+  border-bottom-right-radius: calc(var(--radius) - 1px);
+  border-left: 1px solid var(--color-border-muted);
+}

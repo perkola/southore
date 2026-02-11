@@ -20,6 +20,8 @@ export type {
   MenuSectionProps,
   MenuSeparatorProps,
 } from './Menu';
+export { NumberField } from './NumberField';
+export type { NumberFieldProps } from './NumberField';
 export { Popover } from './Popover';
 export type { PopoverProps } from './Popover';
 export { Radio, RadioGroup } from './RadioGroup';
