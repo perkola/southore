@@ -10,28 +10,19 @@ import {
   Button,
   Text,
   FieldError,
-  type ValidationResult,
   Autocomplete as RACAutocomplete,
   SearchField,
   Input,
   Group,
   useFilter,
 } from "react-aria-components";
+import type { FieldProps } from "./Field";
 import { Popover } from "./Popover";
+import "./Field.css";
 import "./Autocomplete.css";
 
-// Autocomplete
 export interface AutocompleteProps<T extends object>
-  extends Omit<RACSelectProps<T>, "children"> {
-  /** A visible label for the autocomplete. */
-  label?: string;
-
-  /** A brief description shown below the autocomplete. */
-  description?: string;
-
-  /** An error message shown when the field is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
-
+  extends Omit<RACSelectProps<T>, "children">, FieldProps {
   /** The children (Autocomplete.Item elements). */
   children: React.ReactNode;
 

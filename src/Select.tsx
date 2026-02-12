@@ -10,19 +10,14 @@ import {
   Button,
   Text,
   FieldError,
-  type ValidationResult,
 } from "react-aria-components";
+import type { FieldProps } from "./Field";
 import { Popover } from "./Popover";
+import "./Field.css";
 import "./Select.css";
 
 export interface SelectProps<T extends object>
-  extends Omit<RACSelectProps<T>, "children"> {
-  /** A visible label for the select. */
-  label?: string;
-  /** A brief description shown below the select. */
-  description?: string;
-  /** An error message shown when the field is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
+  extends Omit<RACSelectProps<T>, "children">, FieldProps {
   /** The items to display in the select. */
   children: React.ReactNode;
   /** Placeholder text shown when no item is selected. */

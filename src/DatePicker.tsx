@@ -8,25 +8,17 @@ import {
   Label,
   Text,
   FieldError,
-  type ValidationResult,
 } from "react-aria-components";
 import { Button } from "./Button";
 import { Calendar } from "./Calendar";
+import type { FieldProps } from "./Field";
 import { Popover } from "./Popover";
 import { Calendar as CalendarIcon } from "./icons";
+import "./Field.css";
 import "./DatePicker.css";
 
 export interface DatePickerProps<T extends DateValue>
-  extends RACDatePickerProps<T> {
-  /** A visible label for the date picker. */
-  label?: string;
-
-  /** A brief description shown below the input. */
-  description?: string;
-
-  /** An error message shown when the field is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
-}
+  extends RACDatePickerProps<T>, FieldProps {}
 
 export function DatePicker<T extends DateValue>({
   label,

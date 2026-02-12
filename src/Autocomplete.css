@@ -1,35 +1,11 @@
 @import './tokens.css';
 @import './Listbox.css';
 
-/* Autocomplete uses the same base styles as Select */
 .react-aria-Select:has(.autocomplete-trigger) {
   display: flex;
   flex-direction: column;
-
-  & .react-aria-Label {
-    font-family: system-ui, sans-serif;
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    color: var(--color-text-muted);
-    margin-bottom: var(--spacing-1);
-  }
-
-  & .react-aria-Text[slot='description'] {
-    font-family: system-ui, sans-serif;
-    font-size: var(--font-size-sm);
-    color: var(--color-text-subtle);
-    margin-top: var(--spacing-1);
-  }
-
-  & .react-aria-FieldError {
-    font-family: system-ui, sans-serif;
-    font-size: var(--font-size-sm);
-    color: var(--color-error);
-    margin-top: var(--spacing-1);
-  }
 }
 
-/* Trigger button */
 .autocomplete-trigger {
   appearance: none;
   margin: 0;
@@ -102,7 +78,6 @@
   border-color: var(--color-error);
 }
 
-/* Popover */
 .autocomplete-popover {
   min-width: var(--trigger-width);
   max-width: 300px;
@@ -111,7 +86,6 @@
   padding: var(--spacing-1);
 }
 
-/* Search field */
 .autocomplete-search {
   margin-bottom: var(--spacing-1);
 }
@@ -159,7 +133,6 @@
   }
 }
 
-/* Clear button */
 .autocomplete-clear {
   appearance: none;
   margin: 0;
@@ -191,13 +164,11 @@
   display: none;
 }
 
-/* Listbox adjustments */
 .autocomplete-popover .listbox {
   flex: 1;
   max-height: 250px;
 }
 
-/* Empty state */
 .autocomplete-popover .listbox[data-empty]::after {
   content: 'No results found';
   display: block;

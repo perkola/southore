@@ -2,7 +2,6 @@ import { useRef, type ReactNode } from "react";
 import {
   NumberField as RACNumberField,
   type NumberFieldProps as RACNumberFieldProps,
-  type ValidationResult,
   Input,
   Group,
   Label,
@@ -10,24 +9,17 @@ import {
   FieldError,
   Button,
 } from "react-aria-components";
+import type { FieldProps } from "./Field";
 import { Minus, Plus } from "./icons";
+import "./Field.css";
 import "./NumberField.css";
 
-export interface NumberFieldProps extends RACNumberFieldProps {
+export interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
   /** Content rendered before the input (e.g. an icon or currency symbol). */
   startAdornment?: ReactNode;
 
   /** Content rendered after the input (e.g. a unit label). */
   endAdornment?: ReactNode;
-
-  /** A visible label for the input. */
-  label?: string;
-
-  /** A brief description shown below the input. */
-  description?: string;
-
-  /** An error message shown when the field is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
 
   /** Hide the increment/decrement stepper buttons. */
   hideStepper?: boolean;

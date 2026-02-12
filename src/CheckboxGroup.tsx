@@ -2,23 +2,15 @@ import type { ReactNode } from "react";
 import {
   CheckboxGroup as RACCheckboxGroup,
   type CheckboxGroupProps as RACCheckboxGroupProps,
-  type ValidationResult,
   Label,
   Text,
   FieldError,
 } from "react-aria-components";
+import type { FieldProps } from "./Field";
+import "./Field.css";
 import "./CheckboxGroup.css";
 
-export interface CheckboxGroupProps extends RACCheckboxGroupProps {
-  /** The label for the checkbox group. */
-  label?: string;
-
-  /** A brief description shown below the group. */
-  description?: string;
-
-  /** An error message shown when the group is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
-
+export interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {
   /** The checkboxes in the group. */
   children?: ReactNode;
 }

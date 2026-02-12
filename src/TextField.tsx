@@ -2,16 +2,17 @@ import { useRef, type ReactNode } from "react";
 import {
   TextField as RACTextField,
   type TextFieldProps as RACTextFieldProps,
-  type ValidationResult,
   Input,
   Group,
   Label,
   Text,
   FieldError,
 } from "react-aria-components";
+import type { FieldProps } from "./Field";
+import "./Field.css";
 import "./TextField.css";
 
-export interface TextFieldProps extends RACTextFieldProps {
+export interface TextFieldProps extends RACTextFieldProps, FieldProps {
   /** Placeholder text shown when the input is empty. */
   placeholder?: string;
 
@@ -20,15 +21,6 @@ export interface TextFieldProps extends RACTextFieldProps {
 
   /** Content rendered after the input (e.g. an icon or text). */
   endAdornment?: ReactNode;
-
-  /** A visible label for the input. */
-  label?: string;
-
-  /** A brief description shown below the input. */
-  description?: string;
-
-  /** An error message shown when the field is invalid. */
-  errorMessage?: string | ((validation: ValidationResult) => string);
 }
 
 export function TextField({
