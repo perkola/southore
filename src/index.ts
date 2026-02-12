@@ -32,6 +32,10 @@ export { Switch } from './Switch';
 export type { SwitchProps } from './Switch';
 export { TextField } from './TextField';
 export type { TextFieldProps } from './TextField';
+export { GlobalToastRegion } from './Toast';
+export type { GlobalToastRegionProps } from './Toast';
+export { toastQueue, addToast, removeToast } from './toastQueue';
+export type { ToastContent, ToastOptions } from './toastQueue';
 export { Tooltip } from './Tooltip';
 export type { TooltipProps, TooltipPlacement } from './Tooltip';
 
