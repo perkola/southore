@@ -1,7 +1,25 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { ChevronDown, Minus, Plus, Search, X } from "./icons";
+import {
+  Calendar,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Minus,
+  Plus,
+  Search,
+  X,
+} from "./icons";
 
-const iconMap = { ChevronDown, Minus, Plus, Search, X } as const;
+const iconMap = {
+  Calendar,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Minus,
+  Plus,
+  Search,
+  X,
+} as const;
 type IconName = keyof typeof iconMap;
 
 function IconPlayground({

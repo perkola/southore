@@ -8,6 +8,8 @@ export { Checkbox } from './Checkbox';
 export type { CheckboxProps } from './Checkbox';
 export { CheckboxGroup } from './CheckboxGroup';
 export type { CheckboxGroupProps } from './CheckboxGroup';
+export { DatePicker } from './DatePicker';
+export type { DatePickerProps } from './DatePicker';
 export { Form } from './Form';
 export type { FormProps } from './Form';
 export { Link } from './Link';
@@ -40,5 +42,14 @@ export { Tooltip } from './Tooltip';
 export type { TooltipProps, TooltipPlacement } from './Tooltip';
 
 // Icons
-export { ChevronDown, Minus, Plus, Search, X } from './icons';
+export {
+  Calendar as CalendarIcon,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Minus,
+  Plus,
+  Search,
+  X,
+} from './icons';
 export type { IconProps } from './icons';
