@@ -34,3 +34,7 @@ export { TextField } from './TextField';
 export type { TextFieldProps } from './TextField';
 export { Tooltip } from './Tooltip';
 export type { TooltipProps, TooltipPlacement } from './Tooltip';
+
+// Icons
+export { ChevronDown, Minus, Plus, Search, X } from './icons';
+export type { IconProps } from './icons';

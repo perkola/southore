@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown } from "./icons";
 import {
   Select as RACSelect,
   type SelectProps as RACSelectProps,

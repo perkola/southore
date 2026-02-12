@@ -10,7 +10,7 @@ import {
   FieldError,
   Button,
 } from "react-aria-components";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "./icons";
 import "./NumberField.css";
 
 export interface NumberFieldProps extends RACNumberFieldProps {

@@ -19,6 +19,8 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 - `npm run build` — typecheck and build the library
 - `npm run lint` — run ESLint
 
+**Always run `npm run build && npm run lint` after making changes to verify there are no TypeScript or linting errors.**
+
 ## Project Structure
 
 ```
@@ -28,8 +30,38 @@ src/
   Button.tsx         # Component implementations
   Button.css         # Component styles
   Button.stories.tsx
+  icons/
+    index.ts         # Re-exports from lucide-react
   ...
 ```
+
+## Icons
+
+Icons are re-exported from Lucide React through `src/icons/index.ts`. This provides a single point of change if the icon library needs to be swapped, while maintaining tree-shaking support.
+
+### Adding a new icon
+
+Add the export to `src/icons/index.ts`:
+
+```tsx
+export { ChevronDown, Minus, Plus, Search, X, Check } from "lucide-react";
+```
+
+Then export from `src/index.ts` if it should be public API.
+
+Also update the `iconMap` in `src/Icons.stories.tsx` to include the new icon in the gallery.
+
+### Usage
+
+```tsx
+// Internal (within src/)
+import { ChevronDown } from "./icons";
+
+// Props: size, color, className, etc.
+<ChevronDown size={16} aria-hidden />
+```
+
+**Never import icons directly from `lucide-react`** — always use `./icons`.
 
 ## Conventions
 
