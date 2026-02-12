@@ -13,7 +13,7 @@
   border: 1px solid var(--color-border-muted);
   border-radius: var(--radius);
   background: var(--color-bg);
-  min-width: 150px;
+  width: 100%;
   height: var(--spacing-8);
   display: flex;
   align-items: center;

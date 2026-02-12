@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Copy, Pencil } from 'lucide-react';
-import { fn } from 'storybook/test';
-import { Button } from './Button';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Copy, Pencil } from "lucide-react";
+import { fn } from "storybook/test";
+import { Button } from "./Button";
 
 const meta = {
   component: Button,
@@ -13,45 +13,45 @@ type Story = StoryObj<typeof meta>;
 
 export const Solid: Story = {
   args: {
-    variant: 'solid',
-    children: 'Button',
+    variant: "solid",
+    children: "Button",
   },
 };
 
 export const Outlined: Story = {
   args: {
-    variant: 'outlined',
-    children: 'Button',
+    variant: "outlined",
+    children: "Button",
   },
 };
 
 export const Text: Story = {
   args: {
-    variant: 'text',
-    children: 'Button',
+    variant: "text",
+    children: "Button",
   },
 };
 
 export const WithIcon: Story = {
   args: {
-    variant: 'solid',
-    children: [<Pencil key="icon" size={16} />, 'Edit'],
+    variant: "solid",
+    children: [<Pencil key="icon" size={16} />, "Edit"],
   },
 };
 
 export const Small: Story = {
   args: {
-    variant: 'text',
-    size: 'small',
-    'aria-label': 'Copy',
+    variant: "text",
+    size: "small",
+    "aria-label": "Copy",
     children: <Copy size={14} />,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    variant: 'solid',
-    children: 'Disabled',
+    variant: "solid",
+    children: "Disabled",
     isDisabled: true,
   },
 };

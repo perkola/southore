@@ -4,6 +4,13 @@ import { Autocomplete } from "./Autocomplete";
 
 const meta = {
   component: Autocomplete,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: { onChange: fn() },
 } satisfies Meta<typeof Autocomplete>;
 
@@ -52,10 +59,18 @@ export const WithDisabledItems: Story = {
     label: "Assign to",
     placeholder: "Select user...",
     children: [
-      <Autocomplete.Item key="alice" id="alice">Alice Johnson</Autocomplete.Item>,
-      <Autocomplete.Item key="bob" id="bob">Bob Smith</Autocomplete.Item>,
-      <Autocomplete.Item key="charlie" id="charlie" isDisabled>Charlie Brown (Unavailable)</Autocomplete.Item>,
-      <Autocomplete.Item key="diana" id="diana">Diana Prince</Autocomplete.Item>,
+      <Autocomplete.Item key="alice" id="alice">
+        Alice Johnson
+      </Autocomplete.Item>,
+      <Autocomplete.Item key="bob" id="bob">
+        Bob Smith
+      </Autocomplete.Item>,
+      <Autocomplete.Item key="charlie" id="charlie" isDisabled>
+        Charlie Brown (Unavailable)
+      </Autocomplete.Item>,
+      <Autocomplete.Item key="diana" id="diana">
+        Diana Prince
+      </Autocomplete.Item>,
     ],
   },
 };

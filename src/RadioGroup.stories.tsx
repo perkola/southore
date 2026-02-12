@@ -4,6 +4,13 @@ import { Radio, RadioGroup } from "./RadioGroup";
 
 const meta = {
   component: RadioGroup,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: { onChange: fn() },
 } satisfies Meta<typeof RadioGroup>;
 

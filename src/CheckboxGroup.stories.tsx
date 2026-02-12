@@ -5,6 +5,13 @@ import { CheckboxGroup } from "./CheckboxGroup";
 
 const meta = {
   component: CheckboxGroup,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: { onChange: fn() },
 } satisfies Meta<typeof CheckboxGroup>;
 

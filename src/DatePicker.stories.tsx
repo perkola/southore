@@ -1,16 +1,27 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import { getLocalTimeZone, isWeekend, parseDate, today } from "@internationalized/date";
+import {
+  getLocalTimeZone,
+  isWeekend,
+  parseDate,
+  today,
+} from "@internationalized/date";
 import { useLocale } from "react-aria";
 import { DatePicker } from "./DatePicker";
 
-const meta: Meta<typeof DatePicker> = {
+const meta = {
   component: DatePicker,
-  tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     onChange: fn(),
   },
-};
+} satisfies Meta<typeof DatePicker>;
 
 export default meta;
 type Story = StoryObj<typeof DatePicker>;

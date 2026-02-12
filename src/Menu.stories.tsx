@@ -1,6 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import { Copy, Pencil, Trash2, Share, Link, Download, EllipsisVertical } from "lucide-react";
+import {
+  Copy,
+  Pencil,
+  Trash2,
+  Share,
+  Link,
+  Download,
+  EllipsisVertical,
+} from "lucide-react";
 import { Menu } from "./Menu";
 import { Popover } from "./Popover";
 import { Button } from "./Button";
@@ -103,7 +111,11 @@ export const WithLinks: Story = {
       <Button>Links</Button>
       <Popover>
         <Menu {...args}>
-          <Menu.Item id="docs" href="https://react-spectrum.adobe.com" target="_blank">
+          <Menu.Item
+            id="docs"
+            href="https://react-spectrum.adobe.com"
+            target="_blank"
+          >
             <Link size={16} />
             Documentation
           </Menu.Item>
@@ -120,4 +132,3 @@ export const WithLinks: Story = {
     </Menu.Trigger>
   ),
 };
-

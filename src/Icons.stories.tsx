@@ -79,13 +79,7 @@ export const Playground: Story = {
   },
 };
 
-function IconGallery({
-  size,
-  color,
-}: {
-  size: number;
-  color: string;
-}) {
+function IconGallery({ size, color }: { size: number; color: string }) {
   return (
     <div
       style={{

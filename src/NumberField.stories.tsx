@@ -4,6 +4,13 @@ import { NumberField } from "./NumberField";
 
 const meta = {
   component: NumberField,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: {
     onChange: fn(),
   },

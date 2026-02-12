@@ -5,6 +5,16 @@
  * Import this file into any component that uses Label, Description, or FieldError.
  */
 
+/* Form fields fill their container width by default */
+.react-aria-TextField,
+.react-aria-NumberField,
+.react-aria-DatePicker,
+.react-aria-Select,
+.react-aria-CheckboxGroup,
+.react-aria-RadioGroup {
+  width: 100%;
+}
+
 .react-aria-Label {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);

@@ -57,7 +57,11 @@ export const Placements: Story = {
 
 export const WithFormatting: Story = {
   args: {
-    content: <>Requires <strong>admin</strong> access</>,
+    content: (
+      <>
+        Requires <strong>admin</strong> access
+      </>
+    ),
     children: <Button>Settings</Button>,
   },
 };

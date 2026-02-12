@@ -3,6 +3,8 @@ import { fn } from "storybook/test";
 import { Mail } from "lucide-react";
 import { Form } from "./Form";
 import { TextField } from "./TextField";
+import { NumberField } from "./NumberField";
+import { DatePicker } from "./DatePicker";
 import { Select } from "./Select";
 import { Autocomplete } from "./Autocomplete";
 import { Checkbox } from "./Checkbox";
@@ -60,6 +62,16 @@ export const Default: Story = {
         isRequired
       />
 
+      <NumberField
+        label="Quantity"
+        name="quantity"
+        minValue={1}
+        maxValue={100}
+        defaultValue={1}
+      />
+
+      <DatePicker label="Start date" name="startDate" />
+
       <Select label="Country" name="country" placeholder="Select a country">
         <Select.Item id="us">United States</Select.Item>
         <Select.Item id="ca">Canada</Select.Item>
@@ -92,7 +104,9 @@ export const Default: Story = {
         <Checkbox value="push">Push notifications</Checkbox>
       </CheckboxGroup>
 
-      <Checkbox name="terms">I agree to the <Link href="/terms">terms and conditions</Link></Checkbox>
+      <Checkbox name="terms">
+        I agree to the <Link href="/terms">terms and conditions</Link>
+      </Checkbox>
 
       <div className="form-buttons">
         <Button type="reset" variant="text">

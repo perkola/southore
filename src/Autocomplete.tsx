@@ -84,8 +84,8 @@ function Item<T extends object>(props: AutocompleteItemProps<T>) {
 }
 
 // Set display names for dev tools
-AutocompleteRoot.displayName = 'Autocomplete';
-Item.displayName = 'Autocomplete.Item';
+AutocompleteRoot.displayName = "Autocomplete";
+Item.displayName = "Autocomplete.Item";
 
 // Compound component
 export const Autocomplete = Object.assign(AutocompleteRoot, {

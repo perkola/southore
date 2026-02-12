@@ -15,8 +15,10 @@ import { Button } from "./Button";
 import { ChevronLeft, ChevronRight } from "./icons";
 import "./Calendar.css";
 
-export interface CalendarProps<T extends DateValue>
-  extends Omit<RACCalendarProps<T>, "visibleDuration"> {
+export interface CalendarProps<T extends DateValue> extends Omit<
+  RACCalendarProps<T>,
+  "visibleDuration"
+> {
   /** An error message shown when the calendar is invalid. */
   errorMessage?: string;
 }

@@ -36,8 +36,10 @@ function Item<T extends object>(props: MenuItemProps<T>) {
 }
 
 // Menu.Section
-export interface MenuSectionProps<T extends object>
-  extends Omit<RACMenuSectionProps<T>, "children"> {
+export interface MenuSectionProps<T extends object> extends Omit<
+  RACMenuSectionProps<T>,
+  "children"
+> {
   /** Optional header text for the section. */
   header?: string;
   children?: ReactNode;
@@ -64,11 +66,11 @@ function Separator(props: MenuSeparatorProps) {
 }
 
 // Set display names for dev tools
-MenuRoot.displayName = 'Menu';
-Trigger.displayName = 'Menu.Trigger';
-Item.displayName = 'Menu.Item';
-Section.displayName = 'Menu.Section';
-Separator.displayName = 'Menu.Separator';
+MenuRoot.displayName = "Menu";
+Trigger.displayName = "Menu.Trigger";
+Item.displayName = "Menu.Item";
+Section.displayName = "Menu.Section";
+Separator.displayName = "Menu.Separator";
 
 // Compound component
 export const Menu = Object.assign(MenuRoot, {

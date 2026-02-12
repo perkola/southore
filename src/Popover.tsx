@@ -23,7 +23,7 @@ export function Popover({
     <RACPopover
       {...props}
       className={composeRenderProps(className, (className) =>
-        ["popover", className].filter(Boolean).join(" ")
+        ["popover", className].filter(Boolean).join(" "),
       )}
     >
       {showArrow && (

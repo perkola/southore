@@ -21,13 +21,22 @@ export function GlobalToastRegion({
   "aria-label": ariaLabel = "Notifications",
 }: GlobalToastRegionProps) {
   return (
-    <ToastRegion queue={toastQueue} aria-label={ariaLabel} className="toast-region">
+    <ToastRegion
+      queue={toastQueue}
+      aria-label={ariaLabel}
+      className="toast-region"
+    >
       {({ toast }) => (
         <RACToast toast={toast} className="toast">
           <ToastContent>
             <Text slot="title">{toast.content.message}</Text>
           </ToastContent>
-          <Button slot="close" variant="text" size="small" aria-label="Dismiss notification">
+          <Button
+            slot="close"
+            variant="text"
+            size="small"
+            aria-label="Dismiss notification"
+          >
             <X size={16} aria-hidden="true" />
           </Button>
         </RACToast>

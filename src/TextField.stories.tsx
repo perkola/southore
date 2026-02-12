@@ -7,6 +7,13 @@ import { TextField } from "./TextField";
 
 const meta = {
   component: TextField,
+  decorators: [
+    (Story) => (
+      <div style={{ width: 320 }}>
+        <Story />
+      </div>
+    ),
+  ],
   args: { onChange: fn() },
 } satisfies Meta<typeof TextField>;
 
@@ -68,7 +75,7 @@ export const CopyToClipboard: Story = {
   parameters: {
     docs: {
       source: {
-        type: 'dynamic',
+        type: "dynamic",
       },
     },
   },
