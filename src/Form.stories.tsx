@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { Mail } from "lucide-react";
 import { Form } from "./Form";
+import { TextArea } from "./TextArea";
 import { TextField } from "./TextField";
 import { NumberField } from "./NumberField";
 import { DatePicker } from "./DatePicker";
@@ -60,6 +61,13 @@ export const Default: Story = {
         description="We'll never share your email with anyone else."
         startAdornment={<Mail size={16} />}
         isRequired
+      />
+
+      <TextArea
+        label="Message"
+        name="message"
+        placeholder="Enter your message"
+        rows={4}
       />
 
       <NumberField

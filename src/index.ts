@@ -32,6 +32,8 @@ export { Select } from "./Select";
 export type { SelectProps, SelectItemProps } from "./Select";
 export { Switch } from "./Switch";
 export type { SwitchProps } from "./Switch";
+export { TextArea } from "./TextArea";
+export type { TextAreaProps } from "./TextArea";
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField";
 export { GlobalToastRegion } from "./Toast";
