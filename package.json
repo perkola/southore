@@ -1,7 +1,14 @@
 {
   "name": "southore",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
+  "description": "Accessible React component library built on React Aria Components",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perkola/southore.git"
+  },
+  "homepage": "https://github.com/perkola/southore",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -21,14 +28,18 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "dependencies": {
     "lucide-react": "^0.563.0",
-    "react": "^19.2.0",
-    "react-aria-components": "^1.15.0",
-    "react-dom": "^19.2.0"
+    "react-aria-components": "^1.15.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "@storybook/addon-a11y": "^10.2.6",
     "@storybook/addon-docs": "^10.2.6",
     "@storybook/addon-mcp": "^0.2.2",

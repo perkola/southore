@@ -123,6 +123,39 @@ document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
 | `--color-primary` | primary-600 | primary-400 |
 | `--color-error` | red-700 | red-300 |
 
+## Releasing
+
+The library is published to npm via GitHub Actions when a version tag is pushed.
+
+### Release process
+
+1. Update version in `package.json`:
+   ```bash
+   npm version patch  # or minor, major
+   ```
+
+2. Push the commit and tag:
+   ```bash
+   git push && git push --tags
+   ```
+
+3. GitHub Actions will automatically:
+   - Run CI checks (build, lint)
+   - Publish to npm with provenance
+
+### CI/CD
+
+- **CI workflow** (`.github/workflows/ci.yml`): Runs on all pushes and PRs to `main`. Runs build and lint.
+- **Release workflow** (`.github/workflows/release.yml`): Runs on version tags (`v*`). Publishes to npm.
+
+### Storybook deployment
+
+Storybook is deployed to Vercel automatically on pushes to `main`. PR preview deployments are enabled.
+
+- Production URL: https://southore.perko.la
+- Build command: `npm run build-storybook`
+- Output directory: `storybook-static`
+
 ## Tools
 
 - The React Aria MCP server is available for looking up React Aria Components documentation
