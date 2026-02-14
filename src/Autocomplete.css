@@ -63,15 +63,22 @@
     }
   }
 
-  & svg {
+  & > svg {
     flex-shrink: 0;
     color: var(--color-text-subtle);
     transition: transform 0.15s;
   }
 
-  &[data-pressed] svg {
+  &[data-pressed] > svg {
     transform: rotate(180deg);
   }
+}
+
+.autocomplete-adornment {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
 }
 
 .react-aria-Select[data-invalid] .autocomplete-trigger {

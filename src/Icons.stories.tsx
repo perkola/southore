@@ -4,9 +4,11 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Globe,
   Minus,
   Plus,
   Search,
+  User,
   X,
 } from "./icons";
 
@@ -15,9 +17,11 @@ const iconMap = {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Globe,
   Minus,
   Plus,
   Search,
+  User,
   X,
 } as const;
 type IconName = keyof typeof iconMap;

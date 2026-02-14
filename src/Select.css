@@ -68,13 +68,20 @@
   border-color: var(--color-error);
 }
 
-.select-trigger svg {
+.select-adornment {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
+}
+
+.select-trigger > svg {
   flex-shrink: 0;
   color: var(--color-text-subtle);
   transition: transform 0.15s;
 }
 
-.select-trigger[data-pressed] svg {
+.select-trigger[data-pressed] > svg {
   transform: rotate(180deg);
 }
 

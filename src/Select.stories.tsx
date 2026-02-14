@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
+import { Globe } from "./icons";
 import { Select } from "./Select";
 
 const meta = {
@@ -39,6 +40,25 @@ export const Default: Story = {
       </Select.Item>,
       <Select.Item key="fr" id="fr">
         France
+      </Select.Item>,
+    ],
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    label: "Country",
+    placeholder: "Select a country",
+    startAdornment: <Globe size={16} />,
+    children: [
+      <Select.Item key="us" id="us">
+        United States
+      </Select.Item>,
+      <Select.Item key="ca" id="ca">
+        Canada
+      </Select.Item>,
+      <Select.Item key="uk" id="uk">
+        United Kingdom
       </Select.Item>,
     ],
   },

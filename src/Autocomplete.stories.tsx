@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
+import { User } from "./icons";
 import { Autocomplete } from "./Autocomplete";
 
 const meta = {
@@ -32,6 +33,19 @@ export const Default: Story = {
   args: {
     label: "Assign to",
     placeholder: "Select user...",
+    children: users.map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
+
+export const WithIcon: Story = {
+  args: {
+    label: "Assign to",
+    placeholder: "Select user...",
+    startAdornment: <User size={16} />,
     children: users.map((user) => (
       <Autocomplete.Item key={user.id} id={user.id}>
         {user.name}

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ChevronDown } from "./icons";
 import {
   Select as RACSelect,
@@ -22,6 +23,8 @@ export interface SelectProps<T extends object>
   children: React.ReactNode;
   /** Placeholder text shown when no item is selected. */
   placeholder?: string;
+  /** Content rendered before the value (e.g. an icon). */
+  startAdornment?: ReactNode;
 }
 
 function SelectRoot<T extends object>({
@@ -30,12 +33,16 @@ function SelectRoot<T extends object>({
   errorMessage,
   children,
   placeholder,
+  startAdornment,
   ...props
 }: SelectProps<T>) {
   return (
     <RACSelect placeholder={placeholder} {...props}>
       {label && <Label>{label}</Label>}
       <Button className="select-trigger">
+        {startAdornment && (
+          <span className="select-adornment">{startAdornment}</span>
+        )}
         <SelectValue />
         <ChevronDown size={16} aria-hidden />
       </Button>

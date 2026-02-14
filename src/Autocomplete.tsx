@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { ChevronDown, Search, X } from "./icons";
 import {
   Select as RACSelect,
@@ -31,6 +32,9 @@ export interface AutocompleteProps<T extends object>
 
   /** Placeholder text for the search field inside the popover. */
   searchPlaceholder?: string;
+
+  /** Content rendered before the value (e.g. an icon). */
+  startAdornment?: ReactNode;
 }
 
 function AutocompleteRoot<T extends object>({
@@ -40,6 +44,7 @@ function AutocompleteRoot<T extends object>({
   children,
   placeholder,
   searchPlaceholder = "Search...",
+  startAdornment,
   ...props
 }: AutocompleteProps<T>) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -48,6 +53,9 @@ function AutocompleteRoot<T extends object>({
     <RACSelect placeholder={placeholder} {...props}>
       {label && <Label>{label}</Label>}
       <Button className="autocomplete-trigger">
+        {startAdornment && (
+          <span className="autocomplete-adornment">{startAdornment}</span>
+        )}
         <SelectValue />
         <ChevronDown size={16} aria-hidden />
       </Button>
