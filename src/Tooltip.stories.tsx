@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Pencil } from "lucide-react";
+import { Pencil } from "./icons";
 import { Tooltip } from "./Tooltip";
 import { Button } from "./Button";
 

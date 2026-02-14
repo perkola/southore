@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Search, Mail, Copy } from "lucide-react";
+import { Copy, Mail, Search } from "./icons";
 import { useState } from "react";
 import { fn } from "storybook/test";
 import { Button } from "./Button";

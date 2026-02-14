@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
-import { Mail } from "lucide-react";
+import { Mail } from "./icons";
 import { Form } from "./Form";
 import { TextArea } from "./TextArea";
 import { TextField } from "./TextField";

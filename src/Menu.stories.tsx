@@ -2,13 +2,13 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import {
   Copy,
-  Pencil,
-  Trash2,
-  Share,
-  Link,
   Download,
   EllipsisVertical,
-} from "lucide-react";
+  LinkIcon,
+  Pencil,
+  Share,
+  Trash2,
+} from "./icons";
 import { Menu } from "./Menu";
 import { Popover } from "./Popover";
 import { Button } from "./Button";
@@ -116,11 +116,11 @@ export const WithLinks: Story = {
             href="https://react-spectrum.adobe.com"
             target="_blank"
           >
-            <Link size={16} />
+            <LinkIcon size={16} />
             Documentation
           </Menu.Item>
           <Menu.Item id="github" href="https://github.com" target="_blank">
-            <Link size={16} />
+            <LinkIcon size={16} />
             GitHub
           </Menu.Item>
           <Menu.Item id="download" href="/file.pdf" download>

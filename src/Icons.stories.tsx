@@ -4,10 +4,18 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Copy,
+  Download,
+  EllipsisVertical,
   Globe,
+  LinkIcon,
+  Mail,
   Minus,
+  Pencil,
   Plus,
   Search,
+  Share,
+  Trash2,
   User,
   X,
 } from "./icons";
@@ -17,10 +25,18 @@ const iconMap = {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Copy,
+  Download,
+  EllipsisVertical,
   Globe,
+  LinkIcon,
+  Mail,
   Minus,
+  Pencil,
   Plus,
   Search,
+  Share,
+  Trash2,
   User,
   X,
 } as const;
@@ -87,10 +103,9 @@ function IconGallery({ size, color }: { size: number; color: string }) {
   return (
     <div
       style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
-        gap: "24px",
-        padding: "16px",
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 16,
         color: "var(--color-text)",
       }}
     >
@@ -101,17 +116,18 @@ function IconGallery({ size, color }: { size: number; color: string }) {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "8px",
-            padding: "16px",
-            borderRadius: "8px",
+            gap: 8,
+            padding: 16,
+            borderRadius: 8,
             border: "1px solid var(--color-border)",
             backgroundColor: "var(--color-bg)",
+            width: 100,
           }}
         >
           <Icon size={size} color={color} />
           <code
             style={{
-              fontSize: "12px",
+              fontSize: 12,
               color: "var(--color-text-muted)",
             }}
           >
