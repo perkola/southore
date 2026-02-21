@@ -18,8 +18,11 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 - `npm run storybook` — start Storybook dev server on port 6006
 - `npm run build` — typecheck and build the library
 - `npm run lint` — run ESLint
+- `npm run test` — run component tests
+- `npm run test:watch` — run component tests in watch mode
+- `npm run test:coverage` — run component tests with coverage
 
-**Always run `npm run build && npm run lint` after making changes to verify there are no TypeScript or linting errors.**
+**Always run `npm run build && npm run lint && npm run test` after making changes to verify there are no TypeScript, linting, or test errors.**
 
 ## Project Structure
 

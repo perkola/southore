@@ -25,6 +25,11 @@ export default defineConfig({
     },
   },
   test: {
+    coverage: {
+      provider: 'v8',
+      include: ['src/**/*.{ts,tsx}'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/icons/**'],
+    },
     projects: [{
       extends: true,
       plugins: [
@@ -42,6 +47,28 @@ export default defineConfig({
           }]
         },
         setupFiles: ['.storybook/vitest.setup.ts']
+      }
+    }, {
+      extends: true,
+      test: {
+        name: 'components',
+        include: ['src/**/*.test.{ts,tsx}'],
+        browser: {
+          enabled: true,
+          headless: true,
+          provider: playwright({}),
+          instances: [{
+            browser: 'chromium',
+          }],
+          expect: {
+            toMatchScreenshot: {
+              comparatorOptions: {
+                threshold: 0.2,
+                allowedMismatchedPixelRatio: 0.02,
+              },
+            },
+          },
+        },
       }
     }]
   }
