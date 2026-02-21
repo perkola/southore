@@ -2,6 +2,8 @@ export { Autocomplete } from "./Autocomplete";
 export type { AutocompleteProps, AutocompleteItemProps } from "./Autocomplete";
 export { Badge } from "./Badge";
 export type { BadgeProps } from "./Badge";
+export { Breadcrumbs, BreadcrumbItem } from "./Breadcrumbs";
+export type { BreadcrumbsProps, BreadcrumbItemProps } from "./Breadcrumbs";
 export { Button } from "./Button";
 export type { ButtonProps } from "./Button";
 export { Checkbox } from "./Checkbox";
