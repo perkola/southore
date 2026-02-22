@@ -26,17 +26,33 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 
 ## Project Structure
 
+Each component lives in its own subfolder with co-located source, styles, stories, and tests.
+
 ```
 src/
-  index.ts           # Library entry point — export all components here
-  tokens.css         # Design tokens (colors, spacing, radius, font sizes)
-  Button.tsx         # Component implementations
-  Button.css         # Component styles
-  Button.stories.tsx
+  index.ts              # Library entry point — export all components here
+  tokens.css            # Design tokens (colors, spacing, radius, font sizes)
+  Button/
+    Button.tsx          # Component implementation
+    Button.css          # Component styles
+    Button.stories.tsx  # Storybook stories
+    Button.test.tsx     # Vitest browser tests
+    __screenshots__/    # Visual test reference screenshots (macOS only)
+  ... (one folder per component)
+  shared/
+    Field.ts            # Shared field/label/description/error types
+    Field.css           # Shared field layout styles
+    Listbox.css         # Shared listbox styles (used by Select, Autocomplete)
   icons/
-    index.ts         # Re-exports from lucide-react
-  ...
+    index.ts            # Re-exports from lucide-react
+    Icons.stories.tsx   # Icon gallery story
 ```
+
+### Adding a new component
+
+1. Create `src/ComponentName/` folder
+2. Add `ComponentName.tsx`, `ComponentName.css`, `ComponentName.stories.tsx`
+3. Export from `src/index.ts`
 
 ## Icons
 
@@ -52,25 +68,27 @@ export { ChevronDown, Minus, Plus, Search, X, Check } from "lucide-react";
 
 Then export from `src/index.ts` if it should be public API.
 
-Also update the `iconMap` in `src/Icons.stories.tsx` to include the new icon in the gallery.
+Also update the `iconMap` in `src/icons/Icons.stories.tsx` to include the new icon in the gallery.
 
 ### Usage
 
 ```tsx
-// Internal (within src/)
-import { ChevronDown } from "./icons";
+// Internal (within a component subfolder)
+import { ChevronDown } from "../icons";
 
 // Props: size, color, className, etc.
-<ChevronDown size={16} aria-hidden />
+<ChevronDown size={16} aria-hidden />;
 ```
 
-**Never import icons directly from `lucide-react`** — always use `./icons`.
+**Never import icons directly from `lucide-react`** — always use `../icons`.
 
 ## Conventions
 
 - Components should wrap or compose React Aria Components, not reimplement accessibility primitives
 - Export every public component from `src/index.ts`
-- Each component gets a corresponding `*.stories.tsx` file
+- Each component gets a corresponding `*.stories.tsx` file and optionally a `*.test.tsx` file, co-located in its folder
+- Shared utilities (types, styles reused across components) go in `src/shared/`
+- Cross-component imports use relative paths: `../Button/Button`, `../shared/Field`, `../icons`
 
 ## Styling
 
@@ -96,35 +114,44 @@ Components support light and dark modes via the CSS `light-dark()` function and 
 **Auto (system preference):** Works by default - no configuration needed.
 
 **Force light mode:**
+
 ```css
-:root { color-scheme: light; }
+:root {
+  color-scheme: light;
+}
 /* or on a specific container */
-.my-container { color-scheme: light; }
+.my-container {
+  color-scheme: light;
+}
 ```
 
 **Force dark mode:**
+
 ```css
-:root { color-scheme: dark; }
+:root {
+  color-scheme: dark;
+}
 ```
 
 **Toggle with JavaScript:**
+
 ```js
-document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+document.documentElement.style.colorScheme = isDark ? "dark" : "light";
 ```
 
 ### Core semantic tokens
 
-| Token | Light | Dark |
-|-------|-------|------|
-| `--color-bg` | white | gray-950 |
-| `--color-bg-subtle` | gray-50 | gray-900 |
-| `--color-bg-muted` | gray-100 | gray-800 |
-| `--color-text` | gray-900 | gray-50 |
-| `--color-text-muted` | gray-700 | gray-300 |
-| `--color-text-subtle` | gray-500 | gray-400 |
-| `--color-border` | gray-200 | gray-700 |
-| `--color-primary` | primary-600 | primary-400 |
-| `--color-error` | red-700 | red-300 |
+| Token                 | Light       | Dark        |
+| --------------------- | ----------- | ----------- |
+| `--color-bg`          | white       | gray-950    |
+| `--color-bg-subtle`   | gray-50     | gray-900    |
+| `--color-bg-muted`    | gray-100    | gray-800    |
+| `--color-text`        | gray-900    | gray-50     |
+| `--color-text-muted`  | gray-700    | gray-300    |
+| `--color-text-subtle` | gray-500    | gray-400    |
+| `--color-border`      | gray-200    | gray-700    |
+| `--color-primary`     | primary-600 | primary-400 |
+| `--color-error`       | red-700     | red-300     |
 
 ## Releasing
 
@@ -133,11 +160,13 @@ The library is published to npm via GitHub Actions when a version tag is pushed.
 ### Release process
 
 1. Update version in `package.json`:
+
    ```bash
    npm version patch  # or minor, major
    ```
 
 2. Push the commit and tag:
+
    ```bash
    git push && git push --tags
    ```
