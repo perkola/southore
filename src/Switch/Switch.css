@@ -1,0 +1,84 @@
+@import '../tokens.css';
+
+.react-aria-Switch {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  forced-color-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.switch-track {
+  width: var(--spacing-10);
+  height: var(--spacing-6);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  padding: var(--spacing-0-5);
+  box-sizing: border-box;
+  transition: background 0.15s;
+}
+
+.switch-handle {
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  border-radius: var(--radius-full);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s;
+}
+
+/* Hover */
+.react-aria-Switch[data-hovered] .switch-track {
+  background: light-dark(var(--color-gray-400), var(--color-gray-500));
+}
+
+/* Focus */
+.react-aria-Switch[data-focus-visible] .switch-track {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Selected */
+.react-aria-Switch[data-selected] .switch-track {
+  background: var(--color-primary);
+}
+
+.react-aria-Switch[data-selected][data-hovered] .switch-track {
+  background: var(--color-primary-hover);
+}
+
+.react-aria-Switch[data-selected] .switch-handle {
+  transform: translateX(var(--spacing-4));
+}
+
+/* Pressed */
+.react-aria-Switch[data-pressed] .switch-handle {
+  width: var(--spacing-6);
+}
+
+.react-aria-Switch[data-selected][data-pressed] .switch-handle {
+  transform: translateX(var(--spacing-3));
+}
+
+/* Disabled */
+.react-aria-Switch[data-disabled] {
+  color: var(--color-text-subtle);
+  cursor: default;
+}
+
+.react-aria-Switch[data-disabled] .switch-track {
+  background: var(--color-border);
+}
+
+.react-aria-Switch[data-disabled] .switch-handle {
+  background: var(--color-bg-muted);
+  box-shadow: none;
+}
+
+.react-aria-Switch[data-disabled][data-selected] .switch-track {
+  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+}

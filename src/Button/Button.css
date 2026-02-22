@@ -1,0 +1,107 @@
+@import '../tokens.css';
+
+.react-aria-Button {
+  /* Reset */
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid transparent;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  /* Layout */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-1-5);
+
+  /* Size */
+  min-width: var(--spacing-8);
+  height: var(--spacing-8);
+  padding: calc(var(--spacing-2) - 1px);
+  border-radius: var(--radius);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1;
+
+  /* Transition */
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+/* Solid variant (consistent dark blue for white text contrast) */
+.react-aria-Button[data-variant='solid'] {
+  background: var(--color-primary-600);
+  color: var(--color-white);
+}
+
+.react-aria-Button[data-variant='solid'][data-hovered] {
+  background: var(--color-primary-700);
+}
+
+.react-aria-Button[data-variant='solid'][data-pressed] {
+  background: var(--color-primary-800);
+}
+
+/* Outlined variant */
+.react-aria-Button[data-variant='outlined'] {
+  background: transparent;
+  border-color: light-dark(var(--color-primary-300), var(--color-primary-700));
+  color: var(--color-primary);
+}
+
+.react-aria-Button[data-variant='outlined'][data-hovered] {
+  background: light-dark(var(--color-primary-50), var(--color-primary-950));
+  border-color: light-dark(var(--color-primary-400), var(--color-primary-600));
+}
+
+.react-aria-Button[data-variant='outlined'][data-pressed] {
+  background: light-dark(var(--color-primary-100), var(--color-primary-900));
+  border-color: var(--color-primary-500);
+}
+
+/* Text variant */
+.react-aria-Button[data-variant='text'] {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-primary);
+}
+
+.react-aria-Button[data-variant='text'][data-hovered] {
+  background: light-dark(var(--color-primary-50), var(--color-primary-950));
+}
+
+.react-aria-Button[data-variant='text'][data-pressed] {
+  background: light-dark(var(--color-primary-100), var(--color-primary-900));
+}
+
+/* Small size */
+.react-aria-Button[data-size='small'] {
+  min-width: var(--spacing-6);
+  height: var(--spacing-6);
+  padding: calc(var(--spacing-1) - 1px);
+  gap: var(--spacing-1);
+  border-radius: var(--radius-sm);
+}
+
+/* Focus ring */
+.react-aria-Button[data-focus-visible] {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.react-aria-Button[data-disabled] {
+  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  color: var(--color-text-subtle);
+  border-color: transparent;
+  opacity: 0.7;
+  cursor: default;
+}

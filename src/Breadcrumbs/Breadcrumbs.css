@@ -1,0 +1,51 @@
+@import "../tokens.css";
+
+.react-aria-Breadcrumbs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.react-aria-Breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+}
+
+.react-aria-Breadcrumb .react-aria-Link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: color 0.15s;
+}
+
+.react-aria-Breadcrumb .react-aria-Link[data-hovered] {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.react-aria-Breadcrumb .react-aria-Link[data-pressed] {
+  color: var(--color-primary-hover);
+}
+
+.react-aria-Breadcrumb .react-aria-Link[data-focus-visible] {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.react-aria-Breadcrumb[data-current] > span {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+}

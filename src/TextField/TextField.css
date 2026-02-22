@@ -1,0 +1,81 @@
+@import '../tokens.css';
+
+.react-aria-TextField {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-field {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  height: var(--spacing-8);
+  padding: 0 var(--spacing-3);
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.15s;
+}
+
+.text-field[data-hovered] {
+  border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+}
+
+.text-field:has(.react-aria-Input[data-focused]) {
+  border-color: var(--color-primary);
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -1px;
+}
+
+.text-field[data-disabled] {
+  background: var(--color-bg-muted);
+  border-color: var(--color-border);
+  cursor: default;
+}
+
+.text-field[data-invalid] {
+  border-color: var(--color-error);
+}
+
+.text-field:has(.text-field-adornment:last-child .react-aria-Button) {
+  padding-right: var(--spacing-1-5);
+}
+
+.text-field:has(.text-field-adornment:first-child .react-aria-Button) {
+  padding-left: var(--spacing-1-5);
+}
+
+.text-field .react-aria-Input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}
+
+.text-field .react-aria-Input::placeholder {
+  color: var(--color-text-subtle);
+}
+
+.text-field .react-aria-Input[data-disabled] {
+  color: var(--color-text-subtle);
+}
+
+.text-field-adornment {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-subtle);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+}

@@ -1,0 +1,95 @@
+@import '../tokens.css';
+
+/* Toast region - fixed container for all toasts */
+.toast-region {
+  position: fixed;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  max-width: 400px;
+  width: 100%;
+  pointer-events: none;
+}
+
+/* Individual toast */
+.toast {
+  /* Reset */
+  box-sizing: border-box;
+
+  /* Layout */
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-lg);
+  pointer-events: auto;
+
+  /* Typography */
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+
+  /* Colors */
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+
+  /* Animation */
+  animation: toast-enter 0.2s ease-out;
+}
+
+.toast[data-exiting] {
+  animation: toast-exit 0.15s ease-in forwards;
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-exit {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Toast content */
+.toast .react-aria-ToastContent {
+  flex: 1;
+  min-width: 0;
+  word-wrap: break-word;
+}
+
+/* Dismiss button - minimal overrides for toast context */
+.toast > .react-aria-Button {
+  flex-shrink: 0;
+  margin: calc(-1 * var(--spacing-0-5));
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+
+  .toast[data-exiting] {
+    animation: toast-exit-reduced 0.15s ease-in forwards;
+  }
+
+  @keyframes toast-exit-reduced {
+    to {
+      opacity: 0;
+    }
+  }
+}

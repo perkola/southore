@@ -1,0 +1,78 @@
+@import '../tokens.css';
+
+.react-aria-RadioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.radio-group-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.react-aria-Radio {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  forced-color-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+}
+
+.react-aria-Radio::before {
+  content: '';
+  display: block;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--color-gray-400), var(--color-gray-500));
+  border-radius: 50%;
+  background: var(--color-bg);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.react-aria-Radio[data-hovered]::before {
+  border-color: var(--color-text-subtle);
+}
+
+.react-aria-Radio[data-focus-visible]::before {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.react-aria-Radio[data-selected]::before {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 3px var(--color-bg);
+}
+
+.react-aria-Radio[data-selected][data-hovered]::before {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+.react-aria-Radio[data-invalid]::before {
+  border-color: var(--color-error);
+}
+
+.react-aria-Radio[data-disabled] {
+  color: var(--color-text-subtle);
+  cursor: default;
+}
+
+.react-aria-Radio[data-disabled]::before {
+  background: var(--color-bg-muted);
+  border-color: var(--color-border);
+}
+
+.react-aria-Radio[data-disabled][data-selected]::before {
+  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  border-color: light-dark(var(--color-gray-300), var(--color-gray-600));
+  box-shadow: inset 0 0 0 3px var(--color-bg-muted);
+}

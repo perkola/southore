@@ -1,0 +1,14 @@
+@import '../tokens.css';
+
+.react-aria-Form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4); /* 16px */
+}
+
+.form-buttons {
+  display: flex;
+  gap: var(--spacing-2); /* 8px */
+  justify-content: center;
+  margin-top: var(--spacing-2); /* 8px extra spacing before buttons */
+}
