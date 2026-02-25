@@ -78,11 +78,6 @@
 .select-trigger > svg {
   flex-shrink: 0;
   color: var(--color-text-subtle);
-  transition: transform 0.15s;
-}
-
-.select-trigger[data-pressed] > svg {
-  transform: rotate(180deg);
 }
 
 .select-popover {
