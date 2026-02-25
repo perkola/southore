@@ -27,7 +27,8 @@
     "lint": "eslint .",
     "test": "vitest run --project components && vitest run --project components-dark --testNamePattern '^screenshot:'",
     "test:update": "vitest run --project components -u && vitest run --project components-dark --testNamePattern '^screenshot:' -u",
-    "test:watch": "vitest --project components --project components-dark --testNamePattern '^screenshot:'",
+    "test:watch": "vitest --project components",
+    "test:watch:visual": "vitest --project components --project components-dark --testNamePattern '^screenshot:'",
     "test:coverage": "vitest run --project components --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
