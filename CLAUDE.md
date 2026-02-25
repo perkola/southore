@@ -59,7 +59,7 @@ Each component test file includes screenshot tests for every meaningful visual s
 
 Both light and dark mode screenshots are captured automatically — the `components-dark` test project runs all `screenshot:` tests with dark mode forced, storing references as `{name}-dark-{browser}-{platform}.png` alongside the light ones. No extra test code needed.
 
-When making intentional visual changes, update references with `npm run test -- -u`.
+When making intentional visual changes, update references with `npm run test:update`.
 
 Always use accessible queries (`page.getByRole()`, `getByText()`), never `document.querySelector`. Do not commit auto-captured failure screenshots (named `{test-name}-1.png`).
 

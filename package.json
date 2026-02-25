@@ -26,6 +26,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "test": "vitest run --project components && vitest run --project components-dark --testNamePattern '^screenshot:'",
+    "test:update": "vitest run --project components -u && vitest run --project components-dark --testNamePattern '^screenshot:' -u",
     "test:watch": "vitest --project components --project components-dark --testNamePattern '^screenshot:'",
     "test:coverage": "vitest run --project components --coverage",
     "storybook": "storybook dev -p 6006",
