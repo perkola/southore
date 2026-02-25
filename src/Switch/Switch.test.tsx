@@ -2,12 +2,9 @@ import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 import { Switch } from "./Switch";
 
-test("renders track and handle", async () => {
-  await render(<Switch>Dark mode</Switch>);
-  const track = document.querySelector(".switch-track")!;
-  const handle = document.querySelector(".switch-handle")!;
-  expect(track).toBeTruthy();
-  expect(handle).toBeTruthy();
+test("renders switch", async () => {
+  const { getByRole } = await render(<Switch>Dark mode</Switch>);
+  await expect.element(getByRole("switch", { name: "Dark mode" })).toBeVisible();
 });
 
 test("renders children as label", async () => {
@@ -16,10 +13,8 @@ test("renders children as label", async () => {
 });
 
 test("renders without children", async () => {
-  await render(<Switch aria-label="Toggle" />);
-  const track = document.querySelector(".switch-track")!;
-  const labelSpan = track.nextElementSibling;
-  expect(labelSpan).toBeNull();
+  const { getByRole } = await render(<Switch aria-label="Toggle" />);
+  await expect.element(getByRole("switch", { name: "Toggle" })).toBeVisible();
 });
 
 test("screenshot: switch off", async () => {

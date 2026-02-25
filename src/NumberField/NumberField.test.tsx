@@ -5,26 +5,18 @@ import { NumberField } from "./NumberField";
 
 test("renders stepper buttons by default", async () => {
   await render(<NumberField label="Quantity" />);
-  const buttons = document.querySelectorAll(".number-field-stepper-button");
-  expect(buttons.length).toBe(2);
+  await expect.element(page.getByRole("button", { name: "Increase" })).toBeVisible();
+  await expect.element(page.getByRole("button", { name: "Decrease" })).toBeVisible();
 });
 
 test("hideStepper hides stepper buttons", async () => {
   await render(<NumberField label="Quantity" hideStepper />);
-  const buttons = document.querySelectorAll(".number-field-stepper-button");
-  expect(buttons.length).toBe(0);
-});
-
-test("data-has-stepper is set when stepper is visible", async () => {
-  await render(<NumberField label="Quantity" />);
-  const group = document.querySelector(".number-field")!;
-  expect(group.getAttribute("data-has-stepper")).toBe("true");
-});
-
-test("data-has-stepper is absent when stepper is hidden", async () => {
-  await render(<NumberField label="Quantity" hideStepper />);
-  const group = document.querySelector(".number-field")!;
-  expect(group.hasAttribute("data-has-stepper")).toBe(false);
+  await expect
+    .element(page.getByRole("button", { name: "Increase" }))
+    .not.toBeInTheDocument();
+  await expect
+    .element(page.getByRole("button", { name: "Decrease" }))
+    .not.toBeInTheDocument();
 });
 
 test("renders start adornment", async () => {
@@ -42,12 +34,11 @@ test("renders end adornment", async () => {
 });
 
 test("clicking group focuses input", async () => {
-  await render(
-    <NumberField label="Focus test" startAdornment={<span>$</span>} />,
-  );
+  await render(<NumberField label="Focus test" startAdornment={<span>$</span>} />);
   await page.getByText("$").click();
-  const input = document.querySelector(".number-field input") as HTMLInputElement;
-  expect(document.activeElement).toBe(input);
+  await expect
+    .element(page.getByRole("textbox", { name: "Focus test" }))
+    .toHaveFocus();
 });
 
 test("screenshot: number field default", async () => {

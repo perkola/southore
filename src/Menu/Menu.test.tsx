@@ -36,13 +36,8 @@ test("Section renders without header", async () => {
     </Menu.Trigger>,
   );
   await page.getByRole("button", { name: "Open" }).click();
-  await expect
-    .element(page.getByRole("menuitem", { name: "Copy" }))
-    .toBeVisible();
-  const headers = document.querySelectorAll(
-    ".react-aria-Header",
-  );
-  expect(headers.length).toBe(0);
+  await expect.element(page.getByRole("menuitem", { name: "Copy" })).toBeVisible();
+  await expect.element(page.getByText("Actions")).not.toBeInTheDocument();
 });
 
 test("compound pattern renders items", async () => {
@@ -59,13 +54,7 @@ test("compound pattern renders items", async () => {
     </Menu.Trigger>,
   );
   await page.getByRole("button", { name: "Open" }).click();
-  await expect
-    .element(page.getByRole("menuitem", { name: "Cut" }))
-    .toBeVisible();
-  await expect
-    .element(page.getByRole("menuitem", { name: "Copy" }))
-    .toBeVisible();
-  await expect
-    .element(page.getByRole("menuitem", { name: "Paste" }))
-    .toBeVisible();
+  await expect.element(page.getByRole("menuitem", { name: "Cut" })).toBeVisible();
+  await expect.element(page.getByRole("menuitem", { name: "Copy" })).toBeVisible();
+  await expect.element(page.getByRole("menuitem", { name: "Paste" })).toBeVisible();
 });

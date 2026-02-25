@@ -72,3 +72,34 @@ test("screenshot: autocomplete closed", async () => {
   );
   await expect(container).toMatchScreenshot("autocomplete-closed");
 });
+
+test("screenshot: autocomplete open", async () => {
+  await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Autocomplete label="Country" placeholder="Select a country">
+        <Autocomplete.Item id="us">United States</Autocomplete.Item>
+        <Autocomplete.Item id="uk">United Kingdom</Autocomplete.Item>
+        <Autocomplete.Item id="fr">France</Autocomplete.Item>
+      </Autocomplete>
+    </div>,
+  );
+  await page.getByRole("button", { name: "Country" }).click();
+  await expect.element(page.getByRole("option", { name: "United States" })).toBeVisible();
+  await expect(page.getByRole("listbox")).toMatchScreenshot("autocomplete-open");
+});
+
+test("screenshot: autocomplete filtered", async () => {
+  await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Autocomplete label="Fruit" placeholder="Pick a fruit">
+        <Autocomplete.Item id="apple">Apple</Autocomplete.Item>
+        <Autocomplete.Item id="banana">Banana</Autocomplete.Item>
+        <Autocomplete.Item id="cherry">Cherry</Autocomplete.Item>
+      </Autocomplete>
+    </div>,
+  );
+  await page.getByRole("button", { name: "Fruit" }).click();
+  await page.getByRole("searchbox").fill("app");
+  await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
+  await expect(page.getByRole("listbox")).toMatchScreenshot("autocomplete-filtered");
+});

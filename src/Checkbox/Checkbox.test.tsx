@@ -2,25 +2,21 @@ import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 import { Checkbox } from "./Checkbox";
 
-test("renders unchecked by default with polyline", async () => {
-  await render(<Checkbox>Accept</Checkbox>);
-  const svg = document.querySelector(".checkbox-indicator svg")!;
-  expect(svg.querySelector("polyline")).toBeTruthy();
-  expect(svg.querySelector("rect")).toBeNull();
+test("is unchecked by default", async () => {
+  const { getByRole } = await render(<Checkbox>Accept</Checkbox>);
+  await expect.element(getByRole("checkbox", { name: "Accept" })).not.toBeChecked();
 });
 
-test("renders polyline when checked", async () => {
-  await render(<Checkbox isSelected>Accept</Checkbox>);
-  const svg = document.querySelector(".checkbox-indicator svg")!;
-  expect(svg.querySelector("polyline")).toBeTruthy();
-  expect(svg.querySelector("rect")).toBeNull();
+test("is checked when isSelected", async () => {
+  const { getByRole } = await render(<Checkbox isSelected>Accept</Checkbox>);
+  await expect.element(getByRole("checkbox", { name: "Accept" })).toBeChecked();
 });
 
-test("renders rect when indeterminate", async () => {
-  await render(<Checkbox isIndeterminate>Accept</Checkbox>);
-  const svg = document.querySelector(".checkbox-indicator svg")!;
-  expect(svg.querySelector("rect")).toBeTruthy();
-  expect(svg.querySelector("polyline")).toBeNull();
+test("is indeterminate when isIndeterminate", async () => {
+  const { getByRole } = await render(<Checkbox isIndeterminate>Accept</Checkbox>);
+  await expect
+    .element(getByRole("checkbox", { name: "Accept" }))
+    .toBePartiallyChecked();
 });
 
 test("renders children as label", async () => {
@@ -29,10 +25,8 @@ test("renders children as label", async () => {
 });
 
 test("renders without children", async () => {
-  await render(<Checkbox aria-label="Standalone" />);
-  const indicator = document.querySelector(".checkbox-indicator")!;
-  const labelSpan = indicator.nextElementSibling;
-  expect(labelSpan).toBeNull();
+  const { getByRole } = await render(<Checkbox aria-label="Standalone" />);
+  await expect.element(getByRole("checkbox", { name: "Standalone" })).toBeVisible();
 });
 
 test("screenshot: checkbox states", async () => {

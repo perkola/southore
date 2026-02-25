@@ -5,7 +5,7 @@ import { Popover } from "./Popover";
 import { Button } from "../Button/Button";
 import { DialogTrigger } from "react-aria-components";
 
-test("showArrow renders SVG arrow", async () => {
+test("screenshot: popover with arrow", async () => {
   await render(
     <DialogTrigger>
       <Button>Open</Button>
@@ -16,11 +16,10 @@ test("showArrow renders SVG arrow", async () => {
   );
   await page.getByRole("button", { name: "Open" }).click();
   await expect.element(page.getByText("Content")).toBeVisible();
-  const arrow = document.querySelector(".react-aria-OverlayArrow svg");
-  expect(arrow).toBeTruthy();
+  await expect(page.getByRole("dialog")).toMatchScreenshot("popover-with-arrow");
 });
 
-test("no arrow by default", async () => {
+test("screenshot: popover without arrow", async () => {
   await render(
     <DialogTrigger>
       <Button>Open</Button>
@@ -31,6 +30,5 @@ test("no arrow by default", async () => {
   );
   await page.getByRole("button", { name: "Open" }).click();
   await expect.element(page.getByText("Content")).toBeVisible();
-  const arrow = document.querySelector(".react-aria-OverlayArrow");
-  expect(arrow).toBeNull();
+  await expect(page.getByRole("dialog")).toMatchScreenshot("popover-without-arrow");
 });

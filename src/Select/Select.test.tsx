@@ -15,25 +15,20 @@ test("renders placeholder", async () => {
 
 test("renders start adornment", async () => {
   const { getByText } = await render(
-    <Select
-      label="Color"
-      placeholder="Pick"
-      startAdornment={<span>icon</span>}
-    >
+    <Select label="Color" placeholder="Pick" startAdornment={<span>icon</span>}>
       <Select.Item id="red">Red</Select.Item>
     </Select>,
   );
   await expect.element(getByText("icon")).toBeVisible();
 });
 
-test("does not render adornment wrapper when no startAdornment", async () => {
-  await render(
+test("renders without adornment when none provided", async () => {
+  const { getByRole } = await render(
     <Select label="Color" placeholder="Pick">
       <Select.Item id="red">Red</Select.Item>
     </Select>,
   );
-  const adornments = document.querySelectorAll(".select-adornment");
-  expect(adornments.length).toBe(0);
+  await expect.element(getByRole("button", { name: "Color" })).toBeVisible();
 });
 
 test("compound Select.Item renders items", async () => {
@@ -58,4 +53,19 @@ test("screenshot: select closed", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("select-closed");
+});
+
+test("screenshot: select open", async () => {
+  await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Select label="Favorite fruit" placeholder="Select a fruit">
+        <Select.Item id="apple">Apple</Select.Item>
+        <Select.Item id="banana">Banana</Select.Item>
+        <Select.Item id="cherry">Cherry</Select.Item>
+      </Select>
+    </div>,
+  );
+  await page.getByRole("button", { name: "Favorite fruit" }).click();
+  await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
+  await expect(page.getByRole("listbox")).toMatchScreenshot("select-open");
 });

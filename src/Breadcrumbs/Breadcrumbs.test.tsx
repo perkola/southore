@@ -29,7 +29,7 @@ test("non-current item with href renders as link", async () => {
   await expect.element(link).toHaveAttribute("href", "/");
 });
 
-test("separator only renders on non-current items", async () => {
+test("only non-current items are links", async () => {
   await render(
     <Breadcrumbs>
       <BreadcrumbItem href="/">Home</BreadcrumbItem>
@@ -37,8 +37,9 @@ test("separator only renders on non-current items", async () => {
       <BreadcrumbItem>Current</BreadcrumbItem>
     </Breadcrumbs>,
   );
-  const separators = document.querySelectorAll(".breadcrumb-separator");
-  expect(separators.length).toBe(2);
+  await expect.element(page.getByRole("link", { name: "Home" })).toBeVisible();
+  await expect.element(page.getByRole("link", { name: "About" })).toBeVisible();
+  await expect.element(page.getByRole("link", { name: "Current" })).not.toBeInTheDocument();
 });
 
 test("renders nav with aria-label", async () => {
@@ -47,8 +48,7 @@ test("renders nav with aria-label", async () => {
       <BreadcrumbItem>Home</BreadcrumbItem>
     </Breadcrumbs>,
   );
-  const nav = page.getByRole("navigation", { name: "Breadcrumb" });
-  await expect.element(nav).toBeVisible();
+  await expect.element(page.getByRole("navigation", { name: "Breadcrumb" })).toBeVisible();
 });
 
 test("screenshot: breadcrumb trail", async () => {

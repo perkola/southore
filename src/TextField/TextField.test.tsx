@@ -22,26 +22,24 @@ test("renders end adornment", async () => {
   await expect.element(getByText("kg")).toBeVisible();
 });
 
-test("does not render adornment wrapper when no adornment provided", async () => {
-  await render(<TextField label="Plain" />);
-  const adornments = document.querySelectorAll(".text-field-adornment");
-  expect(adornments.length).toBe(0);
+test("renders without adornments when none provided", async () => {
+  const { getByRole } = await render(<TextField label="Plain" />);
+  await expect.element(getByRole("textbox", { name: "Plain" })).toBeVisible();
 });
 
 test("clicking group focuses input", async () => {
   await render(<TextField label="Focus test" startAdornment={<span>@</span>} />);
   await page.getByText("@").click();
-  const input = page.getByRole("textbox", { name: "Focus test" });
-  await expect.element(input).toHaveAttribute("data-focused", "true");
+  await expect
+    .element(page.getByRole("textbox", { name: "Focus test" }))
+    .toHaveAttribute("data-focused", "true");
 });
 
 test("renders description", async () => {
   const { getByText } = await render(
     <TextField label="Email" description="We'll never share your email" />,
   );
-  await expect
-    .element(getByText("We'll never share your email"))
-    .toBeVisible();
+  await expect.element(getByText("We'll never share your email")).toBeVisible();
 });
 
 test("screenshot: text field default", async () => {

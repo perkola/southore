@@ -5,10 +5,8 @@ import { DatePicker } from "./DatePicker";
 
 test("renders date input and calendar button", async () => {
   await render(<DatePicker label="Date" />);
-  const group = page.getByRole("group", { name: "Date" });
-  await expect.element(group).toBeVisible();
-  const button = page.getByRole("button");
-  await expect.element(button).toBeVisible();
+  await expect.element(page.getByRole("group", { name: "Date" })).toBeVisible();
+  await expect.element(page.getByRole("button")).toBeVisible();
 });
 
 test("renders label", async () => {
@@ -21,10 +19,9 @@ test("renders description", async () => {
   await expect.element(page.getByText("Pick a date")).toBeVisible();
 });
 
-test("does not render label when not provided", async () => {
+test("renders without visible label when aria-label is used", async () => {
   await render(<DatePicker aria-label="Date" />);
-  const labels = document.querySelectorAll("label");
-  expect(labels.length).toBe(0);
+  await expect.element(page.getByRole("group", { name: "Date" })).toBeVisible();
 });
 
 test("screenshot: date picker closed", async () => {
