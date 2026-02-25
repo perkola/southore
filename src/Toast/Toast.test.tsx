@@ -49,13 +49,13 @@ test("toast is visible after addToast", async () => {
 });
 
 test("screenshot: toast visible", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8, minHeight: 100, position: "relative" }}>
-      <GlobalToastRegion />
-    </div>,
-  );
+  const styleEl = document.createElement("style");
+  styleEl.textContent = ".toast-region { position: static !important; } .toast { animation: none !important; }";
+  document.head.appendChild(styleEl);
+  await render(<GlobalToastRegion />);
   const key = addToast("Notification message", { timeout: null });
   await expect.element(page.getByText("Notification message")).toBeVisible();
-  await expect(container).toMatchScreenshot("toast-visible");
+  await expect(document.querySelector(".toast")).toMatchScreenshot("toast-visible");
   toastQueue.close(key);
+  document.head.removeChild(styleEl);
 });
