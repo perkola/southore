@@ -25,8 +25,8 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "vitest run --project components",
-    "test:watch": "vitest --project components",
+    "test": "vitest run --project components --project components-dark",
+    "test:watch": "vitest --project components --project components-dark",
     "test:coverage": "vitest run --project components --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

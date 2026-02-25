@@ -70,6 +70,33 @@ export default defineConfig({
           },
         },
       }
+    }, {
+      extends: true,
+      test: {
+        name: 'components-dark',
+        include: ['src/**/*.test.{ts,tsx}'],
+        testNamePattern: /^screenshot:/,
+        setupFiles: ['src/test-setup-dark.ts'],
+        browser: {
+          enabled: true,
+          headless: true,
+          provider: playwright({}),
+          instances: [{
+            browser: 'chromium',
+          }],
+          expect: {
+            toMatchScreenshot: {
+              comparatorOptions: {
+                threshold: 0.2,
+                allowedMismatchedPixelRatio: 0.02,
+              },
+              resolveScreenshotPath: ({ root, testFileDirectory, screenshotDirectory, testFileName, arg, browserName, platform, ext }) => {
+                return `${root}/${testFileDirectory}/${screenshotDirectory}/${testFileName}/${arg}-dark-${browserName}-${platform}${ext}`;
+              },
+            },
+          },
+        },
+      }
     }]
   }
 });
