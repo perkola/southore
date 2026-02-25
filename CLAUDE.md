@@ -1,32 +1,19 @@
 # Southore
 
-Design system component library built with React 19, TypeScript, Vite 7 (via rolldown-vite), and Storybook 10.
-
-## Architecture
-
-- Components are built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) for accessibility
-- Library is bundled as an ES module via Vite's library mode (`src/index.ts` is the entry point)
-- React Compiler is enabled via `babel-plugin-react-compiler`
-- `react`, `react-dom`, and `react/jsx-runtime` are externalized from the build
-
-## Current Focus
-
-- Building accessible, styled components using React Aria Components
+Design system component library built with React 19, TypeScript, Vite 7 (via rolldown-vite), and Storybook 10. Components are built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) for accessibility.
 
 ## Commands
 
 - `npm run storybook` — start Storybook dev server on port 6006
 - `npm run build` — typecheck and build the library
 - `npm run lint` — run ESLint
-- `npm run test` — run component tests
+- `npm run test` — run component tests (light + dark mode)
 - `npm run test:watch` — run component tests in watch mode
 - `npm run test:coverage` — run component tests with coverage
 
-**Always run `npm run build && npm run lint && npm run test` after making changes to verify there are no TypeScript, linting, or test errors.**
+**Always run `npm run build && npm run lint && npm run test` after making changes.**
 
 ## Project Structure
-
-Each component lives in its own subfolder with co-located source, styles, stories, and tests.
 
 ```
 src/
@@ -38,7 +25,6 @@ src/
     Button.stories.tsx  # Storybook stories
     Button.test.tsx     # Vitest browser tests
     __screenshots__/    # Visual test reference screenshots (macOS only)
-  ... (one folder per component)
   shared/
     Field.ts            # Shared field/label/description/error types
     Field.css           # Shared field layout styles
@@ -51,95 +37,43 @@ src/
 ### Adding a new component
 
 1. Create `src/ComponentName/` folder
-2. Add `ComponentName.tsx`, `ComponentName.css`, `ComponentName.stories.tsx`
+2. Add `ComponentName.tsx`, `ComponentName.css`, `ComponentName.stories.tsx`, `ComponentName.test.tsx`
 3. Export from `src/index.ts`
 
 ## Icons
 
-Icons are re-exported from Lucide React through `src/icons/index.ts`. This provides a single point of change if the icon library needs to be swapped, while maintaining tree-shaking support.
+Icons are re-exported from Lucide React through `src/icons/index.ts`. **Never import directly from `lucide-react`** — always use `../icons`.
 
-### Adding a new icon
-
-Add the export to `src/icons/index.ts`:
-
-```tsx
-export { ChevronDown, Minus, Plus, Search, X, Check } from "lucide-react";
-```
-
-Then export from `src/index.ts` if it should be public API.
-
-Also update the `iconMap` in `src/icons/Icons.stories.tsx` to include the new icon in the gallery.
-
-### Usage
-
-```tsx
-// Internal (within a component subfolder)
-import { ChevronDown } from "../icons";
-
-// Props: size, color, className, etc.
-<ChevronDown size={16} aria-hidden />;
-```
-
-**Never import icons directly from `lucide-react`** — always use `../icons`.
+To add an icon: export it from `src/icons/index.ts`, then add it to the `iconMap` in `src/icons/Icons.stories.tsx`.
 
 ## Conventions
 
 - Components should wrap or compose React Aria Components, not reimplement accessibility primitives
 - Export every public component from `src/index.ts`
-- Each component gets a corresponding `*.stories.tsx` file and optionally a `*.test.tsx` file, co-located in its folder
 - Shared utilities (types, styles reused across components) go in `src/shared/`
 - Cross-component imports use relative paths: `../Button/Button`, `../shared/Field`, `../icons`
 
+## Visual Testing
+
+Each component test file includes screenshot tests for every meaningful visual state: default, key variants, open/expanded (for overlays), error state (for field components), and on/off (for toggles). Name them with a `screenshot:` prefix.
+
+Both light and dark mode screenshots are captured automatically — the `components-dark` test project runs all `screenshot:` tests with dark mode forced, storing references as `{name}-dark-{browser}-{platform}.png` alongside the light ones. No extra test code needed.
+
+When making intentional visual changes, update references with `npm run test -- -u`.
+
+Always use accessible queries (`page.getByRole()`, `getByText()`), never `document.querySelector`. Do not commit auto-captured failure screenshots (named `{test-name}-1.png`).
+
 ## Styling
 
-- Design tokens are defined as CSS custom properties in `src/tokens.css`
-- Each component has a corresponding `.css` file that imports tokens
+- Design tokens are CSS custom properties in `src/tokens.css`
 - Styles target React Aria's default class names (e.g. `.react-aria-Button`) and data attributes (e.g. `[data-hovered]`, `[data-pressed]`, `[data-focus-visible]`, `[data-disabled]`)
 - Custom variants are passed via `data-*` attributes (e.g. `data-variant`, `data-size`)
 - Use `:has()` selectors for conditional styling based on descendants
-- Each component includes browser resets as needed (e.g. `appearance: none`, `margin: 0`, `padding: 0`, `font: inherit`, `color: inherit`, `outline: none`, `-webkit-tap-highlight-color: transparent`)
+- Each component includes browser resets as needed (`appearance: none`, `margin: 0`, `font: inherit`, `outline: none`, etc.)
 
 ## Dark Mode
 
-Components support light and dark modes via the CSS `light-dark()` function and `color-scheme` property.
-
-### How it works
-
-- `tokens.css` sets `color-scheme: light dark` on `:root`, enabling automatic system preference detection
-- Semantic tokens use `light-dark(lightValue, darkValue)` to switch colors based on the computed color scheme
-- All colors meet WCAG AA contrast requirements (4.5:1 for text)
-
-### Usage for consumers
-
-**Auto (system preference):** Works by default - no configuration needed.
-
-**Force light mode:**
-
-```css
-:root {
-  color-scheme: light;
-}
-/* or on a specific container */
-.my-container {
-  color-scheme: light;
-}
-```
-
-**Force dark mode:**
-
-```css
-:root {
-  color-scheme: dark;
-}
-```
-
-**Toggle with JavaScript:**
-
-```js
-document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-```
-
-### Core semantic tokens
+Components use `light-dark(lightValue, darkValue)` CSS tokens with `color-scheme: light dark` on `:root`. All colors meet WCAG AA contrast (4.5:1).
 
 | Token                 | Light       | Dark        |
 | --------------------- | ----------- | ----------- |
@@ -155,38 +89,10 @@ document.documentElement.style.colorScheme = isDark ? "dark" : "light";
 
 ## Releasing
 
-The library is published to npm via GitHub Actions when a version tag is pushed.
+1. `npm version patch` (or `minor`, `major`) — bumps version in `package.json` and creates a git tag
+2. `git push && git push --tags` — triggers GitHub Actions to publish to npm
 
-### Release process
-
-1. Update version in `package.json`:
-
-   ```bash
-   npm version patch  # or minor, major
-   ```
-
-2. Push the commit and tag:
-
-   ```bash
-   git push && git push --tags
-   ```
-
-3. GitHub Actions will automatically:
-   - Run CI checks (build, lint)
-   - Publish to npm with provenance
-
-### CI/CD
-
-- **CI workflow** (`.github/workflows/ci.yml`): Runs on all pushes and PRs to `main`. Runs build and lint.
-- **Release workflow** (`.github/workflows/release.yml`): Runs on version tags (`v*`). Publishes to npm.
-
-### Storybook deployment
-
-Storybook is deployed to Vercel automatically on pushes to `main`. PR preview deployments are enabled.
-
-- Production URL: https://southore.perko.la
-- Build command: `npm run build-storybook`
-- Output directory: `storybook-static`
+CI runs build + lint on all pushes to `main`. Storybook deploys to Vercel automatically (production: https://southore.perko.la).
 
 ## Tools
 
