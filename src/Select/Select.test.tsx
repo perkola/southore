@@ -55,6 +55,17 @@ test("screenshot: select closed", async () => {
   await expect(container).toMatchScreenshot("select-closed");
 });
 
+test("screenshot: select error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Select label="Fruit" placeholder="Pick a fruit" isInvalid errorMessage="Please select a fruit.">
+        <Select.Item id="apple">Apple</Select.Item>
+      </Select>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("select-error");
+});
+
 test("screenshot: select open", async () => {
   await render(
     <div style={{ padding: 8, width: 300 }}>

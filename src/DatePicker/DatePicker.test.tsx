@@ -24,6 +24,15 @@ test("renders without visible label when aria-label is used", async () => {
   await expect.element(page.getByRole("group", { name: "Date" })).toBeVisible();
 });
 
+test("screenshot: date picker error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <DatePicker label="Event date" isInvalid errorMessage="Please select a valid date." />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("date-picker-error");
+});
+
 test("screenshot: date picker closed", async () => {
   const { container } = await render(
     <div style={{ padding: 8, width: 300 }}>

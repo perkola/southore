@@ -50,3 +50,14 @@ test("screenshot: button sizes", async () => {
   );
   await expect(container).toMatchScreenshot("button-sizes");
 });
+
+test("screenshot: button disabled", async () => {
+  const { container } = await render(
+    <div style={{ display: "flex", gap: 8, padding: 8, alignItems: "center" }}>
+      <Button isDisabled>Solid</Button>
+      <Button variant="outlined" isDisabled>Outlined</Button>
+      <Button variant="text" isDisabled>Text</Button>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("button-disabled");
+});

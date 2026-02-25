@@ -34,6 +34,15 @@ test("renders correctly in RTL locale", async () => {
   await expect.element(page.getByRole("grid")).toBeVisible();
 });
 
+test("screenshot: calendar error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8 }}>
+      <Calendar aria-label="Event date" errorMessage="Please select a date." />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("calendar-error");
+});
+
 test("screenshot: calendar", async () => {
   const { container } = await render(
     <div style={{ padding: 8 }}>

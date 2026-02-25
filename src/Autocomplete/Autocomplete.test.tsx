@@ -61,6 +61,17 @@ test("filters items case-insensitively", async () => {
     .not.toBeInTheDocument();
 });
 
+test("screenshot: autocomplete error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Autocomplete label="Country" placeholder="Select a country" isInvalid errorMessage="Please select a country.">
+        <Autocomplete.Item id="us">United States</Autocomplete.Item>
+      </Autocomplete>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("autocomplete-error");
+});
+
 test("screenshot: autocomplete closed", async () => {
   const { container } = await render(
     <div style={{ padding: 8, width: 300 }}>

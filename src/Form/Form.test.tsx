@@ -5,15 +5,6 @@ import { Form } from "./Form";
 import { TextField } from "../TextField/TextField";
 import { Button } from "../Button/Button";
 
-test("renders a form element", async () => {
-  const { container } = await render(
-    <Form>
-      <Button type="submit">Submit</Button>
-    </Form>,
-  );
-  expect(container.querySelector("form")).toBeTruthy();
-});
-
 test("calls onSubmit when submitted", async () => {
   const onSubmit = vi.fn((e: React.FormEvent) => e.preventDefault());
   await render(

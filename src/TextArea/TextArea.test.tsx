@@ -42,3 +42,12 @@ test("screenshot: textarea default", async () => {
   );
   await expect(container).toMatchScreenshot("textarea-default");
 });
+
+test("screenshot: textarea error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 320 }}>
+      <TextArea label="Comment" isInvalid errorMessage="Comment is required." />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("textarea-error");
+});

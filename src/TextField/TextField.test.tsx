@@ -63,3 +63,12 @@ test("screenshot: text field with adornments", async () => {
   );
   await expect(container).toMatchScreenshot("text-field-adornments");
 });
+
+test("screenshot: text field error state", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <TextField label="Email" isInvalid errorMessage="Invalid email address." />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("text-field-error");
+});

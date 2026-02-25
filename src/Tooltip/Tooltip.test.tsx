@@ -37,3 +37,16 @@ test("tooltip respects placement", async () => {
   await expect.element(tooltip).toBeVisible();
   await expect.element(tooltip).toHaveAttribute("data-placement", "bottom");
 });
+
+test("screenshot: tooltip visible", async () => {
+  await render(
+    <div style={{ padding: 48, display: "flex", justifyContent: "center" }}>
+      <Tooltip content="Helpful hint">
+        <Button>Focus me</Button>
+      </Tooltip>
+    </div>,
+  );
+  await userEvent.tab();
+  await expect.element(page.getByRole("tooltip")).toBeVisible();
+  await expect(page.getByRole("tooltip")).toMatchScreenshot("tooltip-visible");
+});
