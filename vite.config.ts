@@ -75,7 +75,6 @@ export default defineConfig({
       test: {
         name: 'components-dark',
         include: ['src/**/*.test.{ts,tsx}'],
-        testNamePattern: /^screenshot:/,
         setupFiles: ['src/test-setup-dark.ts'],
         browser: {
           enabled: true,
