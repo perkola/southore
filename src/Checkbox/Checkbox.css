@@ -10,6 +10,9 @@
   forced-color-adjust: none;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
+  min-height: 24px;
+  padding-inline-start: 2px;
+  margin-inline-start: -2px;
 }
 
 .checkbox-indicator {
@@ -22,7 +25,6 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  transition: background 0.15s, border-color 0.15s;
 }
 
 .checkbox-indicator svg {
@@ -35,7 +37,6 @@
   stroke-linejoin: round;
   stroke-dasharray: 22px;
   stroke-dashoffset: 66;
-  transition: stroke-dashoffset 0.2s;
 }
 
 /* Hover */
