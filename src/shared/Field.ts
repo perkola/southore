@@ -1,4 +1,8 @@
-import type { ValidationResult } from "react-aria-components";
+export interface ValidationResult {
+  isInvalid: boolean;
+  validationErrors: string[];
+  validationDetails: ValidityState;
+}
 
 export interface FieldProps {
   /** A visible label for the field. */

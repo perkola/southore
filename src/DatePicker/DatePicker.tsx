@@ -17,15 +17,14 @@ import { Calendar as CalendarIcon } from "../icons";
 import "../shared/Field.css";
 import "./DatePicker.css";
 
-export interface DatePickerProps<T extends DateValue>
-  extends RACDatePickerProps<T>, FieldProps {}
+export interface DatePickerProps extends RACDatePickerProps<DateValue>, FieldProps {}
 
-export function DatePicker<T extends DateValue>({
+export function DatePicker({
   label,
   description,
   errorMessage,
   ...props
-}: DatePickerProps<T>) {
+}: DatePickerProps) {
   return (
     <RACDatePicker {...props}>
       {label && <Label>{label}</Label>}

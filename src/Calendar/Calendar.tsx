@@ -15,18 +15,15 @@ import { Button } from "../Button/Button";
 import { ChevronLeft, ChevronRight } from "../icons";
 import "./Calendar.css";
 
-export interface CalendarProps<T extends DateValue> extends Omit<
-  RACCalendarProps<T>,
-  "visibleDuration"
-> {
+export interface CalendarProps extends Omit<RACCalendarProps<DateValue>, "visibleDuration"> {
   /** An error message shown when the calendar is invalid. */
   errorMessage?: string;
 }
 
-export function Calendar<T extends DateValue>({
+export function Calendar({
   errorMessage,
   ...props
-}: CalendarProps<T>) {
+}: CalendarProps) {
   const { direction } = useLocale();
 
   return (

@@ -47,6 +47,9 @@ export type { ToastContent, ToastOptions } from "./Toast/toastQueue";
 export { Tooltip } from "./Tooltip/Tooltip";
 export type { TooltipProps, TooltipPlacement } from "./Tooltip/Tooltip";
 
+// Shared types
+export type { ValidationResult } from "./shared/Field";
+
 // Icons
 export {
   Calendar as CalendarIcon,
