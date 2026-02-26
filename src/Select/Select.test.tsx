@@ -66,6 +66,18 @@ test("screenshot: select error state", async () => {
   await expect(container).toMatchScreenshot("select-error");
 });
 
+test("screenshot: select with start adornment", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Select label="Favorite fruit" placeholder="Select a fruit" startAdornment={<span>🍎</span>}>
+        <Select.Item id="apple">Apple</Select.Item>
+        <Select.Item id="banana">Banana</Select.Item>
+      </Select>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("select-start-adornment");
+});
+
 test("screenshot: select open", async () => {
   await render(
     <div style={{ padding: 8, width: 300 }}>
