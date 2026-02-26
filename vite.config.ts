@@ -53,6 +53,7 @@ export default defineConfig({
       test: {
         name: 'components',
         include: ['src/**/*.test.{ts,tsx}'],
+        setupFiles: ['src/test-setup.ts'],
         browser: {
           enabled: true,
           headless: true,
@@ -75,7 +76,7 @@ export default defineConfig({
       test: {
         name: 'components-dark',
         include: ['src/**/*.test.{ts,tsx}'],
-        setupFiles: ['src/test-setup-dark.ts'],
+        setupFiles: ['src/test-setup.ts', 'src/test-setup-dark.ts'],
         browser: {
           enabled: true,
           headless: true,
