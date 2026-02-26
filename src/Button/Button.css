@@ -36,35 +36,35 @@
   transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-/* Solid variant (consistent dark blue for white text contrast) */
+/* Solid variant (consistent dark violet for white text contrast) */
 .react-aria-Button[data-variant='solid'] {
-  background: var(--color-primary-600);
+  background: var(--color-violet-600);
   color: var(--color-white);
 }
 
 .react-aria-Button[data-variant='solid'][data-hovered] {
-  background: var(--color-primary-700);
+  background: var(--color-violet-700);
 }
 
 .react-aria-Button[data-variant='solid'][data-pressed] {
-  background: var(--color-primary-800);
+  background: var(--color-violet-800);
 }
 
 /* Outlined variant */
 .react-aria-Button[data-variant='outlined'] {
   background: transparent;
-  border-color: light-dark(var(--color-primary-300), var(--color-primary-700));
+  border-color: light-dark(var(--color-violet-300), var(--color-violet-700));
   color: var(--color-primary);
 }
 
 .react-aria-Button[data-variant='outlined'][data-hovered] {
-  background: light-dark(var(--color-primary-50), var(--color-primary-950));
-  border-color: light-dark(var(--color-primary-400), var(--color-primary-600));
+  background: light-dark(var(--color-violet-50), var(--color-violet-950));
+  border-color: light-dark(var(--color-violet-400), var(--color-violet-600));
 }
 
 .react-aria-Button[data-variant='outlined'][data-pressed] {
-  background: light-dark(var(--color-primary-100), var(--color-primary-900));
-  border-color: var(--color-primary-500);
+  background: light-dark(var(--color-violet-100), var(--color-violet-900));
+  border-color: var(--color-violet-500);
 }
 
 /* Text variant */
@@ -75,11 +75,11 @@
 }
 
 .react-aria-Button[data-variant='text'][data-hovered] {
-  background: light-dark(var(--color-primary-50), var(--color-primary-950));
+  background: light-dark(var(--color-violet-50), var(--color-violet-950));
 }
 
 .react-aria-Button[data-variant='text'][data-pressed] {
-  background: light-dark(var(--color-primary-100), var(--color-primary-900));
+  background: light-dark(var(--color-violet-100), var(--color-violet-900));
 }
 
 /* Small size */

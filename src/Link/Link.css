@@ -17,7 +17,7 @@
 }
 
 .react-aria-Link[data-pressed] {
-  color: light-dark(var(--color-primary-800), var(--color-primary-200));
+  color: light-dark(var(--color-violet-800), var(--color-violet-200));
 }
 
 .react-aria-Link[data-focus-visible] {
