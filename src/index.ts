@@ -33,6 +33,8 @@ export type { RadioProps, RadioGroupProps } from "./RadioGroup/RadioGroup";
 export { Select } from "./Select/Select";
 export type { SelectProps, SelectItemProps } from "./Select/Select";
 export { Switch } from "./Switch/Switch";
+export { Tabs } from "./Tabs/Tabs";
+export type { TabsProps, TabListProps, TabProps, TabPanelProps } from "./Tabs/Tabs";
 export type { SwitchProps } from "./Switch/Switch";
 export { TextArea } from "./TextArea/TextArea";
 export type { TextAreaProps } from "./TextArea/TextArea";
