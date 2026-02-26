@@ -1,0 +1,153 @@
+@import '../tokens.css';
+
+.react-aria-RangeCalendar {
+  width: fit-content;
+  max-width: 100%;
+  font-family: system-ui, sans-serif;
+  color: var(--color-text);
+}
+
+.react-aria-RangeCalendar .calendar-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  margin-bottom: var(--spacing-3);
+}
+
+.react-aria-RangeCalendar .calendar-header .react-aria-Heading {
+  flex: 1;
+  margin: 0;
+  text-align: center;
+  font-size: var(--font-size);
+  font-weight: 600;
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarGrid {
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarHeaderCell {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-subtle);
+  text-align: center;
+  vertical-align: middle;
+  padding-bottom: var(--spacing-0-5);
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell {
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  padding: 0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-full);
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-outside-month] {
+  display: none;
+}
+
+/* Unselected cell hover */
+.react-aria-RangeCalendar .react-aria-CalendarCell:not([data-selected])[data-hovered] span {
+  background: var(--color-bg-muted);
+}
+
+/* Pressed */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-pressed] span {
+  background: var(--color-bg-muted);
+  transform: scale(0.95);
+}
+
+/* === Range band === */
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected] {
+  background: var(--color-bg-muted);
+  border-radius: 0;
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected][data-selection-start] {
+  border-start-start-radius: var(--radius-full);
+  border-end-start-radius: var(--radius-full);
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected][data-selection-end] {
+  border-start-end-radius: var(--radius-full);
+  border-end-end-radius: var(--radius-full);
+}
+
+/* Row-boundary rounding: CalendarCell is a div inside a td, so use td:first-child > * etc. */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected]:is(td:first-child > *, [aria-disabled] + td > *) {
+  border-start-start-radius: var(--radius-full);
+  border-end-start-radius: var(--radius-full);
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected]:is(td:last-child > *, td:has(+ [aria-disabled]) > *) {
+  border-start-end-radius: var(--radius-full);
+  border-end-end-radius: var(--radius-full);
+}
+
+/* Start/end caps — primary circle on span */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-start] span,
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-end] span {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-start][data-hovered] span,
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-end][data-hovered] span {
+  background: var(--color-primary-hover);
+}
+
+/* Focus ring */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-focus-visible] span {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Disabled */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-disabled] {
+  color: var(--color-text-subtle);
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Unavailable */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-unavailable] {
+  text-decoration: line-through;
+  color: var(--color-error);
+  cursor: default;
+}
+
+/* Invalid selection */
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-invalid][data-selected] {
+  background: light-dark(var(--color-red-100), var(--color-red-900));
+}
+
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-invalid][data-selection-start] span,
+.react-aria-RangeCalendar .react-aria-CalendarCell[data-invalid][data-selection-end] span {
+  background: var(--color-error);
+  color: var(--color-white);
+}
+
+/* Error message */
+.react-aria-RangeCalendar .react-aria-Text[slot='errorMessage'] {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-2);
+}

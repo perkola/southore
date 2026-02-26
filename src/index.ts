@@ -12,6 +12,8 @@ export { CheckboxGroup } from "./CheckboxGroup/CheckboxGroup";
 export type { CheckboxGroupProps } from "./CheckboxGroup/CheckboxGroup";
 export { DatePicker } from "./DatePicker/DatePicker";
 export type { DatePickerProps } from "./DatePicker/DatePicker";
+export { DateRangePicker } from "./DateRangePicker/DateRangePicker";
+export type { DateRangePickerProps } from "./DateRangePicker/DateRangePicker";
 export { Form } from "./Form/Form";
 export type { FormProps } from "./Form/Form";
 export { Link } from "./Link/Link";
