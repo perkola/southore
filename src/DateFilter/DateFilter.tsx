@@ -1,4 +1,4 @@
-import { useId, useRef, useState } from "react";
+import { useId, useLayoutEffect, useRef, useState } from "react";
 import {
   Button as RACButton,
   Label,
@@ -80,11 +80,27 @@ export function DateFilter({
   const labelId = useId();
   const descId = useId();
   const triggerRef = useRef<HTMLSpanElement>(null);
+  const calendarPaneRef = useRef<HTMLDivElement>(null);
+  const presetWrapperRef = useRef<HTMLDivElement>(null);
 
   const [internalValue, setInternalValue] = useState<
     DateFilterValue | undefined
   >(defaultValue);
   const [isOpen, setIsOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!isOpen) return;
+    const calPane = calendarPaneRef.current;
+    const presetWrapper = presetWrapperRef.current;
+    if (!calPane || !presetWrapper) return;
+    const sync = () => {
+      presetWrapper.style.maxHeight = `${calPane.offsetHeight}px`;
+    };
+    sync();
+    const obs = new ResizeObserver(sync);
+    obs.observe(calPane);
+    return () => obs.disconnect();
+  }, [isOpen]);
   const value = controlledValue !== undefined ? controlledValue : internalValue;
 
   const initialMode = value?.type === "range" ? "range" : "date";
@@ -134,7 +150,7 @@ export function DateFilter({
         placement="bottom start"
       >
         <div className="date-filter-panel">
-          <div className="date-filter-preset-wrapper">
+          <div className="date-filter-preset-wrapper" ref={presetWrapperRef}>
             <ListBox
               className="date-filter-preset-list listbox"
               aria-label="Date presets"
@@ -159,7 +175,7 @@ export function DateFilter({
             aria-orientation="vertical"
           />
 
-          <div className="date-filter-calendar-pane">
+          <div className="date-filter-calendar-pane" ref={calendarPaneRef}>
             <ToggleButtonGroup
               selectionMode="single"
               disallowEmptySelection

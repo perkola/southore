@@ -102,9 +102,12 @@
   min-width: 160px;
   padding: var(--spacing-2) 0;
   overflow-y: auto;
-  flex: 1;
-  min-height: 0;
+  height: 100%;
   max-height: none;
+}
+
+.date-filter-preset-list .react-aria-ListBoxItem {
+  cursor: pointer;
 }
 
 
@@ -115,8 +118,10 @@
   flex-shrink: 0;
 }
 
-/* Right column */
+/* Right column — align-self: flex-start prevents flex stretch so ResizeObserver
+   sees the calendar's natural height rather than the stretched panel height */
 .date-filter-calendar-pane {
+  align-self: flex-start;
   padding: var(--spacing-4);
   display: flex;
   flex-direction: column;
