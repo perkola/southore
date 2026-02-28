@@ -1,0 +1,63 @@
+@import '../tokens.css';
+
+/* Segmented control container */
+.react-aria-ToggleButtonGroup {
+  display: inline-flex;
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.react-aria-ToggleButtonGroup[data-size="small"] {
+  border-radius: var(--radius-sm);
+}
+
+/* Buttons inside the group */
+.react-aria-ToggleButtonGroup .react-aria-ToggleButton {
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  font: inherit;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  height: var(--spacing-8);
+  padding: 0 var(--spacing-3);
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+
+  &[data-hovered] {
+    background: var(--color-bg-muted);
+  }
+
+  &[data-selected] {
+    background: var(--color-bg-muted);
+    color: var(--color-text);
+  }
+
+  &[data-focus-visible] {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -2px;
+  }
+
+  &[data-disabled] {
+    color: var(--color-text-subtle);
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  & + .react-aria-ToggleButton {
+    border-left: 1px solid var(--color-border-muted);
+  }
+}
+
+/* Small size */
+.react-aria-ToggleButtonGroup[data-size="small"] .react-aria-ToggleButton {
+  height: var(--spacing-6);
+  padding: 0 var(--spacing-2);
+}

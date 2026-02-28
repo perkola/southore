@@ -35,7 +35,6 @@
   color: var(--color-text-subtle);
   text-align: center;
   vertical-align: middle;
-  padding-bottom: var(--spacing-0-5);
 }
 
 .react-aria-RangeCalendar .react-aria-CalendarCell {

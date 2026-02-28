@@ -25,7 +25,7 @@
 
 /* Grid */
 .react-aria-Calendar .react-aria-CalendarGrid {
-  border-spacing: var(--spacing-0-5);
+  border-spacing: 0;
   border-collapse: separate;
 }
 
