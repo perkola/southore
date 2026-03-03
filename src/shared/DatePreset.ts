@@ -1,13 +1,12 @@
-import type { DateValue } from "react-aria-components";
 
 export interface DatePreset {
   id: string;
   label: string;
 }
+import type { DateValue } from "react-aria-components";
 
 export type DateFilterValue =
   | { type: "preset"; preset: string }
-  | { type: "date"; date: DateValue }
   | { type: "range"; start: DateValue; end: DateValue };
 
 export const DEFAULT_DATE_PRESETS: DatePreset[] = [

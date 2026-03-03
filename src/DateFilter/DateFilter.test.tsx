@@ -19,12 +19,11 @@ test("renders description", async () => {
   await expect.element(page.getByText("Filter by date")).toBeVisible();
 });
 
-test("opens popover on click with presets and mode toggles", async () => {
+test("opens popover on click with presets and range calendar", async () => {
   await render(<DateFilter />);
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
-  await expect.element(page.getByRole("radio", { name: "Single date" })).toBeVisible();
-  await expect.element(page.getByRole("radio", { name: "Date range" })).toBeVisible();
+  await expect.element(page.getByRole("grid")).toBeVisible();
 });
 
 test("clicking a preset updates trigger label and closes popover", async () => {
@@ -36,16 +35,6 @@ test("clicking a preset updates trigger label and closes popover", async () => {
   await expect.element(triggerBtn).toHaveAttribute("aria-expanded", "false");
 });
 
-test("mode toggle switches between single date and date range", async () => {
-  await render(<DateFilter />);
-  await userEvent.click(page.getByRole("button"));
-  const rangeBtn = page.getByRole("radio", { name: "Date range" });
-  await userEvent.click(rangeBtn);
-  await expect.element(rangeBtn).toHaveAttribute("data-selected");
-  const singleBtn = page.getByRole("radio", { name: "Single date" });
-  await userEvent.click(singleBtn);
-  await expect.element(singleBtn).toHaveAttribute("data-selected");
-});
 
 test("screenshot: date filter — disabled", async () => {
   const { container } = await render(
@@ -74,14 +63,6 @@ test("screenshot: date filter — preset selected", async () => {
   await expect(container).toMatchScreenshot("date-filter-preset-selected");
 });
 
-test("screenshot: date filter — date selected", async () => {
-  const { container } = await render(
-    <div style={{ padding: 16, width: 300 }}>
-      <DateFilter defaultValue={{ type: "date", date: parseDate("2026-02-27") }} />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-filter-date-selected");
-});
 
 test("screenshot: date filter — range selected", async () => {
   const { container } = await render(
@@ -98,16 +79,16 @@ test("screenshot: date filter — range selected", async () => {
   await expect(container).toMatchScreenshot("date-filter-range-selected");
 });
 
-test("screenshot: date filter — popover open, single date mode", async () => {
+test("screenshot: date filter — popover open, no selection", async () => {
   await render(
     <div style={{ padding: 16 }}>
-      <DateFilter defaultValue={{ type: "date", date: parseDate("2026-02-27") }} />
+      <DateFilter />
     </div>,
   );
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
   const panel = document.querySelector(".date-filter-panel") as Element;
-  await expect(page.elementLocator(panel)).toMatchScreenshot("date-filter-popover-single");
+  await expect(page.elementLocator(panel)).toMatchScreenshot("date-filter-popover-empty");
 });
 
 test("screenshot: date filter — popover open, range mode", async () => {

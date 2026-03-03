@@ -41,12 +41,6 @@ export const PresetSelected: Story = {
   },
 };
 
-export const DateSelected: Story = {
-  args: {
-    defaultValue: { type: "date", date: parseDate("2026-02-27") },
-  },
-};
-
 export const RangeSelected: Story = {
   args: {
     defaultValue: {

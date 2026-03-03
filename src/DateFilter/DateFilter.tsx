@@ -6,10 +6,8 @@ import {
   ListBoxItem,
   Text,
 } from "react-aria-components";
-import { Calendar } from "../Calendar/Calendar";
 import { RangeCalendar } from "../RangeCalendar/RangeCalendar";
 import { Popover } from "../Popover/Popover";
-import { ToggleButtonGroup, ToggleButton } from "../ToggleButtonGroup/ToggleButtonGroup";
 import { Calendar as CalendarIcon } from "../icons";
 import {
   DEFAULT_DATE_PRESETS,
@@ -39,15 +37,6 @@ function formatTriggerLabel(
 
   if (value.type === "preset") {
     return presets.find((p) => p.id === value.preset)?.label ?? placeholder;
-  }
-
-  if (value.type === "date") {
-    const { year, month, day } = value.date;
-    return new Intl.DateTimeFormat(undefined, {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }).format(new Date(year, month - 1, day));
   }
 
   const { year: sy, month: sm, day: sd } = value.start;
@@ -102,9 +91,6 @@ export function DateFilter({
     return () => obs.disconnect();
   }, [isOpen]);
   const value = controlledValue !== undefined ? controlledValue : internalValue;
-
-  const initialMode = value?.type === "range" ? "range" : "date";
-  const [calendarMode, setCalendarMode] = useState<"date" | "range">(initialMode);
 
   function commit(next: DateFilterValue) {
     if (controlledValue === undefined) {
@@ -176,45 +162,19 @@ export function DateFilter({
           />
 
           <div className="date-filter-calendar-pane" ref={calendarPaneRef}>
-            <ToggleButtonGroup
-              selectionMode="single"
-              disallowEmptySelection
-              size="small"
-              selectedKeys={[calendarMode]}
-              onSelectionChange={(keys) => {
-                const key = [...keys][0] as "date" | "range";
-                if (key) setCalendarMode(key);
-              }}
-            >
-              <ToggleButton id="date">Single date</ToggleButton>
-              <ToggleButton id="range">Date range</ToggleButton>
-            </ToggleButtonGroup>
-
-            {calendarMode === "date" ? (
-              <Calendar
-                value={value?.type === "date" ? value.date : null}
-                onChange={(d) => {
-                  if (d) {
-                    commit({ type: "date", date: d });
-                    setIsOpen(false);
-                  }
-                }}
-              />
-            ) : (
-              <RangeCalendar
-                value={
-                  value?.type === "range"
-                    ? { start: value.start, end: value.end }
-                    : null
+            <RangeCalendar
+              value={
+                value?.type === "range"
+                  ? { start: value.start, end: value.end }
+                  : null
+              }
+              onChange={(r) => {
+                if (r) {
+                  commit({ type: "range", start: r.start, end: r.end });
+                  setIsOpen(false);
                 }
-                onChange={(r) => {
-                  if (r) {
-                    commit({ type: "range", start: r.start, end: r.end });
-                    setIsOpen(false);
-                  }
-                }}
-              />
-            )}
+              }}
+            />
           </div>
         </div>
       </Popover>
