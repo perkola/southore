@@ -119,18 +119,9 @@
   --color-focus-ring: var(--color-violet-400);
 
   /* Shadows (stronger in dark mode for visibility) */
-  --shadow-sm: light-dark(
-    0 1px 2px rgb(0 0 0 / 0.05),
-    0 1px 2px rgb(0 0 0 / 0.4)
-  );
-  --shadow: light-dark(
-    0 1px 3px rgb(0 0 0 / 0.1),
-    0 1px 3px rgb(0 0 0 / 0.5)
-  );
-  --shadow-lg: light-dark(
-    0 4px 6px -1px rgb(0 0 0 / 0.1),
-    0 4px 6px -1px rgb(0 0 0 / 0.5)
-  );
+  --shadow-sm: 0 1px 2px light-dark(rgb(0 0 0 / 0.05), rgb(0 0 0 / 0.4));
+  --shadow: 0 1px 3px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.5));
+  --shadow-lg: 0 4px 6px -1px light-dark(rgb(0 0 0 / 0.1), rgb(0 0 0 / 0.5));
 
   /* ========================================
      Spacing, radius, typography

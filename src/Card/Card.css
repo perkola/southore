@@ -1,0 +1,24 @@
+@import '../tokens.css';
+
+.card {
+  padding: var(--spacing-4);
+  border-radius: var(--radius-lg);
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+}
+
+.card[data-variant="filled"] {
+  background: var(--color-bg-subtle);
+}
+
+.card[data-variant="elevated"] {
+  background: var(--color-bg);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-3);
+}
