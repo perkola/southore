@@ -31,7 +31,7 @@ test("renders without visible label when aria-label is used", async () => {
 
 test("screenshot: date range picker closed", async () => {
   const { container } = await render(
-    <div style={{ padding: 8, width: 400 }}>
+    <div style={{ padding: 8 }}>
       <DateRangePicker label="Trip dates" />
     </div>,
   );
@@ -40,7 +40,7 @@ test("screenshot: date range picker closed", async () => {
 
 test("screenshot: date range picker with value", async () => {
   const { container } = await render(
-    <div style={{ padding: 8, width: 400 }}>
+    <div style={{ padding: 8 }}>
       <DateRangePicker
         label="Trip dates"
         defaultValue={{
@@ -55,7 +55,7 @@ test("screenshot: date range picker with value", async () => {
 
 test("screenshot: date range picker error state", async () => {
   const { container } = await render(
-    <div style={{ padding: 8, width: 400 }}>
+    <div style={{ padding: 8 }}>
       <DateRangePicker
         label="Trip dates"
         isInvalid

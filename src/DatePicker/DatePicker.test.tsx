@@ -26,7 +26,7 @@ test("renders without visible label when aria-label is used", async () => {
 
 test("screenshot: date picker error state", async () => {
   const { container } = await render(
-    <div style={{ padding: 8, width: 300 }}>
+    <div style={{ padding: 8 }}>
       <DatePicker label="Event date" isInvalid errorMessage="Please select a valid date." />
     </div>,
   );
@@ -35,7 +35,7 @@ test("screenshot: date picker error state", async () => {
 
 test("screenshot: date picker closed", async () => {
   const { container } = await render(
-    <div style={{ padding: 8, width: 300 }}>
+    <div style={{ padding: 8 }}>
       <DatePicker label="Event date" />
     </div>,
   );

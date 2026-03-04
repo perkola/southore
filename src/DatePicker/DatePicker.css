@@ -3,6 +3,7 @@
 .react-aria-DatePicker {
   display: flex;
   flex-direction: column;
+  width: fit-content;
 }
 
 .date-picker-field {
@@ -41,9 +42,9 @@
 
 .date-picker-input {
   display: flex;
-  flex: 1;
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
+  font-variant-numeric: tabular-nums;
 }
 
 .react-aria-DatePicker .react-aria-DateSegment {
