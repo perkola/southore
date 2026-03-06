@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { fn } from "storybook/test";
 import { Mail } from "../icons";
 import { Form } from "./Form";
+import { Stack } from "../Stack/Stack";
 import { TextArea } from "../TextArea/TextArea";
 import { TextField } from "../TextField/TextField";
 import { NumberField } from "../NumberField/NumberField";
@@ -116,12 +117,12 @@ export const Default: Story = {
         I agree to the <Link href="/terms">terms and conditions</Link>
       </Checkbox>
 
-      <div className="form-buttons">
+      <Stack direction="row" gap={2} justify="center">
         <Button type="reset" variant="text">
           Cancel
         </Button>
         <Button type="submit">Submit</Button>
-      </div>
+      </Stack>
     </Form>
   ),
 };

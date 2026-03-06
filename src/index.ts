@@ -1,5 +1,9 @@
 export { Card } from "./Card/Card";
 export type { CardProps } from "./Card/Card";
+export { Heading } from "./Heading/Heading";
+export type { HeadingProps } from "./Heading/Heading";
+export { Stack } from "./Stack/Stack";
+export type { StackProps } from "./Stack/Stack";
 export { Autocomplete } from "./Autocomplete/Autocomplete";
 export type { AutocompleteProps, AutocompleteItemProps } from "./Autocomplete/Autocomplete";
 export { Badge } from "./Badge/Badge";
