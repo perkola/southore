@@ -16,7 +16,7 @@
     animation: popover-exit 0.1s ease-in forwards;
   }
 
-  &[data-placement='top'][data-entering] {
+  &[data-placement^='top'][data-entering] {
     animation-name: popover-enter-top;
   }
 }
@@ -54,7 +54,7 @@
   }
 }
 
-.popover[data-placement='bottom'] > .react-aria-OverlayArrow {
+.popover[data-placement^='bottom'] > .react-aria-OverlayArrow {
   top: -6px;
 
   & svg {
@@ -62,11 +62,11 @@
   }
 }
 
-.popover[data-placement='top'] > .react-aria-OverlayArrow {
+.popover[data-placement^='top'] > .react-aria-OverlayArrow {
   bottom: -6px;
 }
 
-.popover[data-placement='left'] > .react-aria-OverlayArrow {
+.popover[data-placement^='left'] > .react-aria-OverlayArrow {
   right: -6px;
 
   & svg {
@@ -74,7 +74,7 @@
   }
 }
 
-.popover[data-placement='right'] > .react-aria-OverlayArrow {
+.popover[data-placement^='right'] > .react-aria-OverlayArrow {
   left: -6px;
 
   & svg {
