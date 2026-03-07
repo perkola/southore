@@ -35,6 +35,7 @@ export function Stack({
   justify,
   wrap,
   style,
+  children,
   ...props
 }: StackProps) {
   return (
@@ -49,6 +50,8 @@ export function Stack({
         justifyContent: justify ? justifyMap[justify] : undefined,
         flexWrap: wrap ? "wrap" : undefined,
       } as CSSProperties}
-    />
+    >
+      {children}
+    </div>
   );
 }
