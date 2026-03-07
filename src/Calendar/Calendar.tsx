@@ -29,7 +29,7 @@ export function Calendar({
   return (
     <RACCalendar {...props}>
       <header className="calendar-header">
-        <Button variant="text" size="small" slot="previous">
+        <Button variant="text" size="small" slot="previous" aria-label="Previous month">
           {direction === "rtl" ? (
             <ChevronRight size={16} aria-hidden />
           ) : (
@@ -37,7 +37,7 @@ export function Calendar({
           )}
         </Button>
         <Heading />
-        <Button variant="text" size="small" slot="next">
+        <Button variant="text" size="small" slot="next" aria-label="Next month">
           {direction === "rtl" ? (
             <ChevronLeft size={16} aria-hidden />
           ) : (

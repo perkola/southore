@@ -71,7 +71,7 @@ function AutocompleteRoot<T extends object>({
             <Group className="autocomplete-search-input">
               <Search size={16} aria-hidden />
               <Input placeholder={searchPlaceholder} />
-              <Button className="autocomplete-clear">
+              <Button className="autocomplete-clear" slot="clear" aria-label="Clear search">
                 <X size={14} aria-hidden />
               </Button>
             </Group>

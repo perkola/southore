@@ -40,7 +40,7 @@ export function DateRangePicker({
             {(segment) => <DateSegment segment={segment} />}
           </DateInput>
         </div>
-        <Button variant="text" size="small">
+        <Button variant="text" size="small" aria-label="Open calendar">
           <CalendarIcon size={16} aria-hidden />
         </Button>
       </Group>

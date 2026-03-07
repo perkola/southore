@@ -32,7 +32,7 @@ export function DatePicker({
         <DateInput className="date-picker-input">
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>
-        <Button variant="text" size="small">
+        <Button variant="text" size="small" aria-label="Open calendar">
           <CalendarIcon size={16} aria-hidden />
         </Button>
       </Group>
