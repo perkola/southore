@@ -68,6 +68,7 @@ For every component you review, systematically evaluate:
 - `isDisabled` prop used instead of native `disabled` where React Aria expects it
 - Collection components use correct `items`/`children` patterns
 - Error messages connected via `<FieldError>` / `validationBehavior`
+- **Before raising any React Aria API finding, verify it against the React Aria MCP server.** Do not rely on training knowledge alone — RAC APIs evolve and compound components (e.g. DatePicker, Select) handle semantics internally in ways that differ from standalone Popover/Dialog patterns. Use the `mcp__react-aria__get_react_aria_page` tool to look up the relevant component's documented example before flagging a deviation as an issue.
 
 ## Output Format
 
@@ -117,6 +118,7 @@ When implementing fixes:
 ## Self-Verification Checklist
 
 Before finalizing any recommendation or fix, verify:
+- [ ] For any React Aria API claim (required wrappers, slot names, prop names, role injection): did you look it up in the React Aria MCP server using `mcp__react-aria__get_react_aria_page`? Do not rely on training knowledge alone.
 - [ ] Does this align with how React Aria manages this widget type?
 - [ ] Does the CSS fix use the correct React Aria data attributes?
 - [ ] Are both light and dark mode contrast ratios calculated?
