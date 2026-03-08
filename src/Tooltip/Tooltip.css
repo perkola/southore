@@ -72,3 +72,10 @@
     transform: rotate(90deg);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .react-aria-Tooltip[data-entering],
+  .react-aria-Tooltip[data-exiting] {
+    animation: none;
+  }
+}

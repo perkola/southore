@@ -81,3 +81,10 @@
     transform: rotate(90deg);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .popover[data-entering],
+  .popover[data-exiting] {
+    animation: none;
+  }
+}

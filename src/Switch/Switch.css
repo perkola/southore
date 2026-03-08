@@ -82,3 +82,10 @@
 .react-aria-Switch[data-disabled][data-selected] .switch-track {
   background: light-dark(var(--color-gray-300), var(--color-gray-600));
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .switch-track,
+  .switch-handle {
+    transition: none;
+  }
+}

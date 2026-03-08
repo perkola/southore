@@ -106,3 +106,13 @@
   color: var(--color-error);
   margin-top: var(--spacing-2);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .react-aria-Calendar .react-aria-CalendarCell {
+    transition: none;
+  }
+
+  .react-aria-Calendar .react-aria-CalendarCell[data-pressed] {
+    transform: none;
+  }
+}
