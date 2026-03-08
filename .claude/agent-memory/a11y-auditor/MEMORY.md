@@ -6,7 +6,7 @@
 - Disabled states use `[data-disabled]` selector, NOT `:disabled`
 - Interactive states use `[data-hovered]`, `[data-pressed]`, `[data-selected]`, etc.
 - Dark mode via `light-dark(lightVal, darkVal)` with `color-scheme: light dark` on `:root`
-- Animations: only `Toast.css` has `prefers-reduced-motion` — all other animated components are missing it
+- Animations: `prefers-reduced-motion` guards present in `Toast.css`, `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css` — all animated components covered
 
 ## Verified Contrast Ratios (light/dark)
 - `--color-text` (gray-900 #1a1a24) on `--color-bg` (white): ~17:1 — PASS
@@ -40,13 +40,12 @@ See `audit-2026-03-08.md` for full original findings.
 ### Open Issues
 1. `DateFilter` trigger button `aria-controls` is missing linking trigger to popover
 
-### Warnings (from original audit, still open)
-1. Nearly all CSS files with animations are missing `prefers-reduced-motion` guards — only `Toast.css` has it
-2. `Breadcrumbs` wraps `RACBreadcrumbs` in an extra `<nav>` — creates double navigation landmark since RAC renders its own `<nav>`
-3. `ToggleButtonGroup` (small size) has 24px height — meets WCAG 2.5.8 minimum but not the 44px AAA target
-4. `Button` (small size) has 24px height — same as above
-5. `CheckboxGroup`/`RadioGroup` `FieldError` is always rendered (empty when no error) — minor screen reader noise
-6. `Heading` component uses CSS class rather than accepting a `className` override that appends — the `className` prop is overwritten
+### Warnings (from original audit)
+1. ~~Missing `prefers-reduced-motion` guards~~ — FIXED (2026-03-08): guards added to `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css`
+2. ~~`Breadcrumbs` double `<nav>`~~ — FALSE POSITIVE (2026-03-08): `RACBreadcrumbs` renders `<ol>`, outer `<nav>` is correct per RAC docs
+3. ~~`Heading` `className` prop overwritten~~ — FIXED (2026-03-08): now merges consumer className with "heading"
+4. `ToggleButtonGroup` / `Button` (small size) 24px height — accepted at WCAG 2.5.8 AA minimum; by design
+5. `CheckboxGroup`/`RadioGroup` `FieldError` always rendered — acceptable; React Aria renders nothing for empty children
 
 ## RAC Audit Methodology — Lessons Learned
 
@@ -68,6 +67,7 @@ RAC has two distinct Popover patterns — confusing them leads to false findings
 
 ## Patterns Done Correctly (skip re-checking)
 - All interactive components use React Aria primitives (no custom ARIA reimplementation)
+- `Breadcrumbs` outer `<nav aria-label>` wrapper is correct — `RACBreadcrumbs` renders an `<ol>`, not a `<nav>`; RAC docs explicitly recommend the consumer add the `<nav>` landmark
 - Focus rings universally use `[data-focus-visible]` (except TextArea — see issues)
 - Disabled styles use `[data-disabled]`
 - `FieldError` used for all form field errors (connected via React Aria automatically)
