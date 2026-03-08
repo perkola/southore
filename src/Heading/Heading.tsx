@@ -7,7 +7,7 @@ export interface HeadingProps extends ComponentProps<"h1"> {
   level?: HeadingLevel;
 }
 
-export function Heading({ level = 1, ...props }: HeadingProps) {
+export function Heading({ level = 1, className, ...props }: HeadingProps) {
   const Tag = `h${level}` as "h1";
-  return <Tag {...props} className="heading" />;
+  return <Tag {...props} className={["heading", className].filter(Boolean).join(" ")} />;
 }
