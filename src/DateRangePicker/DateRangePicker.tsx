@@ -14,7 +14,6 @@ import { RangeCalendar } from "../RangeCalendar/RangeCalendar";
 import type { FieldProps } from "../shared/Field";
 import { Popover } from "../Popover/Popover";
 import { Calendar as CalendarIcon } from "../icons";
-import "../shared/Field.css";
 import "./DateRangePicker.css";
 
 export interface DateRangePickerProps
@@ -30,7 +29,7 @@ export function DateRangePicker({
   return (
     <RACDateRangePicker {...props}>
       {label && <Label>{label}</Label>}
-      <Group className="date-range-picker-field">
+      <Group className="field-group date-range-picker-field">
         <div className="date-range-picker-inputs">
           <DateInput slot="start" className="date-range-picker-input">
             {(segment) => <DateSegment segment={segment} />}

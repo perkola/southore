@@ -7,7 +7,6 @@ import {
   FieldError,
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
-import "../shared/Field.css";
 import "./CheckboxGroup.css";
 
 export interface CheckboxGroupProps extends RACCheckboxGroupProps, FieldProps {

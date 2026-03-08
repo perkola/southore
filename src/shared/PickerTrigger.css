@@ -1,0 +1,55 @@
+@import '../tokens.css';
+
+/*
+ * Shared styles for select/combobox trigger buttons.
+ *
+ * Apply the .picker-trigger class alongside the component-specific class on the
+ * trigger button. The component class then only needs to define layout
+ * properties that differ (padding, width, etc.).
+ *
+ * Used by: Select, Autocomplete, DateFilter
+ */
+
+.picker-trigger {
+  appearance: none;
+  margin: 0;
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  height: var(--spacing-8);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font: inherit;
+  font-family: system-ui, sans-serif;
+  font-size: var(--font-size-sm);
+  line-height: 1;
+  color: var(--color-text);
+  text-align: left;
+  outline: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+
+  &[data-hovered] {
+    border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+  }
+
+  &[data-focus-visible] {
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -1px;
+  }
+
+  &[data-pressed] {
+    background: var(--color-bg-subtle);
+  }
+
+  &[data-disabled] {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border);
+    color: var(--color-text-subtle);
+    cursor: default;
+  }
+}

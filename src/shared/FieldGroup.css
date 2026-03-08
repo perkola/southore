@@ -1,0 +1,43 @@
+@import '../tokens.css';
+
+/*
+ * Shared styles for bordered input group containers.
+ *
+ * Apply the .field-group class alongside the component-specific class on the
+ * RAC <Group> element. The component class then only needs to define layout
+ * properties that differ (gap, padding, etc.).
+ *
+ * Used by: TextField, NumberField, DatePicker, DateRangePicker
+ */
+
+.field-group {
+  display: inline-flex;
+  align-items: center;
+  height: var(--spacing-8);
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-muted);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: border-color 0.15s;
+
+  &[data-hovered] {
+    border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+  }
+
+  &[data-focus-within] {
+    border-color: var(--color-primary);
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: -1px;
+  }
+
+  &[data-invalid] {
+    border-color: var(--color-error);
+  }
+
+  &[data-disabled] {
+    background: var(--color-bg-muted);
+    border-color: var(--color-border);
+    cursor: default;
+  }
+}

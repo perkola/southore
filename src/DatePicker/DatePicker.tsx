@@ -14,7 +14,6 @@ import { Calendar } from "../Calendar/Calendar";
 import type { FieldProps } from "../shared/Field";
 import { Popover } from "../Popover/Popover";
 import { Calendar as CalendarIcon } from "../icons";
-import "../shared/Field.css";
 import "./DatePicker.css";
 
 export interface DatePickerProps extends RACDatePickerProps<DateValue>, FieldProps {}
@@ -28,7 +27,7 @@ export function DatePicker({
   return (
     <RACDatePicker {...props}>
       {label && <Label>{label}</Label>}
-      <Group className="date-picker-field">
+      <Group className="field-group date-picker-field">
         <DateInput className="date-picker-input">
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>

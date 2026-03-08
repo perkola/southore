@@ -9,7 +9,6 @@ import {
   FieldError,
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
-import "../shared/Field.css";
 import "./RadioGroup.css";
 
 export interface RadioGroupProps extends RACRadioGroupProps, FieldProps {

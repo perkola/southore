@@ -11,7 +11,6 @@ import {
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
 import { Minus, Plus } from "../icons";
-import "../shared/Field.css";
 import "./NumberField.css";
 
 export interface NumberFieldProps extends RACNumberFieldProps, FieldProps {
@@ -40,7 +39,7 @@ export function NumberField({
     <RACNumberField {...props}>
       {label && <Label>{label}</Label>}
       <Group
-        className="number-field"
+        className="field-group number-field"
         data-has-stepper={!hideStepper || undefined}
         onPointerDown={(e) => {
           if (

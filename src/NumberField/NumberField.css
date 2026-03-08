@@ -1,4 +1,5 @@
-@import '../tokens.css';
+@import '../shared/Field.css';
+@import '../shared/FieldGroup.css';
 
 .react-aria-NumberField {
   display: flex;
@@ -6,16 +7,7 @@
 }
 
 .number-field {
-  display: inline-flex;
-  align-items: center;
   gap: var(--spacing-2);
-  height: var(--spacing-8);
-  box-sizing: border-box;
-  border: 1px solid var(--color-border-muted);
-  border-radius: var(--radius);
-  background: var(--color-bg);
-  color: var(--color-text);
-  transition: border-color 0.15s;
 }
 
 .number-field:not([data-has-stepper]) {
@@ -24,26 +16,6 @@
 
 .number-field[data-has-stepper] {
   padding: 0;
-}
-
-.number-field[data-hovered] {
-  border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
-}
-
-.number-field[data-focus-within] {
-  border-color: var(--color-primary);
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: -1px;
-}
-
-.number-field[data-disabled] {
-  background: var(--color-bg-muted);
-  border-color: var(--color-border);
-  cursor: default;
-}
-
-.react-aria-NumberField[data-invalid] .number-field {
-  border-color: var(--color-error);
 }
 
 .number-field .react-aria-Input {

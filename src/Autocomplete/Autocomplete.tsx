@@ -19,7 +19,6 @@ import {
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
 import { Popover } from "../Popover/Popover";
-import "../shared/Field.css";
 import "./Autocomplete.css";
 
 export interface AutocompleteProps<T extends object>
@@ -52,7 +51,7 @@ function AutocompleteRoot<T extends object>({
   return (
     <RACSelect placeholder={placeholder} {...props}>
       {label && <Label>{label}</Label>}
-      <Button className="autocomplete-trigger">
+      <Button className="picker-trigger autocomplete-trigger">
         {startAdornment && (
           <span className="autocomplete-adornment">{startAdornment}</span>
         )}

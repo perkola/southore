@@ -9,7 +9,6 @@ import {
   FieldError,
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
-import "../shared/Field.css";
 import "./TextField.css";
 
 export interface TextFieldProps extends RACTextFieldProps, FieldProps {
@@ -38,7 +37,7 @@ export function TextField({
     <RACTextField {...props}>
       {label && <Label>{label}</Label>}
       <Group
-        className="text-field"
+        className="field-group text-field"
         onPointerDown={(e) => {
           if (e.target instanceof HTMLInputElement) return;
           e.preventDefault();

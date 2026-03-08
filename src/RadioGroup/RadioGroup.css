@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import '../shared/Field.css';
 
 .react-aria-RadioGroup {
   display: flex;

@@ -14,7 +14,6 @@ import {
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
 import { Popover } from "../Popover/Popover";
-import "../shared/Field.css";
 import "./Select.css";
 
 export interface SelectProps<T extends object>
@@ -39,7 +38,7 @@ function SelectRoot<T extends object>({
   return (
     <RACSelect placeholder={placeholder} {...props}>
       {label && <Label>{label}</Label>}
-      <Button className="select-trigger">
+      <Button className="picker-trigger select-trigger">
         {startAdornment && (
           <span className="select-adornment">{startAdornment}</span>
         )}

@@ -14,7 +14,6 @@ import {
   type DateFilterValue,
   type DatePreset,
 } from "../shared/DatePreset";
-import "../shared/Field.css";
 import "./DateFilter.css";
 
 export interface DateFilterProps {
@@ -107,7 +106,7 @@ export function DateFilter({
 
       <span ref={triggerRef} className="date-filter-trigger-wrapper">
         <RACButton
-          className="date-filter-trigger"
+          className="picker-trigger date-filter-trigger"
           isDisabled={isDisabled}
           onPress={() => setIsOpen((o) => !o)}
           aria-expanded={isOpen}
