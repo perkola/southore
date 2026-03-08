@@ -8,11 +8,11 @@ import { playwright } from '@vitest/browser-playwright';
 
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [react({
-    babel: {
+    babel: command === 'serve' ? {
       plugins: [['babel-plugin-react-compiler']]
-    }
+    } : {}
   })],
   build: {
     lib: {
@@ -21,7 +21,7 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'react-aria-components', 'lucide-react'],
     },
   },
   test: {
@@ -99,4 +99,4 @@ export default defineConfig({
       }
     }]
   }
-});
+}));
