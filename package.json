@@ -1,7 +1,7 @@
 {
   "name": "southore",
   "private": false,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Accessible React component library built on React Aria Components",
   "license": "MIT",
   "repository": {
