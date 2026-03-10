@@ -52,29 +52,3 @@ test("defaultSelectedKey sets initial selection", async () => {
   await expect.element(page.getByText("Activity content")).toBeVisible();
 });
 
-test("screenshot: tabs default", async () => {
-  const { container } = await render(
-    <div style={{ padding: 16, width: 400 }}>
-      <ThreeTabs />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("tabs-default");
-});
-
-test("screenshot: tabs with disabled tab", async () => {
-  const { container } = await render(
-    <div style={{ padding: 16, width: 400 }}>
-      <Tabs defaultSelectedKey="overview">
-        <Tabs.TabList aria-label="Navigation">
-          <Tabs.Tab id="overview">Overview</Tabs.Tab>
-          <Tabs.Tab id="settings" isDisabled>Settings</Tabs.Tab>
-          <Tabs.Tab id="activity">Activity</Tabs.Tab>
-        </Tabs.TabList>
-        <Tabs.TabPanel id="overview">Overview content</Tabs.TabPanel>
-        <Tabs.TabPanel id="settings">Settings content</Tabs.TabPanel>
-        <Tabs.TabPanel id="activity">Activity content</Tabs.TabPanel>
-      </Tabs>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("tabs-disabled-tab");
-});

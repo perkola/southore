@@ -26,25 +26,3 @@ test("renders children", async () => {
   await expect.element(getByText("Hello")).toBeVisible();
 });
 
-test("screenshot: badge colors", async () => {
-  const { container } = await render(
-    <div style={{ display: "flex", gap: 8, padding: 8 }}>
-      <Badge color="gray">Gray</Badge>
-      <Badge color="red">Red</Badge>
-      <Badge color="green">Green</Badge>
-      <Badge color="amber">Amber</Badge>
-      <Badge color="blue">Blue</Badge>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("badge-colors");
-});
-
-test("screenshot: badge variants", async () => {
-  const { container } = await render(
-    <div style={{ display: "flex", gap: 8, padding: 8 }}>
-      <Badge>Default</Badge>
-      <Badge variant="circular">3</Badge>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("badge-variants");
-});

@@ -1,7 +1,6 @@
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 import { page, userEvent } from "vitest/browser";
-import { parseDate } from "@internationalized/date";
 import { DateRangePicker } from "./DateRangePicker";
 
 test("renders start and end date inputs", async () => {
@@ -29,56 +28,8 @@ test("renders without visible label when aria-label is used", async () => {
   await expect.element(page.getByRole("group", { name: "Date range" })).toBeVisible();
 });
 
-test("screenshot: date range picker closed", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8 }}>
-      <DateRangePicker label="Trip dates" />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-range-picker-closed");
-});
-
-test("screenshot: date range picker with value", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8 }}>
-      <DateRangePicker
-        label="Trip dates"
-        defaultValue={{
-          start: parseDate("2025-03-10"),
-          end: parseDate("2025-03-20"),
-        }}
-      />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-range-picker-with-value");
-});
-
-test("screenshot: date range picker error state", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8 }}>
-      <DateRangePicker
-        label="Trip dates"
-        isInvalid
-        errorMessage="Please select a valid date range."
-      />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-range-picker-error");
-});
-
 test("opens calendar on button click", async () => {
   await render(<DateRangePicker label="Date range" />);
   await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
   await expect.element(page.getByRole("grid")).toBeVisible();
-});
-
-test("screenshot: date range picker open", async () => {
-  await render(
-    <div style={{ padding: 8 }}>
-      <DateRangePicker label="Trip dates" />
-    </div>,
-  );
-  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
-  await expect.element(page.getByRole("grid")).toBeVisible();
-  await expect(document.body).toMatchScreenshot("date-range-picker-open");
 });

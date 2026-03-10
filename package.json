@@ -28,11 +28,13 @@
   "scripts": {
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "test": "vitest run --project components && vitest run --project components-dark --testNamePattern '^screenshot:'",
-    "test:update": "vitest run --project components -u && vitest run --project components-dark --testNamePattern '^screenshot:' -u",
-    "test:watch": "vitest --project components",
-    "test:watch:visual": "vitest --project components --project components-dark --testNamePattern '^screenshot:'",
-    "test:coverage": "vitest run --project components --coverage",
+    "test": "vitest run --project unit && vitest run --project visual && vitest run --project visual-dark",
+    "test:unit": "vitest run --project unit",
+    "test:visual": "vitest run --project visual && vitest run --project visual-dark",
+    "test:update": "vitest run --project visual -u && vitest run --project visual-dark -u",
+    "test:watch": "vitest --project unit",
+    "test:watch:visual": "vitest --project visual --project visual-dark",
+    "test:coverage": "vitest run --project unit --coverage",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

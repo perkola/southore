@@ -51,39 +51,3 @@ test("defaultValue pre-selects a radio", async () => {
   await expect.element(page.getByRole("radio", { name: "Baseball" })).toBeChecked();
 });
 
-test("screenshot: radio group error state", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8, width: 320 }}>
-      <RadioGroup label="Favorite sport" isInvalid errorMessage="Please select a sport.">
-        <Radio value="soccer">Soccer</Radio>
-        <Radio value="baseball">Baseball</Radio>
-      </RadioGroup>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("radio-group-error");
-});
-
-test("screenshot: radio group default", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8, width: 320 }}>
-      <RadioGroup label="Favorite sport" defaultValue="baseball">
-        <Radio value="soccer">Soccer</Radio>
-        <Radio value="baseball">Baseball</Radio>
-        <Radio value="basketball">Basketball</Radio>
-      </RadioGroup>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("radio-group-default");
-});
-
-test("screenshot: radio group disabled", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8, width: 320 }}>
-      <RadioGroup label="Favorite sport" isDisabled>
-        <Radio value="soccer">Soccer</Radio>
-        <Radio value="baseball">Baseball</Radio>
-      </RadioGroup>
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("radio-group-disabled");
-});

@@ -24,37 +24,8 @@ test("renders without visible label when aria-label is used", async () => {
   await expect.element(page.getByRole("group", { name: "Date" })).toBeVisible();
 });
 
-test("screenshot: date picker error state", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8 }}>
-      <DatePicker label="Event date" isInvalid errorMessage="Please select a valid date." />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-picker-error");
-});
-
-test("screenshot: date picker closed", async () => {
-  const { container } = await render(
-    <div style={{ padding: 8 }}>
-      <DatePicker label="Event date" />
-    </div>,
-  );
-  await expect(container).toMatchScreenshot("date-picker-closed");
-});
-
 test("opens calendar on button click", async () => {
   await render(<DatePicker label="Date" />);
   await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
   await expect.element(page.getByRole("grid")).toBeVisible();
-});
-
-test("screenshot: date picker open", async () => {
-  await render(
-    <div style={{ padding: 8 }}>
-      <DatePicker label="Event date" />
-    </div>,
-  );
-  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
-  await expect.element(page.getByRole("grid")).toBeVisible();
-  await expect(document.body).toMatchScreenshot("date-picker-open");
 });

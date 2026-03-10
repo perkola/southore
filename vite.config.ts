@@ -27,13 +27,29 @@ export default defineConfig(({ command }) => ({
     coverage: {
       provider: 'v8',
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/icons/**'],
+      exclude: ['src/**/*.stories.tsx', 'src/**/*.test.tsx', 'src/**/*.visual.test.tsx', 'src/icons/**'],
     },
     projects: [{
       extends: true,
       test: {
-        name: 'components',
+        name: 'unit',
         include: ['src/**/*.test.{ts,tsx}'],
+        exclude: ['src/**/*.visual.test.{ts,tsx}'],
+        setupFiles: ['src/test-setup.ts'],
+        browser: {
+          enabled: true,
+          headless: true,
+          provider: playwright({}),
+          instances: [{
+            browser: 'chromium',
+          }],
+        },
+      }
+    }, {
+      extends: true,
+      test: {
+        name: 'visual',
+        include: ['src/**/*.visual.test.{ts,tsx}'],
         setupFiles: ['src/test-setup.ts'],
         browser: {
           enabled: true,
@@ -55,8 +71,8 @@ export default defineConfig(({ command }) => ({
     }, {
       extends: true,
       test: {
-        name: 'components-dark',
-        include: ['src/**/*.test.{ts,tsx}'],
+        name: 'visual-dark',
+        include: ['src/**/*.visual.test.{ts,tsx}'],
         setupFiles: ['src/test-setup.ts', 'src/test-setup-dark.ts'],
         browser: {
           enabled: true,
