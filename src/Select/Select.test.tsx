@@ -78,6 +78,18 @@ test("screenshot: select with start adornment", async () => {
   await expect(container).toMatchScreenshot("select-start-adornment");
 });
 
+test("screenshot: select disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Select label="Favorite fruit" placeholder="Select a fruit" isDisabled>
+        <Select.Item id="apple">Apple</Select.Item>
+        <Select.Item id="banana">Banana</Select.Item>
+      </Select>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("select-disabled");
+});
+
 test("screenshot: select open", async () => {
   await render(
     <div style={{ padding: 8, width: 300 }}>
@@ -90,5 +102,5 @@ test("screenshot: select open", async () => {
   );
   await page.getByRole("button", { name: "Favorite fruit" }).click();
   await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
-  await expect(page.getByRole("listbox")).toMatchScreenshot("select-open");
+  await expect(document.body).toMatchScreenshot("select-open");
 });

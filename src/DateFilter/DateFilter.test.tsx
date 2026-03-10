@@ -87,8 +87,7 @@ test("screenshot: date filter — popover open, no selection", async () => {
   );
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
-  const panel = document.querySelector(".date-filter-panel") as Element;
-  await expect(page.elementLocator(panel)).toMatchScreenshot("date-filter-popover-empty");
+  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot("date-filter-popover-empty");
 });
 
 test("screenshot: date filter — popover open, range mode", async () => {
@@ -105,6 +104,5 @@ test("screenshot: date filter — popover open, range mode", async () => {
   );
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
-  const panel = document.querySelector(".date-filter-panel") as Element;
-  await expect(page.elementLocator(panel)).toMatchScreenshot("date-filter-popover-range");
+  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot("date-filter-popover-range");
 });

@@ -75,3 +75,15 @@ test("screenshot: radio group default", async () => {
   );
   await expect(container).toMatchScreenshot("radio-group-default");
 });
+
+test("screenshot: radio group disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 320 }}>
+      <RadioGroup label="Favorite sport" isDisabled>
+        <Radio value="soccer">Soccer</Radio>
+        <Radio value="baseball">Baseball</Radio>
+      </RadioGroup>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("radio-group-disabled");
+});

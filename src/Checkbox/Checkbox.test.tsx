@@ -39,3 +39,14 @@ test("screenshot: checkbox states", async () => {
   );
   await expect(container).toMatchScreenshot("checkbox-states");
 });
+
+test("screenshot: checkbox disabled states", async () => {
+  const { container } = await render(
+    <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 8 }}>
+      <Checkbox isDisabled>Disabled unchecked</Checkbox>
+      <Checkbox isDisabled isSelected>Disabled checked</Checkbox>
+      <Checkbox isDisabled isIndeterminate>Disabled indeterminate</Checkbox>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("checkbox-disabled-states");
+});

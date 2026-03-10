@@ -51,3 +51,12 @@ test("screenshot: textarea error state", async () => {
   );
   await expect(container).toMatchScreenshot("textarea-error");
 });
+
+test("screenshot: textarea disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 320 }}>
+      <TextArea label="Comment" defaultValue="Some text here." isDisabled />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("textarea-disabled");
+});

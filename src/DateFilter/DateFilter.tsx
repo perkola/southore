@@ -134,7 +134,7 @@ export function DateFilter({
         onOpenChange={setIsOpen}
         placement="bottom start"
       >
-        <div className="date-filter-panel">
+        <div className="date-filter-panel" role="dialog" aria-label="Date filter">
           <div className="date-filter-preset-wrapper" ref={presetWrapperRef}>
             <ListBox
               className="date-filter-preset-list listbox"

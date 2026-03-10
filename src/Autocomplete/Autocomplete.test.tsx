@@ -84,6 +84,18 @@ test("screenshot: autocomplete closed", async () => {
   await expect(container).toMatchScreenshot("autocomplete-closed");
 });
 
+test("screenshot: autocomplete disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Autocomplete label="Country" placeholder="Select a country" isDisabled>
+        <Autocomplete.Item id="us">United States</Autocomplete.Item>
+        <Autocomplete.Item id="uk">United Kingdom</Autocomplete.Item>
+      </Autocomplete>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("autocomplete-disabled");
+});
+
 test("screenshot: autocomplete open", async () => {
   await render(
     <div style={{ padding: 8, width: 300 }}>
@@ -96,7 +108,7 @@ test("screenshot: autocomplete open", async () => {
   );
   await page.getByRole("button", { name: "Country" }).click();
   await expect.element(page.getByRole("option", { name: "United States" })).toBeVisible();
-  await expect(page.getByRole("listbox")).toMatchScreenshot("autocomplete-open");
+  await expect(document.body).toMatchScreenshot("autocomplete-open");
 });
 
 test("screenshot: autocomplete filtered", async () => {

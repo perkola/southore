@@ -73,3 +73,21 @@ test("screenshot: number field with adornments", async () => {
   );
   await expect(container).toMatchScreenshot("number-field-adornments");
 });
+
+test("screenshot: number field error", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <NumberField label="Quantity" isInvalid errorMessage="Must be a positive number." />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("number-field-error");
+});
+
+test("screenshot: number field disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <NumberField label="Quantity" defaultValue={5} isDisabled />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("number-field-disabled");
+});

@@ -40,7 +40,7 @@ test("tooltip respects placement", async () => {
 
 test("screenshot: tooltip visible", async () => {
   await render(
-    <div style={{ padding: 48, display: "flex", justifyContent: "center" }}>
+    <div style={{ padding: 16, display: "flex", justifyContent: "center" }}>
       <Tooltip content="Helpful hint">
         <Button>Focus me</Button>
       </Tooltip>
@@ -48,5 +48,5 @@ test("screenshot: tooltip visible", async () => {
   );
   await userEvent.tab();
   await expect.element(page.getByRole("tooltip")).toBeVisible();
-  await expect(page.getByRole("tooltip")).toMatchScreenshot("tooltip-visible");
+  await expect(document.body).toMatchScreenshot("tooltip-visible");
 });

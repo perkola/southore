@@ -55,7 +55,7 @@ test("screenshot: toast visible", async () => {
   await render(<GlobalToastRegion />);
   const key = addToast("Notification message", { timeout: null });
   await expect.element(page.getByText("Notification message")).toBeVisible();
-  await expect(document.querySelector(".toast")).toMatchScreenshot("toast-visible");
+  await expect(page.getByRole("region", { name: "Notifications" })).toMatchScreenshot("toast-visible");
   toastQueue.close(key);
   document.head.removeChild(styleEl);
 });

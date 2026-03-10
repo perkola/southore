@@ -1,5 +1,6 @@
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
+import { page } from "vitest/browser";
 import { Switch } from "./Switch";
 
 test("renders switch", async () => {
@@ -15,6 +16,14 @@ test("renders children as label", async () => {
 test("renders without children", async () => {
   const { getByRole } = await render(<Switch aria-label="Toggle" />);
   await expect.element(getByRole("switch", { name: "Toggle" })).toBeVisible();
+});
+
+test("toggles when clicked", async () => {
+  const { getByRole } = await render(<Switch>Toggle me</Switch>);
+  const sw = getByRole("switch", { name: "Toggle me" });
+  await expect.element(sw).not.toBeChecked();
+  await page.getByText("Toggle me").click();
+  await expect.element(sw).toBeChecked();
 });
 
 test("screenshot: switch off", async () => {
@@ -33,4 +42,13 @@ test("screenshot: switch on", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("switch-on");
+});
+
+test("screenshot: switch disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8 }}>
+      <Switch isDisabled>Disabled</Switch>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("switch-disabled");
 });

@@ -2,6 +2,7 @@ import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
 import { page } from "vitest/browser";
 import { I18nProvider } from "react-aria-components";
+import { parseDate } from "@internationalized/date";
 import { Calendar } from "./Calendar";
 
 test("renders calendar grid", async () => {
@@ -50,6 +51,15 @@ test("screenshot: calendar", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("calendar-default");
+});
+
+test("screenshot: calendar selected date", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8 }}>
+      <Calendar aria-label="Event date" defaultValue={parseDate("2025-03-15")} />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("calendar-selected");
 });
 
 test("screenshot: calendar rtl", async () => {

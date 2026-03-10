@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page, userEvent } from "vitest/browser";
 import { parseDate } from "@internationalized/date";
 import { DateRangePicker } from "./DateRangePicker";
 
@@ -64,4 +64,21 @@ test("screenshot: date range picker error state", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("date-range-picker-error");
+});
+
+test("opens calendar on button click", async () => {
+  await render(<DateRangePicker label="Date range" />);
+  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
+  await expect.element(page.getByRole("grid")).toBeVisible();
+});
+
+test("screenshot: date range picker open", async () => {
+  await render(
+    <div style={{ padding: 8 }}>
+      <DateRangePicker label="Trip dates" />
+    </div>,
+  );
+  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
+  await expect.element(page.getByRole("grid")).toBeVisible();
+  await expect(document.body).toMatchScreenshot("date-range-picker-open");
 });

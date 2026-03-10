@@ -66,3 +66,15 @@ test("screenshot: checkbox group default", async () => {
   );
   await expect(container).toMatchScreenshot("checkbox-group-default");
 });
+
+test("screenshot: checkbox group disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 320 }}>
+      <CheckboxGroup label="Notifications" isDisabled>
+        <Checkbox value="email">Email</Checkbox>
+        <Checkbox value="sms">SMS</Checkbox>
+      </CheckboxGroup>
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("checkbox-group-disabled");
+});

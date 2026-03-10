@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page, userEvent } from "vitest/browser";
 import { DatePicker } from "./DatePicker";
 
 test("renders date input and calendar button", async () => {
@@ -40,4 +40,21 @@ test("screenshot: date picker closed", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("date-picker-closed");
+});
+
+test("opens calendar on button click", async () => {
+  await render(<DatePicker label="Date" />);
+  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
+  await expect.element(page.getByRole("grid")).toBeVisible();
+});
+
+test("screenshot: date picker open", async () => {
+  await render(
+    <div style={{ padding: 8 }}>
+      <DatePicker label="Event date" />
+    </div>,
+  );
+  await userEvent.click(page.getByRole("button", { name: "Open calendar" }));
+  await expect.element(page.getByRole("grid")).toBeVisible();
+  await expect(document.body).toMatchScreenshot("date-picker-open");
 });

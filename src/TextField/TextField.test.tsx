@@ -72,3 +72,12 @@ test("screenshot: text field error state", async () => {
   );
   await expect(container).toMatchScreenshot("text-field-error");
 });
+
+test("screenshot: text field disabled", async () => {
+  const { container } = await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <TextField label="Name" defaultValue="John Doe" isDisabled />
+    </div>,
+  );
+  await expect(container).toMatchScreenshot("text-field-disabled");
+});
