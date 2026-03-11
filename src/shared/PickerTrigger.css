@@ -23,7 +23,7 @@
   font: inherit;
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
-  line-height: 1;
+  line-height: normal;
   color: var(--color-text);
   text-align: left;
   outline: none;
