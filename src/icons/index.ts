@@ -2,6 +2,7 @@ export {
   Calendar,
   Check,
   ChevronDown,
+  CircleHelp,
   ChevronLeft,
   ChevronRight,
   Copy,

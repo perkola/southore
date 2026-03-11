@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Copy, Mail, Search } from "../icons";
+import { CircleHelp, Copy, Mail, Search } from "../icons";
 import { useState } from "react";
 import { fn } from "storybook/test";
 import { Button } from "../Button/Button";
+import { Tooltip } from "../Tooltip/Tooltip";
 import { TextField } from "./TextField";
 
 const meta = {
@@ -96,6 +97,29 @@ export const WithErrorMessage: Story = {
     isInvalid: true,
     errorMessage: "Please enter a valid email address.",
   },
+};
+
+export const WithRichLabel: Story = {
+  render: () => (
+    <TextField
+      label={
+        <>
+          Full name
+          <Tooltip content="Enter your legal name as it appears on your ID.">
+            <Button
+              variant="text"
+              size="small"
+              aria-label="More information about full name"
+              style={{ padding: 0, minWidth: 0, height: "auto", color: "var(--color-text-subtle)" }}
+            >
+              <CircleHelp size={14} />
+            </Button>
+          </Tooltip>
+        </>
+      }
+      placeholder="Jane Smith"
+    />
+  ),
 };
 
 export const Disabled: Story = {

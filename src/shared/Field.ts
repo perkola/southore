@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export interface ValidationResult {
   isInvalid: boolean;
   validationErrors: string[];
@@ -6,7 +8,7 @@ export interface ValidationResult {
 
 export interface FieldProps {
   /** A visible label for the field. */
-  label?: string;
+  label?: ReactNode;
 
   /** A brief description shown below the field. */
   description?: string;
