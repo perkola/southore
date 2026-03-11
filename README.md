@@ -13,6 +13,17 @@ A design system component library built with React 19, TypeScript, and [React Ar
 - Styled with CSS custom properties (design tokens)
 - Tree-shakeable ES module build
 
+## Installation
+
+```bash
+npm install southore
+```
+
+```tsx
+import { Button } from "southore";
+import "southore/styles";
+```
+
 ## Development
 
 ```bash
@@ -27,4 +38,16 @@ npm run build
 
 # Run linter
 npm run lint
+
+# Run all tests
+npm run test
+
+# Run unit tests only
+npm run test:unit
+
+# Run visual screenshot tests
+npm run test:visual
+
+# Update visual baselines after intentional changes
+npm run test:update
 ```
