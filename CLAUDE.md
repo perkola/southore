@@ -7,9 +7,13 @@ Design system component library built with React 19, TypeScript, Vite 7 (via rol
 - `npm run storybook` — start Storybook dev server on port 6006
 - `npm run build` — typecheck and build the library
 - `npm run lint` — run ESLint
-- `npm run test` — run component tests (light + dark mode)
-- `npm run test:watch` — run component tests in watch mode
-- `npm run test:coverage` — run component tests with coverage
+- `npm run test` — run all tests (unit + visual, light + dark)
+- `npm run test:unit` — run unit/interaction tests only
+- `npm run test:visual` — run visual screenshot tests (light + dark)
+- `npm run test:update` — update visual screenshot baselines
+- `npm run test:watch` — watch unit tests
+- `npm run test:watch:visual` — watch visual tests
+- `npm run test:coverage` — run unit tests with coverage
 
 **Always run `npm run build && npm run lint && npm run test` after making changes.**
 
@@ -23,8 +27,9 @@ src/
     Button.tsx          # Component implementation
     Button.css          # Component styles
     Button.stories.tsx  # Storybook stories
-    Button.test.tsx     # Vitest browser tests
-    __screenshots__/    # Visual test reference screenshots (macOS only)
+    Button.test.tsx         # Unit/interaction tests
+    Button.visual.test.tsx  # Visual screenshot tests
+    __screenshots__/        # Visual test reference screenshots (macOS only)
   shared/
     Field.ts            # Shared field/label/description/error types
     Field.css           # Shared field layout styles
@@ -37,7 +42,7 @@ src/
 ### Adding a new component
 
 1. Create `src/ComponentName/` folder
-2. Add `ComponentName.tsx`, `ComponentName.css`, `ComponentName.stories.tsx`, `ComponentName.test.tsx`
+2. Add `ComponentName.tsx`, `ComponentName.css`, `ComponentName.stories.tsx`, `ComponentName.test.tsx`, `ComponentName.visual.test.tsx`
 3. Export from `src/index.ts`
 
 ## Icons
@@ -55,9 +60,9 @@ To add an icon: export it from `src/icons/index.ts`, then add it to the `iconMap
 
 ## Visual Testing
 
-Each component test file includes screenshot tests for every meaningful visual state: default, key variants, open/expanded (for overlays), error state (for field components), and on/off (for toggles). Name them with a `screenshot:` prefix.
+Screenshot tests live in `Component.visual.test.tsx`, separate from unit/interaction tests in `Component.test.tsx`. Each visual test file covers every meaningful visual state: default, key variants, open/expanded (for overlays), error state (for field components), and on/off (for toggles).
 
-Both light and dark mode screenshots are captured automatically — the `components-dark` test project runs all `screenshot:` tests with dark mode forced, storing references as `{name}-dark-{browser}-{platform}.png` alongside the light ones. No extra test code needed.
+Both light and dark mode screenshots are captured automatically — the `visual-dark` test project runs all visual tests with dark mode forced, storing references as `{name}-dark-{browser}-{platform}.png` alongside the light ones. No extra test code needed.
 
 When making intentional visual changes, update references with `npm run test:update`.
 
