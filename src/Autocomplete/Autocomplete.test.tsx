@@ -42,6 +42,33 @@ test("compound Autocomplete.Item renders items", async () => {
     .toBeVisible();
 });
 
+test("renders description", async () => {
+  await render(
+    <Autocomplete label="Country" placeholder="Pick" description="Start typing to filter">
+      <Autocomplete.Item id="us">United States</Autocomplete.Item>
+    </Autocomplete>,
+  );
+  await expect.element(page.getByText("Start typing to filter")).toBeVisible();
+});
+
+test("renders error message when invalid", async () => {
+  await render(
+    <Autocomplete label="Country" placeholder="Pick" isInvalid errorMessage="Please select a country">
+      <Autocomplete.Item id="us">United States</Autocomplete.Item>
+    </Autocomplete>,
+  );
+  await expect.element(page.getByText("Please select a country")).toBeVisible();
+});
+
+test("renders without label when aria-label is used", async () => {
+  await render(
+    <Autocomplete aria-label="Country" placeholder="Pick">
+      <Autocomplete.Item id="us">United States</Autocomplete.Item>
+    </Autocomplete>,
+  );
+  await expect.element(page.getByRole("button", { name: "Country" })).toBeVisible();
+});
+
 test("filters items case-insensitively", async () => {
   await render(
     <Autocomplete label="Fruit" placeholder="Pick">

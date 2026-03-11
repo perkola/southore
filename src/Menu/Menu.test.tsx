@@ -40,6 +40,23 @@ test("Section renders without header", async () => {
   await expect.element(page.getByText("Actions")).not.toBeInTheDocument();
 });
 
+test("Separator renders between items", async () => {
+  await render(
+    <Menu.Trigger>
+      <Button>Open</Button>
+      <Popover>
+        <Menu>
+          <Menu.Item id="cut">Cut</Menu.Item>
+          <Menu.Separator />
+          <Menu.Item id="paste">Paste</Menu.Item>
+        </Menu>
+      </Popover>
+    </Menu.Trigger>,
+  );
+  await page.getByRole("button", { name: "Open" }).click();
+  await expect.element(page.getByRole("separator")).toBeVisible();
+});
+
 test("compound pattern renders items", async () => {
   await render(
     <Menu.Trigger>

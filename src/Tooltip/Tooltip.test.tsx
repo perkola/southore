@@ -26,6 +26,16 @@ test("tooltip is hidden by default", async () => {
     .not.toBeInTheDocument();
 });
 
+test("disabled tooltip does not appear on focus", async () => {
+  await render(
+    <Tooltip content="Help text" isDisabled>
+      <Button>Focus me</Button>
+    </Tooltip>,
+  );
+  await userEvent.tab();
+  await expect.element(page.getByRole("tooltip")).not.toBeInTheDocument();
+});
+
 test("tooltip respects placement", async () => {
   await render(
     <Tooltip content="Bottom tooltip" placement="bottom">

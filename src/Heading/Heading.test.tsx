@@ -17,3 +17,10 @@ test("renders children", async () => {
   await expect.element(getByText("Hello world")).toBeVisible();
 });
 
+test("merges custom className with heading class", async () => {
+  const { getByRole } = await render(<Heading className="custom">Title</Heading>);
+  const el = getByRole("heading").element() as HTMLElement;
+  expect(el.className).toContain("heading");
+  expect(el.className).toContain("custom");
+});
+

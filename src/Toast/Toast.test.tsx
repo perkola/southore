@@ -41,6 +41,13 @@ test("timeout: null passes undefined to queue (no auto-dismiss)", () => {
   toastQueue.close(key);
 });
 
+test("renders toast region with custom aria-label", async () => {
+  await render(<GlobalToastRegion aria-label="Alerts" />);
+  const key = addToast("Test", { timeout: null });
+  await expect.element(page.getByRole("region", { name: "Alerts" })).toBeVisible();
+  toastQueue.close(key);
+});
+
 test("toast is visible after addToast", async () => {
   await render(<GlobalToastRegion />);
   const key = addToast("Hello world", { timeout: null });

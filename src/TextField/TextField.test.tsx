@@ -42,3 +42,13 @@ test("renders description", async () => {
   await expect.element(getByText("We'll never share your email")).toBeVisible();
 });
 
+test("renders without label when aria-label is used", async () => {
+  await render(<TextField aria-label="Name" />);
+  await expect.element(page.getByRole("textbox", { name: "Name" })).toBeVisible();
+});
+
+test("renders error message when invalid", async () => {
+  await render(<TextField label="Email" isInvalid errorMessage="Email is required" />);
+  await expect.element(page.getByText("Email is required")).toBeVisible();
+});
+

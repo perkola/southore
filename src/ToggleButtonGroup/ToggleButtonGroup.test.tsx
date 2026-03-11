@@ -60,6 +60,26 @@ test("multiple selection allows selecting multiple buttons", async () => {
   await expect.element(page.getByText("Italic")).toHaveAttribute("data-selected");
 });
 
+test("applies small size via data-size attribute", async () => {
+  await render(
+    <ToggleButtonGroup size="small" selectionMode="single" defaultSelectedKeys={["a"]}>
+      <ToggleButton id="a">Option A</ToggleButton>
+    </ToggleButtonGroup>,
+  );
+  const group = page.getByRole("radiogroup");
+  await expect.element(group).toHaveAttribute("data-size", "small");
+});
+
+test("defaults to medium size", async () => {
+  await render(
+    <ToggleButtonGroup selectionMode="single" defaultSelectedKeys={["a"]}>
+      <ToggleButton id="a">Option A</ToggleButton>
+    </ToggleButtonGroup>,
+  );
+  const group = page.getByRole("radiogroup");
+  await expect.element(group).toHaveAttribute("data-size", "medium");
+});
+
 test("disabled button has data-disabled attribute", async () => {
   await render(
     <ToggleButtonGroup selectionMode="single" defaultSelectedKeys={["a"]}>

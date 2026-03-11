@@ -24,6 +24,11 @@ test("renders without visible label when aria-label is used", async () => {
   await expect.element(page.getByRole("group", { name: "Date" })).toBeVisible();
 });
 
+test("renders error message when invalid", async () => {
+  await render(<DatePicker label="Date" isInvalid errorMessage="Date is required" />);
+  await expect.element(page.getByText("Date is required")).toBeVisible();
+});
+
 test("opens calendar on button click", async () => {
   await render(<DatePicker label="Date" />);
   await userEvent.click(page.getByRole("button", { name: "Open calendar" }));

@@ -33,6 +33,15 @@ test("renders description", async () => {
   await expect.element(page.getByText("Choose how to receive updates.")).toBeVisible();
 });
 
+test("renders without label when aria-label is used", async () => {
+  await render(
+    <CheckboxGroup aria-label="Notifications">
+      <Checkbox value="email">Email</Checkbox>
+    </CheckboxGroup>,
+  );
+  await expect.element(page.getByRole("group", { name: "Notifications" })).toBeVisible();
+});
+
 test("renders error message when invalid", async () => {
   await render(
     <CheckboxGroup label="Notifications" isInvalid errorMessage="Select at least one.">

@@ -31,6 +31,33 @@ test("renders without adornment when none provided", async () => {
   await expect.element(getByRole("button", { name: "Color" })).toBeVisible();
 });
 
+test("renders description", async () => {
+  await render(
+    <Select label="Color" placeholder="Pick" description="Choose a color">
+      <Select.Item id="red">Red</Select.Item>
+    </Select>,
+  );
+  await expect.element(page.getByText("Choose a color")).toBeVisible();
+});
+
+test("renders error message when invalid", async () => {
+  await render(
+    <Select label="Color" placeholder="Pick" isInvalid errorMessage="Please select a color">
+      <Select.Item id="red">Red</Select.Item>
+    </Select>,
+  );
+  await expect.element(page.getByText("Please select a color")).toBeVisible();
+});
+
+test("renders without label when aria-label is used", async () => {
+  await render(
+    <Select aria-label="Color" placeholder="Pick">
+      <Select.Item id="red">Red</Select.Item>
+    </Select>,
+  );
+  await expect.element(page.getByRole("button", { name: "Color" })).toBeVisible();
+});
+
 test("compound Select.Item renders items", async () => {
   await render(
     <Select label="Fruit" placeholder="Pick">

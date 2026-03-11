@@ -27,6 +27,11 @@ test("renders error message when invalid", async () => {
   await expect.element(page.getByText("Comment is required.")).toBeVisible();
 });
 
+test("renders without label when aria-label is used", async () => {
+  await render(<TextArea aria-label="Comment" />);
+  await expect.element(page.getByRole("textbox", { name: "Comment" })).toBeVisible();
+});
+
 test("rows attribute is applied", async () => {
   await render(<TextArea label="Comment" rows={6} />);
   await expect

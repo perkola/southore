@@ -25,3 +25,28 @@ test("renders children", async () => {
   await expect.element(getByText("Beta")).toBeVisible();
 });
 
+test("applies gap style when specified", async () => {
+  const { getByText } = await render(<Stack gap={4}>Item</Stack>);
+  await expect.element(getByText("Item")).toBeVisible();
+  const el = getByText("Item").element() as HTMLElement;
+  expect(el.style.gap).toBe("var(--spacing-4)");
+});
+
+test("applies align style when specified", async () => {
+  const { getByText } = await render(<Stack align="center">Item</Stack>);
+  const el = getByText("Item").element() as HTMLElement;
+  expect(el.style.alignItems).toBe("center");
+});
+
+test("applies justify style when specified", async () => {
+  const { getByText } = await render(<Stack justify="between">Item</Stack>);
+  const el = getByText("Item").element() as HTMLElement;
+  expect(el.style.justifyContent).toBe("space-between");
+});
+
+test("applies flex-wrap when wrap is true", async () => {
+  const { getByText } = await render(<Stack wrap>Item</Stack>);
+  const el = getByText("Item").element() as HTMLElement;
+  expect(el.style.flexWrap).toBe("wrap");
+});
+

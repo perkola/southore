@@ -41,6 +41,15 @@ test("renders error message when invalid", async () => {
   await expect.element(page.getByText("Please select a sport.")).toBeVisible();
 });
 
+test("renders without label when aria-label is used", async () => {
+  await render(
+    <RadioGroup aria-label="Favorite sport">
+      <Radio value="soccer">Soccer</Radio>
+    </RadioGroup>,
+  );
+  await expect.element(page.getByRole("radiogroup", { name: "Favorite sport" })).toBeVisible();
+});
+
 test("defaultValue pre-selects a radio", async () => {
   await render(
     <RadioGroup label="Favorite sport" defaultValue="baseball">

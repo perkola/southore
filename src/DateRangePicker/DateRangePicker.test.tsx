@@ -28,6 +28,11 @@ test("renders without visible label when aria-label is used", async () => {
   await expect.element(page.getByRole("group", { name: "Date range" })).toBeVisible();
 });
 
+test("renders error message when invalid", async () => {
+  await render(<DateRangePicker label="Date range" isInvalid errorMessage="Date range is required" />);
+  await expect.element(page.getByText("Date range is required")).toBeVisible();
+});
+
 test("opens calendar on button click", async () => {
   await render(<DateRangePicker label="Date range" />);
   await userEvent.click(page.getByRole("button", { name: "Open calendar" }));

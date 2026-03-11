@@ -26,3 +26,18 @@ test("renders children", async () => {
   await expect.element(getByText("Hello")).toBeVisible();
 });
 
+test("applies green color", async () => {
+  const { getByText } = await render(<Badge color="green">OK</Badge>);
+  await expect.element(getByText("OK")).toHaveAttribute("data-color", "green");
+});
+
+test("applies amber color", async () => {
+  const { getByText } = await render(<Badge color="amber">Warn</Badge>);
+  await expect.element(getByText("Warn")).toHaveAttribute("data-color", "amber");
+});
+
+test("applies blue color", async () => {
+  const { getByText } = await render(<Badge color="blue">Info</Badge>);
+  await expect.element(getByText("Info")).toHaveAttribute("data-color", "blue");
+});
+
