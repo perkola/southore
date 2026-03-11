@@ -64,3 +64,18 @@ test("select open", async () => {
   await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
   await expect(document.body).toMatchScreenshot("select-open");
 });
+
+test("select open with selection", async () => {
+  await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Select label="Favorite fruit" defaultSelectedKey="banana">
+        <Select.Item id="apple">Apple</Select.Item>
+        <Select.Item id="banana">Banana</Select.Item>
+        <Select.Item id="cherry">Cherry</Select.Item>
+      </Select>
+    </div>,
+  );
+  await page.getByRole("button", { name: "Banana" }).click();
+  await expect.element(page.getByRole("option", { name: "Banana" })).toBeVisible();
+  await expect(document.body).toMatchScreenshot("select-open-with-selection");
+});

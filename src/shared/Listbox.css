@@ -51,10 +51,13 @@
   color: var(--color-text-subtle);
 }
 
-.listbox .react-aria-ListBoxItem[data-selected]::before {
-  content: '✓';
+.listbox .react-aria-ListBoxItem .listbox-check {
   position: absolute;
   left: var(--spacing-2);
-  font-size: 0.75em;
   color: var(--color-primary);
+  opacity: 0;
+}
+
+.listbox .react-aria-ListBoxItem[data-selected] .listbox-check {
+  opacity: 1;
 }

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
   Calendar,
+  Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -22,6 +23,7 @@ import {
 
 const iconMap = {
   Calendar,
+  Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,

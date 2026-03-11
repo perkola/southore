@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ChevronDown, Search, X } from "../icons";
+import { Check, ChevronDown, Search, X } from "../icons";
 import {
   Select as RACSelect,
   type SelectProps as RACSelectProps,
@@ -86,8 +86,18 @@ function AutocompleteRoot<T extends object>({
 export type AutocompleteItemProps<T extends object = object> =
   ListBoxItemProps<T>;
 
-function Item<T extends object>(props: AutocompleteItemProps<T>) {
-  return <ListBoxItem {...props} />;
+function Item<T extends object>({ children, ...props }: AutocompleteItemProps<T>) {
+  const textValue = props.textValue ?? (typeof children === "string" ? children : undefined);
+  return (
+    <ListBoxItem textValue={textValue} {...props}>
+      {(renderProps) => (
+        <>
+          <Check size={14} aria-hidden className="listbox-check" />
+          {typeof children === "function" ? children(renderProps) : children}
+        </>
+      )}
+    </ListBoxItem>
+  );
 }
 
 // Set display names for dev tools

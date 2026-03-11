@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.select-trigger .listbox-check {
+  display: none;
+}
+
 .select-trigger {
   padding: 0 var(--spacing-3);
   width: 100%;

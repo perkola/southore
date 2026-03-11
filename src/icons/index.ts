@@ -1,5 +1,6 @@
 export {
   Calendar,
+  Check,
   ChevronDown,
   ChevronLeft,
   ChevronRight,

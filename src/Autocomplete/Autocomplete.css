@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.autocomplete-trigger .listbox-check {
+  display: none;
+}
+
 .autocomplete-trigger {
   padding: 0 var(--spacing-3);
   width: 100%;

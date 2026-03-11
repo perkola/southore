@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { ChevronDown } from "../icons";
+import { Check, ChevronDown } from "../icons";
 import {
   Select as RACSelect,
   type SelectProps as RACSelectProps,
@@ -56,8 +56,18 @@ function SelectRoot<T extends object>({
 
 export type SelectItemProps<T extends object = object> = ListBoxItemProps<T>;
 
-function Item<T extends object>(props: SelectItemProps<T>) {
-  return <ListBoxItem {...props} />;
+function Item<T extends object>({ children, ...props }: SelectItemProps<T>) {
+  const textValue = props.textValue ?? (typeof children === "string" ? children : undefined);
+  return (
+    <ListBoxItem textValue={textValue} {...props}>
+      {(renderProps) => (
+        <>
+          <Check size={14} aria-hidden className="listbox-check" />
+          {typeof children === "function" ? children(renderProps) : children}
+        </>
+      )}
+    </ListBoxItem>
+  );
 }
 
 SelectRoot.displayName = "Select";

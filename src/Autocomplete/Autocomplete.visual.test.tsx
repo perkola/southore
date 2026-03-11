@@ -68,3 +68,18 @@ test("autocomplete filtered", async () => {
   await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
   await expect(page.getByRole("listbox")).toMatchScreenshot("autocomplete-filtered");
 });
+
+test("autocomplete open with selection", async () => {
+  await render(
+    <div style={{ padding: 8, width: 300 }}>
+      <Autocomplete label="Fruit" defaultSelectedKey="banana">
+        <Autocomplete.Item id="apple">Apple</Autocomplete.Item>
+        <Autocomplete.Item id="banana">Banana</Autocomplete.Item>
+        <Autocomplete.Item id="cherry">Cherry</Autocomplete.Item>
+      </Autocomplete>
+    </div>,
+  );
+  await page.getByRole("button", { name: "Banana" }).click();
+  await expect.element(page.getByRole("option", { name: "Banana" })).toBeVisible();
+  await expect(document.body).toMatchScreenshot("autocomplete-open-with-selection");
+});

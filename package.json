@@ -31,7 +31,7 @@
     "test": "vitest run --project unit && vitest run --project visual && vitest run --project visual-dark",
     "test:unit": "vitest run --project unit",
     "test:visual": "vitest run --project visual && vitest run --project visual-dark",
-    "test:update": "vitest run --project visual -u && vitest run --project visual-dark -u",
+    "test:update": "vitest run --project visual --project visual-dark -u",
     "test:watch": "vitest --project unit",
     "test:watch:visual": "vitest --project visual --project visual-dark",
     "test:coverage": "vitest run --project unit --coverage",
