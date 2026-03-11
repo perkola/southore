@@ -115,3 +115,15 @@ export const Disabled: Story = {
     )),
   },
 };
+
+export const WithRichItems: Story = {
+  args: {
+    label: "Assign to",
+    placeholder: "Select user...",
+    children: users.slice(0, 5).map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id} textValue={user.name}>
+        <User size={14} /> {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};

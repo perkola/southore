@@ -139,3 +139,24 @@ export const Disabled: Story = {
     ],
   },
 };
+
+export const WithRichItems: Story = {
+  args: {
+    label: "Language",
+    placeholder: "Select a language",
+    children: [
+      <Select.Item key="en" id="en" textValue="English">
+        <Globe size={14} /> English
+      </Select.Item>,
+      <Select.Item key="fr" id="fr" textValue="French">
+        <Globe size={14} /> French
+      </Select.Item>,
+      <Select.Item key="de" id="de" textValue="German">
+        <Globe size={14} /> German
+      </Select.Item>,
+      <Select.Item key="es" id="es" textValue="Spanish">
+        <Globe size={14} /> Spanish
+      </Select.Item>,
+    ],
+  },
+};
