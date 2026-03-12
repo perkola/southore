@@ -115,4 +115,5 @@ CI runs build + lint on all pushes to `main`. Storybook deploys to Vercel automa
 
 - The React Aria MCP server is available for looking up React Aria Components documentation
 - The `/react-aria` agent skill can be used for building components with React Aria
-- **Always consult the Storybook MCP server** (`get-storybook-story-instructions`) before writing or updating stories to get the correct patterns and imports
+- **Always consult the Storybook MCP server** (`get-storybook-story-instructions`) before writing or updating stories to get the correct patterns and imports. Prefer this over reading existing story files when starting a new story from scratch.
+- The **Playwright MCP** can be used alongside Storybook (`http://localhost:6006`) to visually review UI changes before finalizing them. Use it when making significant visual changes to navigate to the relevant story, take screenshots, and confirm the result looks correct. It is also useful for troubleshooting unexpected UI/UX behavior interactively. Story URLs follow the pattern `/story/{component-kebab}--{story-kebab}` (e.g. `http://localhost:6006/?path=/story/datepicker--with-description`).

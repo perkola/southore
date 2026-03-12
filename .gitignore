@@ -29,3 +29,4 @@ storybook-static
 # Test artifacts
 coverage
 .vitest-attachments
+.playwright-mcp
