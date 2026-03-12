@@ -24,6 +24,11 @@
 - Badge green: success (green-700 #0c6532) on green-100 (#d3f5e2) = ~6.2:1 — PASS
 - `--color-text-disabled` (gray-400 #9494a2) on white: ~3.0:1 — FAILS AA 4.5:1 for normal text (acceptable for disabled per WCAG exception)
 - Button small (24px height): below 44px AAA target but meets 24px WCAG 2.5.8 AA minimum
+- Autocomplete tag text (gray-900 #1a1a24) on tag bg (gray-50 #f7f7f8): ~17:1 — PASS
+- Autocomplete tag border light (`--color-border-muted` = gray-300 #b8b8c2) against gray-50 #f7f7f8: ~1.8:1 — FAILS 3:1 UI component boundary
+- Autocomplete tag border dark (gray-600 #575766) against gray-900 #1a1a24: ~3.4:1 — PASS
+- Autocomplete tag hover border light (gray-400 #9494a2) against bg-muted (gray-100 #ededf0): ~2.4:1 — FAILS 3:1
+- `--color-text-subtle` (gray-600 #575766) on gray-50 (tag bg): ~6.4:1 — PASS (tag remove icon)
 
 ## Known Issues (status as of re-audit 2026-03-08)
 See `audit-2026-03-08.md` for full original findings.
@@ -39,6 +44,11 @@ See `audit-2026-03-08.md` for full original findings.
 
 ### Open Issues
 1. `DateFilter` trigger button `aria-controls` is missing linking trigger to popover
+2. Autocomplete multi-select tag chip border (light mode) fails 3:1 UI boundary contrast — `--color-border-muted` (gray-300 #b8b8c2) on gray-50 is ~1.8:1
+3. Autocomplete multi-select tag remove button is 16×16px — fails WCAG 2.5.8 AA 24×24 minimum
+4. Autocomplete multi-select Group is missing `aria-label` — RAC Group renders `role="group"` which requires an accessible name
+5. Autocomplete multi-select `[data-focus-visible-within]` is not a RAC-managed data attribute — RAC sets `[data-focus-within]`; `[data-focus-visible-within]` is a custom CSS property that must be set manually or via JS, currently has no source
+6. Autocomplete multi-select disabled state: `Group` does not receive `isDisabled` from `RACSelect` context — `[data-disabled]` is not applied to the trigger, so disabled border/cursor styles silently fail
 
 ### Warnings (from original audit)
 1. ~~Missing `prefers-reduced-motion` guards~~ — FIXED (2026-03-08): guards added to `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css`
