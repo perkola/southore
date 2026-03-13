@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import React, { useRef, useId, useState, useEffect, type ReactNode } from "react";
 import { Check, ChevronDown, Search, X } from "../icons";
 import {
   Select as RACSelect,
@@ -15,14 +15,19 @@ import {
   SearchField,
   Input,
   Group,
+  TagGroup,
+  TagList,
+  Tag,
   useFilter,
+  type Key,
 } from "react-aria-components";
 import type { FieldProps } from "../shared/Field";
 import { Popover } from "../Popover/Popover";
 import "./Autocomplete.css";
 
 export interface AutocompleteProps<T extends object>
-  extends Omit<RACSelectProps<T>, "children">, FieldProps {
+  extends Omit<RACSelectProps<T, "single" | "multiple">, "children">,
+    FieldProps {
   /** The children (Autocomplete.Item elements). */
   children: React.ReactNode;
 
@@ -32,7 +37,7 @@ export interface AutocompleteProps<T extends object>
   /** Placeholder text for the search field inside the popover. */
   searchPlaceholder?: string;
 
-  /** Content rendered before the value (e.g. an icon). */
+  /** Content rendered before the value in single mode (e.g. an icon). */
   startAdornment?: ReactNode;
 }
 
@@ -44,23 +49,111 @@ function AutocompleteRoot<T extends object>({
   placeholder,
   searchPlaceholder = "Search...",
   startAdornment,
+  selectionMode,
+  isDisabled,
   ...props
 }: AutocompleteProps<T>) {
+  const ariaLabel = props["aria-label"];
   const { contains } = useFilter({ sensitivity: "base" });
+  const triggerRef = useRef<HTMLDivElement>(null);
+  const labelId = useId();
+  const isMultiple = selectionMode === "multiple";
+  const [triggerWidth, setTriggerWidth] = useState(0);
+
+  useEffect(() => {
+    if (!isMultiple || !triggerRef.current) return;
+    const el = triggerRef.current;
+    const observer = new ResizeObserver(() => setTriggerWidth(el.offsetWidth));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMultiple]);
 
   return (
-    <RACSelect placeholder={placeholder} {...props}>
-      {label && <Label>{label}</Label>}
-      <Button className="picker-trigger autocomplete-trigger">
-        {startAdornment && (
-          <span className="autocomplete-adornment">{startAdornment}</span>
-        )}
-        <SelectValue />
-        <ChevronDown size={16} aria-hidden />
-      </Button>
+    <RACSelect placeholder={placeholder} selectionMode={selectionMode} isDisabled={isDisabled} {...props}>
+      {label && <Label id={labelId}>{label}</Label>}
+
+      {isMultiple ? (
+        <Group
+          ref={triggerRef}
+          className="picker-trigger autocomplete-multi-trigger"
+          aria-labelledby={label ? labelId : undefined}
+          aria-label={!label ? ariaLabel : undefined}
+          isDisabled={isDisabled}
+          onClick={(e) => {
+            const target = e.target as HTMLElement;
+            if (target.closest(".autocomplete-tag-remove")) return;
+            if (target.closest(".autocomplete-multi-chevron")) return;
+            (e.currentTarget.querySelector(".autocomplete-multi-chevron") as HTMLButtonElement)?.click();
+          }}
+        >
+          <SelectValue<T>>
+            {({ isPlaceholder, state }) => {
+              if (isPlaceholder) {
+                return (
+                  <span className="autocomplete-multi-placeholder">{placeholder}</span>
+                );
+              }
+              const items = state.selectedItems.map((node) => ({
+                id: node.key,
+                label: node.textValue,
+              }));
+              return (
+                <TagGroup
+                  aria-label="Selected items"
+                  onRemove={(keys) => {
+                    if (isDisabled) return;
+                    state.setValue(
+                      (state.value as Key[]).filter((k) => !keys.has(k))
+                    );
+                  }}
+                >
+                  <TagList items={items} className="autocomplete-tag-list">
+                    {(item) => (
+                      <Tag
+                        id={item.id}
+                        textValue={item.label}
+                        className="autocomplete-tag"
+                        isDisabled={isDisabled}
+                      >
+                        {item.label}
+                        <Button
+                          slot="remove"
+                          className="autocomplete-tag-remove"
+                          aria-label={`Remove ${item.label}`}
+                        >
+                          <X size={10} aria-hidden />
+                        </Button>
+                      </Tag>
+                    )}
+                  </TagList>
+                </TagGroup>
+              );
+            }}
+          </SelectValue>
+          <Button className="autocomplete-multi-chevron" aria-label="Open" isDisabled={isDisabled}>
+            <ChevronDown size={16} aria-hidden />
+          </Button>
+        </Group>
+      ) : (
+        <Button className="picker-trigger autocomplete-trigger">
+          {startAdornment && (
+            <span className="autocomplete-adornment">{startAdornment}</span>
+          )}
+          <SelectValue />
+          <ChevronDown size={16} aria-hidden />
+        </Button>
+      )}
+
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
-      <Popover className="autocomplete-popover">
+
+      <Popover
+        className="autocomplete-popover"
+        {...(isMultiple && {
+          triggerRef,
+          style: { "--trigger-width": `${triggerWidth}px` } as React.CSSProperties,
+        })}
+      >
         <RACAutocomplete filter={contains}>
           <SearchField
             aria-label="Search"
@@ -75,7 +168,14 @@ function AutocompleteRoot<T extends object>({
               </Button>
             </Group>
           </SearchField>
-          <ListBox className="listbox">{children}</ListBox>
+          <ListBox
+            className="listbox"
+            renderEmptyState={() => (
+              <span className="autocomplete-empty">No results found</span>
+            )}
+          >
+            {children}
+          </ListBox>
         </RACAutocomplete>
       </Popover>
     </RACSelect>
@@ -87,7 +187,8 @@ export type AutocompleteItemProps<T extends object = object> =
   ListBoxItemProps<T>;
 
 function Item<T extends object>({ children, ...props }: AutocompleteItemProps<T>) {
-  const textValue = props.textValue ?? (typeof children === "string" ? children : undefined);
+  const textValue =
+    props.textValue ?? (typeof children === "string" ? children : undefined);
   return (
     <ListBoxItem textValue={textValue} {...props}>
       {(renderProps) => (
@@ -100,11 +201,7 @@ function Item<T extends object>({ children, ...props }: AutocompleteItemProps<T>
   );
 }
 
-// Set display names for dev tools
 AutocompleteRoot.displayName = "Autocomplete";
 Item.displayName = "Autocomplete.Item";
 
-// Compound component
-export const Autocomplete = Object.assign(AutocompleteRoot, {
-  Item,
-});
+export const Autocomplete = Object.assign(AutocompleteRoot, { Item });

@@ -127,3 +127,59 @@ export const WithRichItems: Story = {
     )),
   },
 };
+
+export const MultiSelect: Story = {
+  args: {
+    label: "Assign to",
+    placeholder: "Select users...",
+    selectionMode: "multiple",
+    children: users.map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
+
+export const MultiSelectWithDefaultValue: Story = {
+  args: {
+    label: "Reviewers",
+    placeholder: "Select reviewers...",
+    selectionMode: "multiple",
+    defaultValue: ["alice", "charlie"],
+    children: users.map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
+
+export const MultiSelectDisabled: Story = {
+  args: {
+    label: "Assign to",
+    placeholder: "Select users...",
+    selectionMode: "multiple",
+    isDisabled: true,
+    children: users.slice(0, 4).map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
+
+export const MultiSelectInvalid: Story = {
+  args: {
+    label: "Reviewers",
+    placeholder: "Select reviewers...",
+    selectionMode: "multiple",
+    isInvalid: true,
+    errorMessage: "Please select at least one reviewer",
+    children: users.slice(0, 4).map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
