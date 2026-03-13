@@ -19,7 +19,7 @@ export default defineConfig(({ command }) => ({
       formats: ['es'],
       fileName: 'index',
     },
-    rollupOptions: {
+    rolldownOptions: {
       external: ['react', 'react-dom', 'react/jsx-runtime', 'react-aria-components', 'lucide-react'],
     },
   },
