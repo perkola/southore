@@ -1,4 +1,4 @@
-import { useRef, useId, type ReactNode } from "react";
+import React, { useRef, useId, useState, useEffect, type ReactNode } from "react";
 import { Check, ChevronDown, Search, X } from "../icons";
 import {
   Select as RACSelect,
@@ -53,10 +53,20 @@ function AutocompleteRoot<T extends object>({
   isDisabled,
   ...props
 }: AutocompleteProps<T>) {
+  const ariaLabel = props["aria-label"];
   const { contains } = useFilter({ sensitivity: "base" });
   const triggerRef = useRef<HTMLDivElement>(null);
   const labelId = useId();
   const isMultiple = selectionMode === "multiple";
+  const [triggerWidth, setTriggerWidth] = useState(0);
+
+  useEffect(() => {
+    if (!isMultiple || !triggerRef.current) return;
+    const el = triggerRef.current;
+    const observer = new ResizeObserver(() => setTriggerWidth(el.offsetWidth));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [isMultiple]);
 
   return (
     <RACSelect placeholder={placeholder} selectionMode={selectionMode} isDisabled={isDisabled} {...props}>
@@ -67,6 +77,7 @@ function AutocompleteRoot<T extends object>({
           ref={triggerRef}
           className="picker-trigger autocomplete-multi-trigger"
           aria-labelledby={label ? labelId : undefined}
+          aria-label={!label ? ariaLabel : undefined}
           isDisabled={isDisabled}
           onClick={(e) => {
             const target = e.target as HTMLElement;
@@ -90,6 +101,7 @@ function AutocompleteRoot<T extends object>({
                 <TagGroup
                   aria-label="Selected items"
                   onRemove={(keys) => {
+                    if (isDisabled) return;
                     state.setValue(
                       (state.value as Key[]).filter((k) => !keys.has(k))
                     );
@@ -101,6 +113,7 @@ function AutocompleteRoot<T extends object>({
                         id={item.id}
                         textValue={item.label}
                         className="autocomplete-tag"
+                        isDisabled={isDisabled}
                       >
                         {item.label}
                         <Button
@@ -117,7 +130,7 @@ function AutocompleteRoot<T extends object>({
               );
             }}
           </SelectValue>
-          <Button className="autocomplete-multi-chevron" aria-label="Open">
+          <Button className="autocomplete-multi-chevron" aria-label="Open" isDisabled={isDisabled}>
             <ChevronDown size={16} aria-hidden />
           </Button>
         </Group>
@@ -136,7 +149,10 @@ function AutocompleteRoot<T extends object>({
 
       <Popover
         className="autocomplete-popover"
-        {...(isMultiple && { triggerRef })}
+        {...(isMultiple && {
+          triggerRef,
+          style: { "--trigger-width": `${triggerWidth}px` } as React.CSSProperties,
+        })}
       >
         <RACAutocomplete filter={contains}>
           <SearchField

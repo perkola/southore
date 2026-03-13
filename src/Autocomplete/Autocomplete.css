@@ -52,7 +52,7 @@
   /* Override fixed height from .picker-trigger — grow with wrapped tags */
   height: auto;
   min-height: var(--spacing-8);
-  padding: 2px var(--spacing-1) 2px var(--spacing-1-5);
+  padding: 2px calc(var(--spacing-3) - 2px) 2px var(--spacing-1-5);
   width: 100%;
   align-items: center;
   flex-wrap: wrap;
@@ -60,7 +60,13 @@
   cursor: pointer;
 }
 
-/* Container focus ring only when the open button is focused */
+/* Suppress ring when React Aria propagates [data-focus-visible] from children to the Group */
+.autocomplete-multi-trigger[data-focus-visible] {
+  outline: none;
+  border-color: var(--color-border-muted);
+}
+
+/* Container focus ring only when the open button is focused (more specific, wins over above) */
 .autocomplete-multi-trigger:has(.autocomplete-multi-chevron[data-focus-visible]) {
   border-color: var(--color-primary);
   outline: 2px solid var(--color-focus-ring);
@@ -74,6 +80,7 @@
 }
 
 .autocomplete-multi-placeholder {
+  padding-left: var(--spacing-1-5);
   color: var(--color-text-subtle);
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
@@ -94,7 +101,7 @@
   align-items: center;
   gap: var(--spacing-1);
   padding: 1px var(--spacing-1-5) 1px var(--spacing-2);
-  border: 1px solid light-dark(var(--color-gray-400), var(--color-gray-600));
+  border: 1px solid light-dark(var(--color-gray-500), var(--color-gray-500));
   border-radius: var(--radius-full);
   background: var(--color-bg-subtle);
   font-family: system-ui, sans-serif;
@@ -107,12 +114,24 @@
 
 .autocomplete-tag[data-hovered] {
   background: var(--color-bg-muted);
-  border-color: light-dark(var(--color-gray-500), var(--color-gray-400));
+  border-color: light-dark(var(--color-gray-600), var(--color-gray-400));
 }
 
 .autocomplete-tag[data-focus-visible] {
   outline: 2px solid var(--color-focus-ring);
   outline-offset: -2px;
+}
+
+.autocomplete-multi-trigger[data-disabled] .autocomplete-tag {
+  color: var(--color-text-subtle);
+  border-color: var(--color-border);
+  background: var(--color-bg-muted);
+}
+
+.autocomplete-multi-trigger[data-disabled] .autocomplete-tag-remove {
+  color: var(--color-text-subtle);
+  cursor: default;
+  pointer-events: none;
 }
 
 .autocomplete-tag-remove {
@@ -124,13 +143,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-6);
-  height: var(--spacing-6);
+  position: relative;
+  width: var(--spacing-5);
+  height: var(--spacing-5);
   border-radius: var(--radius-full);
   color: var(--color-text-subtle);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: background 0.1s, color 0.1s;
+}
+
+.autocomplete-tag-remove::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
 }
 
 .autocomplete-tag-remove[data-hovered] {
@@ -173,7 +199,13 @@
 }
 
 .autocomplete-multi-chevron[data-focus-visible] {
-  /* No individual outline — the container border ring serves as the focus indicator */
+  /* Fallback focus indicator for browsers without :has() support */
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 1px;
+}
+
+/* Suppress button outline when the container ring is active (preferred indicator) */
+.autocomplete-multi-trigger:has(.autocomplete-multi-chevron[data-focus-visible]) .autocomplete-multi-chevron {
   outline: none;
 }
 
@@ -238,6 +270,7 @@
   border: none;
   border-radius: var(--radius-sm);
   background: none;
+  position: relative;
   width: var(--spacing-5);
   height: var(--spacing-5);
   display: flex;
@@ -247,6 +280,12 @@
   cursor: pointer;
   transition: background 0.1s, color 0.1s;
   -webkit-tap-highlight-color: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+  }
 
   &[data-hovered] {
     background: var(--color-bg-muted);
@@ -274,4 +313,13 @@
   color: var(--color-text-subtle);
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .autocomplete-tag-remove,
+  .autocomplete-multi-chevron,
+  .autocomplete-clear,
+  .autocomplete-search-input {
+    transition: none;
+  }
 }

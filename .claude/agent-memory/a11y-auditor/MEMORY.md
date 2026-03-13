@@ -25,9 +25,10 @@
 - `--color-text-disabled` (gray-400 #9494a2) on white: ~3.0:1 — FAILS AA 4.5:1 for normal text (acceptable for disabled per WCAG exception)
 - Button small (24px height): below 44px AAA target but meets 24px WCAG 2.5.8 AA minimum
 - Autocomplete tag text (gray-900 #1a1a24) on tag bg (gray-50 #f7f7f8): ~17:1 — PASS
-- Autocomplete tag border light (`--color-border-muted` = gray-300 #b8b8c2) against gray-50 #f7f7f8: ~1.8:1 — FAILS 3:1 UI component boundary
-- Autocomplete tag border dark (gray-600 #575766) against gray-900 #1a1a24: ~3.4:1 — PASS
-- Autocomplete tag hover border light (gray-400 #9494a2) against bg-muted (gray-100 #ededf0): ~2.4:1 — FAILS 3:1
+- Autocomplete tag border light: gray-500 (#717181) on gray-50 (#f7f7f8): 3.98:1 — PASS (fixed 2026-03-13)
+- Autocomplete tag border dark: gray-500 (#717181) on gray-900 (#1a1a24): 3.73:1 — PASS (fixed 2026-03-13)
+- Autocomplete tag hover border light: gray-600 (#575766) on gray-100 (#ededf0): 4.92:1 — PASS
+- Autocomplete tag hover border dark: gray-400 (#9494a2) on gray-800 (#2c2c38): 4.28:1 — PASS
 - `--color-text-subtle` (gray-600 #575766) on gray-50 (tag bg): ~6.4:1 — PASS (tag remove icon)
 
 ## Known Issues (status as of re-audit 2026-03-08)
@@ -42,13 +43,18 @@ See `audit-2026-03-08.md` for full original findings.
 - CRIT-06: Autocomplete clear button `aria-label="Clear search"` + `slot="clear"` — FIXED
 - CRIT-07: Card title renders as `h{n}` via `titleLevel` prop (default h3) — FIXED; CSS resets heading UA styles correctly
 
-### Open Issues
+### Open Issues (updated 2026-03-13, final audit)
 1. `DateFilter` trigger button `aria-controls` is missing linking trigger to popover
-2. Autocomplete multi-select tag chip border (light mode) fails 3:1 UI boundary contrast — `--color-border-muted` (gray-300 #b8b8c2) on gray-50 is ~1.8:1
-3. Autocomplete multi-select tag remove button is 16×16px — fails WCAG 2.5.8 AA 24×24 minimum
-4. Autocomplete multi-select Group is missing `aria-label` — RAC Group renders `role="group"` which requires an accessible name
-5. Autocomplete multi-select `[data-focus-visible-within]` is not a RAC-managed data attribute — RAC sets `[data-focus-within]`; `[data-focus-visible-within]` is a custom CSS property that must be set manually or via JS, currently has no source
-6. Autocomplete multi-select disabled state: `Group` does not receive `isDisabled` from `RACSelect` context — `[data-disabled]` is not applied to the trigger, so disabled border/cursor styles silently fail
+2. ~~Autocomplete tag border light fails 3:1~~ — FIXED
+3. ~~Autocomplete tag remove button 20px~~ — FIXED
+4. ~~Autocomplete Group missing accessible name when `aria-label` used~~ — FIXED
+5. ~~Chevron focus cascade fragile~~ — FIXED
+6. ~~Chevron `isDisabled` missing~~ — FIXED
+7. ~~Clear button 20px~~ — FIXED
+8. ~~TagGroup `isDisabled` missing~~ — FIXED: `isDisabled` on each `<Tag>` + `onRemove` guard — VERIFIED 2026-03-13
+9. ~~Missing `prefers-reduced-motion` on Autocomplete elements~~ — FIXED: all four selectors covered — VERIFIED 2026-03-13
+10. **OPEN (NEW, 2026-03-13)**: Autocomplete disabled multi-trigger — tag pills have no visual disabled state. `.autocomplete-tag[data-disabled]` CSS rule missing. `[data-disabled]` on the outer Group does not cascade to tag color/border/bg. Fix: add `.autocomplete-multi-trigger[data-disabled] .autocomplete-tag` and `.autocomplete-multi-trigger[data-disabled] .autocomplete-tag-remove` CSS rules. WCAG 1.4.1 / 1.3.3.
+11. **OPEN (pre-existing, tracked)**: `.picker-trigger` base transition in `PickerTrigger.css` has no `prefers-reduced-motion` guard — affects Autocomplete single trigger, Select, DateFilter.
 
 ### Warnings (from original audit)
 1. ~~Missing `prefers-reduced-motion` guards~~ — FIXED (2026-03-08): guards added to `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css`
@@ -78,7 +84,7 @@ RAC has two distinct Popover patterns — confusing them leads to false findings
 ## Patterns Done Correctly (skip re-checking)
 - All interactive components use React Aria primitives (no custom ARIA reimplementation)
 - `Breadcrumbs` outer `<nav aria-label>` wrapper is correct — `RACBreadcrumbs` renders an `<ol>`, not a `<nav>`; RAC docs explicitly recommend the consumer add the `<nav>` landmark
-- Focus rings universally use `[data-focus-visible]` (except TextArea — see issues)
+- Focus rings universally use `[data-focus-visible]` — TextArea fix confirmed 2026-03-08
 - Disabled styles use `[data-disabled]`
 - `FieldError` used for all form field errors (connected via React Aria automatically)
 - `Label` + `Text[slot=description]` + `FieldError` pattern consistent across all field components

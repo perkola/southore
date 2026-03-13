@@ -53,3 +53,9 @@
     cursor: default;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .picker-trigger {
+    transition: none;
+  }
+}
