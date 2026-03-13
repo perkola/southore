@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Checkbox } from "./Checkbox";
 
@@ -14,9 +14,7 @@ test("is checked when isSelected", async () => {
 
 test("is indeterminate when isIndeterminate", async () => {
   const { getByRole } = await render(<Checkbox isIndeterminate>Accept</Checkbox>);
-  await expect
-    .element(getByRole("checkbox", { name: "Accept" }))
-    .toBePartiallyChecked();
+  await expect.element(getByRole("checkbox", { name: "Accept" })).toBePartiallyChecked();
 });
 
 test("renders children as label", async () => {
@@ -28,4 +26,3 @@ test("renders without children", async () => {
   const { getByRole } = await render(<Checkbox aria-label="Standalone" />);
   await expect.element(getByRole("checkbox", { name: "Standalone" })).toBeVisible();
 });
-

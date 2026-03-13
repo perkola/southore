@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Tabs } from "./Tabs";
 
 function ThreeTabs({ defaultSelectedKey }: { defaultSelectedKey?: string }) {
@@ -37,7 +37,9 @@ test("disabled tab cannot be selected", async () => {
     <Tabs defaultSelectedKey="overview">
       <Tabs.TabList aria-label="Navigation">
         <Tabs.Tab id="overview">Overview</Tabs.Tab>
-        <Tabs.Tab id="settings" isDisabled>Settings</Tabs.Tab>
+        <Tabs.Tab id="settings" isDisabled>
+          Settings
+        </Tabs.Tab>
       </Tabs.TabList>
       <Tabs.TabPanel id="overview">Overview content</Tabs.TabPanel>
       <Tabs.TabPanel id="settings">Settings content</Tabs.TabPanel>
@@ -51,4 +53,3 @@ test("defaultSelectedKey sets initial selection", async () => {
   await render(<ThreeTabs defaultSelectedKey="activity" />);
   await expect.element(page.getByText("Activity content")).toBeVisible();
 });
-

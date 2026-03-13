@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 .heading {
   margin: 0;
@@ -8,9 +8,17 @@
   line-height: 1.25;
 }
 
-h1.heading { font-size: var(--font-size-3xl); } /* 30px */
-h2.heading { font-size: var(--font-size-2xl); } /* 24px */
-h3.heading { font-size: var(--font-size-xl);  } /* 20px */
+h1.heading {
+  font-size: var(--font-size-3xl);
+} /* 30px */
+h2.heading {
+  font-size: var(--font-size-2xl);
+} /* 24px */
+h3.heading {
+  font-size: var(--font-size-xl);
+} /* 20px */
 h4.heading,
 h5.heading,
-h6.heading { font-size: var(--font-size-lg);  } /* 18px */
+h6.heading {
+  font-size: var(--font-size-lg);
+} /* 18px */

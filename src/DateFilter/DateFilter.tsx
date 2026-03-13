@@ -1,19 +1,9 @@
 import { useId, useLayoutEffect, useRef, useState } from "react";
-import {
-  Button as RACButton,
-  Label,
-  ListBox,
-  ListBoxItem,
-  Text,
-} from "react-aria-components";
+import { Button as RACButton, Label, ListBox, ListBoxItem, Text } from "react-aria-components";
 import { RangeCalendar } from "../RangeCalendar/RangeCalendar";
 import { Popover } from "../Popover/Popover";
 import { Calendar as CalendarIcon } from "../icons";
-import {
-  DEFAULT_DATE_PRESETS,
-  type DateFilterValue,
-  type DatePreset,
-} from "../shared/DatePreset";
+import { DEFAULT_DATE_PRESETS, type DateFilterValue, type DatePreset } from "../shared/DatePreset";
 import "./DateFilter.css";
 
 export interface DateFilterProps {
@@ -71,9 +61,7 @@ export function DateFilter({
   const calendarPaneRef = useRef<HTMLDivElement>(null);
   const presetWrapperRef = useRef<HTMLDivElement>(null);
 
-  const [internalValue, setInternalValue] = useState<
-    DateFilterValue | undefined
-  >(defaultValue);
+  const [internalValue, setInternalValue] = useState<DateFilterValue | undefined>(defaultValue);
   const [isOpen, setIsOpen] = useState(false);
 
   useLayoutEffect(() => {
@@ -113,17 +101,10 @@ export function DateFilter({
           aria-labelledby={label ? labelId : undefined}
           aria-describedby={description ? descId : undefined}
         >
-          <span
-            className="date-filter-trigger-label"
-            data-placeholder={!value ? true : undefined}
-          >
+          <span className="date-filter-trigger-label" data-placeholder={!value ? true : undefined}>
             {triggerLabel}
           </span>
-          <CalendarIcon
-            size={16}
-            aria-hidden
-            className="date-filter-icon"
-          />
+          <CalendarIcon size={16} aria-hidden className="date-filter-icon" />
         </RACButton>
       </span>
 
@@ -154,19 +135,11 @@ export function DateFilter({
             </ListBox>
           </div>
 
-          <div
-            className="date-filter-divider"
-            role="separator"
-            aria-orientation="vertical"
-          />
+          <div className="date-filter-divider" role="separator" aria-orientation="vertical" />
 
           <div className="date-filter-calendar-pane" ref={calendarPaneRef}>
             <RangeCalendar
-              value={
-                value?.type === "range"
-                  ? { start: value.start, end: value.end }
-                  : null
-              }
+              value={value?.type === "range" ? { start: value.start, end: value.end } : null}
               onChange={(r) => {
                 if (r) {
                   commit({ type: "range", start: r.start, end: r.end });
@@ -178,7 +151,11 @@ export function DateFilter({
         </div>
       </Popover>
 
-      {description && <Text id={descId} slot="description">{description}</Text>}
+      {description && (
+        <Text id={descId} slot="description">
+          {description}
+        </Text>
+      )}
     </div>
   );
 }

@@ -17,18 +17,20 @@ React Aria Components is a library of unstyled, accessible UI components that yo
 The `references/` directory contains detailed documentation organized as follows:
 
 ### Guides
+
 - [Collections](references/guides/collections.md): Many components display a collection of items, and provide functionality such as keyboard navigation
 - [Customization](references/guides/customization.md): React Aria is built using a flexible and composable API. Learn how to use contexts and slots to crea
 - [Drag and Drop](references/guides/dnd.md): React Aria collection components support drag and drop with mouse and touch interactions, and full k
 - [Forms](references/guides/forms.md): Learn how to integrate with HTML forms, validate and submit data, and use React Aria with form libra
 - [Framework setup](references/guides/frameworks.md): Learn how to integrate React Aria with your framework.
 - [Getting started](references/guides/getting-started.md): How to install React Aria and build your first component.
-- [Quality](references/guides/quality.md): React Aria is built around three core principles: , , and . Learn how to apply these tools to build 
+- [Quality](references/guides/quality.md): React Aria is built around three core principles: , , and . Learn how to apply these tools to build
 - [Selection](references/guides/selection.md): Many collection components support selecting items by clicking or tapping them, or by using the keyb
 - [Styling](references/guides/styling.md): React Aria does not include any styles by default. Learn how to build custom designs to fit your app
 - [Working with AI](references/guides/ai.md): Learn how to use the React Aria MCP Server, Agent Skills, and more to help you build with AI.
 
 ### Components
+
 - [Autocomplete](references/components/Autocomplete.md): An autocomplete allows users to search or filter a list of suggestions.
 - [Breadcrumbs](references/components/Breadcrumbs.md): Breadcrumbs display a hierarchy of links to the current page or resource in an a
 - [Button](references/components/Button.md): A button allows a user to perform an action, with mouse, touch, and keyboard int
@@ -54,7 +56,7 @@ The `references/` directory contains detailed documentation organized as follows
 - [GridList](references/components/GridList.md): A grid list displays a list of interactive items, with support for keyboard navi
 - [Group](references/components/Group.md): A group represents a set of related UI controls, and supports interactive states
 - [Link](references/components/Link.md): A link allows a user to navigate to another page or resource within a web page
-- [ListBox](references/components/ListBox.md): A listbox displays a list of options and allows a user to select one or more of 
+- [ListBox](references/components/ListBox.md): A listbox displays a list of options and allows a user to select one or more of
 - [mcp](references/components/mcp.md)
 - [Menu](references/components/Menu.md): A menu displays a list of actions or options that a user can choose.
 - [Meter](references/components/Meter.md): A meter represents a quantity within a known range, or a fractional value.
@@ -65,7 +67,7 @@ The `references/` directory contains detailed documentation organized as follows
 - [RadioGroup](references/components/RadioGroup.md): A radio group allows a user to select a single item from a list of mutually excl
 - [RangeCalendar](references/components/RangeCalendar.md): RangeCalendars display a grid of days in one or more months and allow users to s
 - [SearchField](references/components/SearchField.md): A search field allows a user to enter and clear a search query.
-- [Select](references/components/Select.md): A select displays a collapsible list of options and allows a user to select one 
+- [Select](references/components/Select.md): A select displays a collapsible list of options and allows a user to select one
 - [Separator](references/components/Separator.md): A separator is a visual divider between two groups of content, e.g. groups of me
 - [Slider](references/components/Slider.md): A slider allows a user to select one or more values within a range.
 - [Switch](references/components/Switch.md): A switch allows a user to turn a setting on or off.
@@ -83,6 +85,7 @@ The `references/` directory contains detailed documentation organized as follows
 - [Virtualizer](references/components/Virtualizer.md): A Virtualizer renders a scrollable collection of data using customizable layouts
 
 ### Interactions
+
 - [FocusRing](references/interactions/FocusRing.md): A utility component that applies a CSS class when an element has keyboard focus.
 - [FocusScope](references/interactions/FocusScope.md): A FocusScope manages focus for its descendants. It supports containing focus ins
 - [useClipboard](references/interactions/useClipboard.md): Handles clipboard interactions for a focusable element. Supports items of multip
@@ -94,12 +97,13 @@ The `references/` directory contains detailed documentation organized as follows
 - [useFocusWithin](references/interactions/useFocusWithin.md): Handles focus events for the target and its descendants.
 - [useHover](references/interactions/useHover.md): Handles pointer hover interactions for an element. Normalizes behavior
 - [useKeyboard](references/interactions/useKeyboard.md): Handles keyboard interactions for a focusable element.
-- [useLandmark](references/interactions/useLandmark.md): Provides landmark navigation in an application. Call this with a role and label 
+- [useLandmark](references/interactions/useLandmark.md): Provides landmark navigation in an application. Call this with a role and label
 - [useLongPress](references/interactions/useLongPress.md): Handles long press interactions across mouse and touch devices. Supports a custo
-- [useMove](references/interactions/useMove.md): Handles move interactions across mouse, touch, and keyboard, including dragging 
+- [useMove](references/interactions/useMove.md): Handles move interactions across mouse, touch, and keyboard, including dragging
 - [usePress](references/interactions/usePress.md): Handles press interactions across mouse, touch, keyboard, and screen readers.
 
 ### Utilities
+
 - [I18nProvider](references/utilities/I18nProvider.md): Provides the locale for the application to all child components.
 - [mergeProps](references/utilities/mergeProps.md): Merges multiple props objects together. Event handlers are chained,
 - [PortalProvider](references/utilities/PortalProvider.md): Sets the portal container for all overlay elements rendered by its children.
@@ -117,6 +121,7 @@ The `references/` directory contains detailed documentation organized as follows
 - [VisuallyHidden](references/utilities/VisuallyHidden.md): VisuallyHidden hides its children visually, while keeping content visible
 
 ### Internationalization
+
 - [Calendar](references/internationalized/date/Calendar.md)
 - [CalendarDate](references/internationalized/date/CalendarDate.md)
 - [CalendarDateTime](references/internationalized/date/CalendarDateTime.md)
@@ -129,6 +134,7 @@ The `references/` directory contains detailed documentation organized as follows
 - [ZonedDateTime](references/internationalized/date/ZonedDateTime.md)
 
 ### Testing
+
 - [Testing CheckboxGroup](references/testing/CheckboxGroup/testing.md)
 - [Testing ComboBox](references/testing/ComboBox/testing.md)
 - [Testing GridList](references/testing/GridList/testing.md)

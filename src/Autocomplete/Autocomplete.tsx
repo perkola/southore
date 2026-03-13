@@ -155,11 +155,7 @@ function AutocompleteRoot<T extends object>({
         })}
       >
         <RACAutocomplete filter={contains}>
-          <SearchField
-            aria-label="Search"
-            className="autocomplete-search"
-            autoFocus
-          >
+          <SearchField aria-label="Search" className="autocomplete-search" autoFocus>
             <Group className="autocomplete-search-input">
               <Search size={16} aria-hidden />
               <Input placeholder={searchPlaceholder} />
@@ -183,8 +179,7 @@ function AutocompleteRoot<T extends object>({
 }
 
 // Autocomplete.Item
-export type AutocompleteItemProps<T extends object = object> =
-  ListBoxItemProps<T>;
+export type AutocompleteItemProps<T extends object = object> = ListBoxItemProps<T>;
 
 function Item<T extends object>({ children, ...props }: AutocompleteItemProps<T>) {
   const textValue =

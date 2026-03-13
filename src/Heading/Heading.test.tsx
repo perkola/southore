@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Heading } from "./Heading";
 
@@ -23,4 +23,3 @@ test("merges custom className with heading class", async () => {
   expect(el.className).toContain("heading");
   expect(el.className).toContain("custom");
 });
-

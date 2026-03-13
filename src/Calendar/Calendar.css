@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 .react-aria-Calendar {
   width: fit-content;
@@ -52,7 +52,9 @@
   border-radius: var(--radius-full);
   cursor: pointer;
   outline: none;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -101,7 +103,7 @@
 }
 
 /* Error message */
-.react-aria-Calendar .react-aria-Text[slot='errorMessage'] {
+.react-aria-Calendar .react-aria-Text[slot="errorMessage"] {
   font-size: var(--font-size-sm);
   color: var(--color-error);
   margin-top: var(--spacing-2);

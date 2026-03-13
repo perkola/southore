@@ -1,9 +1,5 @@
 import type { ReactNode } from "react";
-import {
-  Tooltip as RACTooltip,
-  TooltipTrigger,
-  OverlayArrow,
-} from "react-aria-components";
+import { Tooltip as RACTooltip, TooltipTrigger, OverlayArrow } from "react-aria-components";
 import "./Tooltip.css";
 
 export type TooltipPlacement =

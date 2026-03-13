@@ -1,7 +1,4 @@
-import {
-  Form as RACForm,
-  type FormProps as RACFormProps,
-} from "react-aria-components";
+import { Form as RACForm, type FormProps as RACFormProps } from "react-aria-components";
 import "./Form.css";
 
 export type FormProps = RACFormProps;

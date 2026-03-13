@@ -40,9 +40,15 @@ export const MultipleSelection: Story = {
   },
   render: (args) => (
     <ToggleButtonGroup {...args}>
-      <ToggleButton id="bold"><strong>Bold</strong></ToggleButton>
-      <ToggleButton id="italic"><em>Italic</em></ToggleButton>
-      <ToggleButton id="underline"><span style={{ textDecoration: "underline" }}>Underline</span></ToggleButton>
+      <ToggleButton id="bold">
+        <strong>Bold</strong>
+      </ToggleButton>
+      <ToggleButton id="italic">
+        <em>Italic</em>
+      </ToggleButton>
+      <ToggleButton id="underline">
+        <span style={{ textDecoration: "underline" }}>Underline</span>
+      </ToggleButton>
     </ToggleButtonGroup>
   ),
 };
@@ -70,7 +76,9 @@ export const WithDisabledItem: Story = {
       <ToggleButton id="day">Day</ToggleButton>
       <ToggleButton id="week">Week</ToggleButton>
       <ToggleButton id="month">Month</ToggleButton>
-      <ToggleButton id="year" isDisabled>Year</ToggleButton>
+      <ToggleButton id="year" isDisabled>
+        Year
+      </ToggleButton>
     </ToggleButtonGroup>
   ),
 };

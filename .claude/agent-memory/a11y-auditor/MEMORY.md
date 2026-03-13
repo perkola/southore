@@ -1,6 +1,7 @@
 # Accessibility Auditor Memory — Southore Design System
 
 ## Project Conventions (confirmed)
+
 - React Aria Components wraps all interactive primitives — never reimplement ARIA natively
 - Focus rings use `[data-focus-visible]` selector, NOT `:focus-visible`
 - Disabled states use `[data-disabled]` selector, NOT `:disabled`
@@ -9,6 +10,7 @@
 - Animations: `prefers-reduced-motion` guards present in `Toast.css`, `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css` — all animated components covered
 
 ## Verified Contrast Ratios (light/dark)
+
 - `--color-text` (gray-900 #1a1a24) on `--color-bg` (white): ~17:1 — PASS
 - `--color-text-muted` (gray-700 #40404e) on `--color-bg` (white): ~9.1:1 — PASS
 - `--color-text-subtle` (gray-600 #575766) on `--color-bg` (white): ~6.4:1 — PASS
@@ -32,9 +34,11 @@
 - `--color-text-subtle` (gray-600 #575766) on gray-50 (tag bg): ~6.4:1 — PASS (tag remove icon)
 
 ## Known Issues (status as of re-audit 2026-03-08)
+
 See `audit-2026-03-08.md` for full original findings.
 
 ### Critical Issues — RESOLVED (verified 2026-03-08)
+
 - CRIT-01: TextArea.css `[data-focused]` → `[data-focus-visible]` — FIXED
 - CRIT-02: DatePicker calendar button `aria-label="Open calendar"` — FIXED
 - CRIT-03: DateRangePicker calendar button `aria-label="Open calendar"` — FIXED
@@ -57,6 +61,7 @@ See `audit-2026-03-08.md` for full original findings.
 11. **OPEN (pre-existing, tracked)**: `.picker-trigger` base transition in `PickerTrigger.css` has no `prefers-reduced-motion` guard — affects Autocomplete single trigger, Select, DateFilter.
 
 ### Warnings (from original audit)
+
 1. ~~Missing `prefers-reduced-motion` guards~~ — FIXED (2026-03-08): guards added to `Popover.css`, `Tooltip.css`, `Switch.css`, `Calendar.css`
 2. ~~`Breadcrumbs` double `<nav>`~~ — FALSE POSITIVE (2026-03-08): `RACBreadcrumbs` renders `<ol>`, outer `<nav>` is correct per RAC docs
 3. ~~`Heading` `className` prop overwritten~~ — FIXED (2026-03-08): now merges consumer className with "heading"
@@ -66,22 +71,30 @@ See `audit-2026-03-08.md` for full original findings.
 ## RAC Audit Methodology — Lessons Learned
 
 ### Compound components vs standalone Popover (verified 2026-03-08)
+
 RAC has two distinct Popover patterns — confusing them leads to false findings:
 
 **Standalone Popover** (custom trigger + arbitrary content): requires an explicit `<Dialog>` wrapper inside `<Popover>` so RAC can inject the correct `role="dialog"` and focus management.
+
 ```tsx
-<Popover><Dialog>...</Dialog></Popover>
+<Popover>
+  <Dialog>...</Dialog>
+</Popover>
 ```
 
 **RAC compound components** (DatePicker, DateRangePicker, Select, ComboBox, etc.): RAC handles dialog semantics internally. The correct pattern is `<Popover><Calendar /></Popover>` with NO `<Dialog>` wrapper. Adding one would be wrong.
+
 ```tsx
 // DatePicker / DateRangePicker — correct, no Dialog needed
-<Popover><Calendar /></Popover>
+<Popover>
+  <Calendar />
+</Popover>
 ```
 
 **Rule:** Before raising any finding about a missing/extra ARIA wrapper inside a RAC compound component, verify the expected API in the RAC MCP docs. Never rely on training knowledge for this — the standalone vs compound distinction is easy to conflate.
 
 ## Patterns Done Correctly (skip re-checking)
+
 - All interactive components use React Aria primitives (no custom ARIA reimplementation)
 - `Breadcrumbs` outer `<nav aria-label>` wrapper is correct — `RACBreadcrumbs` renders an `<ol>`, not a `<nav>`; RAC docs explicitly recommend the consumer add the `<nav>` landmark
 - Focus rings universally use `[data-focus-visible]` — TextArea fix confirmed 2026-03-08

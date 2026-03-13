@@ -38,8 +38,7 @@ export function addToast(message: ReactNode, options?: ToastOptions): string {
   return toastQueue.add(
     { message },
     {
-      timeout:
-        options?.timeout === null ? undefined : (options?.timeout ?? 8000),
+      timeout: options?.timeout === null ? undefined : (options?.timeout ?? 8000),
       onClose: options?.onClose,
     },
   );

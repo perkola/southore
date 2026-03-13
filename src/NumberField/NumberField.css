@@ -1,5 +1,5 @@
-@import '../shared/Field.css';
-@import '../shared/FieldGroup.css';
+@import "../shared/Field.css";
+@import "../shared/FieldGroup.css";
 
 .react-aria-NumberField {
   display: flex;
@@ -76,7 +76,9 @@
   height: calc(var(--spacing-8) - 2px);
   flex-shrink: 0;
   color: var(--color-text-subtle);
-  transition: background 0.1s, color 0.1s;
+  transition:
+    background 0.1s,
+    color 0.1s;
 }
 
 .number-field-stepper-button[data-hovered] {
@@ -100,13 +102,13 @@
   cursor: default;
 }
 
-.number-field-stepper-button[slot='decrement'] {
+.number-field-stepper-button[slot="decrement"] {
   border-top-left-radius: calc(var(--radius) - 1px);
   border-bottom-left-radius: calc(var(--radius) - 1px);
   border-right: 1px solid var(--color-border-muted);
 }
 
-.number-field-stepper-button[slot='increment'] {
+.number-field-stepper-button[slot="increment"] {
   border-top-right-radius: calc(var(--radius) - 1px);
   border-bottom-right-radius: calc(var(--radius) - 1px);
   border-left: 1px solid var(--color-border-muted);

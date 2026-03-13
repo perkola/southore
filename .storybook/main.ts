@@ -11,7 +11,7 @@ const config: StorybookConfig = {
   framework: "@storybook/react-vite",
   core: {
     disableTelemetry: true,
-    disableWhatsNewNotifications: true
+    disableWhatsNewNotifications: true,
   },
 };
 

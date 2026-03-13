@@ -39,9 +39,7 @@ function SelectRoot<T extends object>({
     <RACSelect placeholder={placeholder} {...props}>
       {label && <Label>{label}</Label>}
       <Button className="picker-trigger select-trigger">
-        {startAdornment && (
-          <span className="select-adornment">{startAdornment}</span>
-        )}
+        {startAdornment && <span className="select-adornment">{startAdornment}</span>}
         <SelectValue />
         <ChevronDown size={16} aria-hidden />
       </Button>

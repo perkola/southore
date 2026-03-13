@@ -1,21 +1,29 @@
 # Southore
 
-Design system component library built with React 19, TypeScript, Vite 7 (via rolldown-vite), and Storybook 10. Components are built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) for accessibility.
+Design system component library built with React 19, TypeScript, Vite 8 (via Vite+), and Storybook 10. Components are built on top of [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html) for accessibility.
 
 ## Commands
 
-- `npm run storybook` — start Storybook dev server on port 6006
-- `npm run build` — typecheck and build the library
-- `npm run lint` — run ESLint
-- `npm run test` — run all tests (unit + visual, light + dark)
-- `npm run test:unit` — run unit/interaction tests only
-- `npm run test:visual` — run visual screenshot tests (light + dark)
-- `npm run test:update -- <file>` — update baselines for specific visual test files (see Visual Testing)
-- `npm run test:watch` — watch unit tests
-- `npm run test:watch:visual` — watch visual tests
-- `npm run test:coverage` — run unit tests with coverage
+This project uses [Vite+](https://viteplus.dev/guide/) — run `vp help` for the full command reference. Use `vp` for everything; do not invoke `npm`, `npx`, or tool CLIs directly.
 
-**Always run `npm run build && npm run lint && npm run test` after making changes.**
+- `vp run storybook` — start Storybook dev server on port 6006
+- `vp run build` — typecheck and build the library
+- `vp lint .` — lint with Oxlint
+- `vp run test` — run all tests (unit + visual, light + dark)
+- `vp run test:unit` — run unit/interaction tests only
+- `vp run test:visual` — run visual screenshot tests (light + dark)
+- `vp run test:update -- <file>` — update baselines for specific visual test files (see Visual Testing)
+- `vp run test:watch` — watch unit tests
+- `vp run test:watch:visual` — watch visual tests
+- `vp run test:coverage` — run unit tests with coverage
+
+**Always run `vp run build && vp lint . && vp run test` after making changes.**
+
+### Key Vite+ rules
+
+- Import from `vite-plus` (not `vite`) and `vite-plus/test` (not `vitest`)
+- Run `vp install` after pulling changes before getting started
+- Use `vp check` for fast format + lint + type validation in a loop
 
 ## Project Structure
 
@@ -69,14 +77,14 @@ Both light and dark mode screenshots are captured automatically — the `visual-
 **Always scope updates to only the component(s) you changed — never run a blanket update:**
 
 ```bash
-npm run test:update -- src/Select/Select.visual.test.tsx src/Autocomplete/Autocomplete.visual.test.tsx
+vp run test:update -- src/Select/Select.visual.test.tsx src/Autocomplete/Autocomplete.visual.test.tsx
 ```
 
 After updating, run `git diff src/**/__screenshots__` and verify that only the expected `.png` files changed. Any change outside the component you touched is an unintentional regression, not a baseline to accept.
 
 Commit updated baselines in the same PR as the code change so reviewers see both the implementation and the visual result.
 
-Only use `npm run test:update` with no arguments when a global change intentionally affects all components (e.g. editing `tokens.css`).
+Only use `vp run test:update` with no arguments when a global change intentionally affects all components (e.g. editing `tokens.css`).
 
 Always use accessible queries (`page.getByRole()`, `getByText()`), never `document.querySelector`. Do not commit auto-captured failure screenshots (named `{test-name}-1.png`).
 

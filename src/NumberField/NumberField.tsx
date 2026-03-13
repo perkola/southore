@@ -57,13 +57,9 @@ export function NumberField({
             <Minus size={16} aria-hidden />
           </Button>
         )}
-        {startAdornment && (
-          <span className="number-field-adornment">{startAdornment}</span>
-        )}
+        {startAdornment && <span className="number-field-adornment">{startAdornment}</span>}
         <Input ref={inputRef} />
-        {endAdornment && (
-          <span className="number-field-adornment">{endAdornment}</span>
-        )}
+        {endAdornment && <span className="number-field-adornment">{endAdornment}</span>}
         {!hideStepper && (
           <Button slot="increment" className="number-field-stepper-button">
             <Plus size={16} aria-hidden />

@@ -1,6 +1,6 @@
-@import '../shared/Field.css';
-@import '../shared/Listbox.css';
-@import '../shared/PickerTrigger.css';
+@import "../shared/Field.css";
+@import "../shared/Listbox.css";
+@import "../shared/PickerTrigger.css";
 
 .react-aria-Select:has(.autocomplete-trigger),
 .react-aria-Select:has(.autocomplete-multi-trigger) {
@@ -278,7 +278,9 @@
   justify-content: center;
   color: var(--color-text-subtle);
   cursor: pointer;
-  transition: background 0.1s, color 0.1s;
+  transition:
+    background 0.1s,
+    color 0.1s;
   -webkit-tap-highlight-color: transparent;
 
   &::before {

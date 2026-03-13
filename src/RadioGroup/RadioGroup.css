@@ -1,4 +1,4 @@
-@import '../shared/Field.css';
+@import "../shared/Field.css";
 
 .react-aria-RadioGroup {
   display: flex;
@@ -28,7 +28,7 @@
 }
 
 .react-aria-Radio::before {
-  content: '';
+  content: "";
   display: block;
   width: var(--spacing-5);
   height: var(--spacing-5);

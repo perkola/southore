@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { DateRangePicker } from "./DateRangePicker";
 
 test("renders start and end date inputs", async () => {
@@ -29,7 +29,9 @@ test("renders without visible label when aria-label is used", async () => {
 });
 
 test("renders error message when invalid", async () => {
-  await render(<DateRangePicker label="Date range" isInvalid errorMessage="Date range is required" />);
+  await render(
+    <DateRangePicker label="Date range" isInvalid errorMessage="Date range is required" />,
+  );
   await expect.element(page.getByText("Date range is required")).toBeVisible();
 });
 

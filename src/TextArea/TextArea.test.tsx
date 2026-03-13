@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { TextArea } from "./TextArea";
 
 test("renders with label", async () => {
@@ -21,9 +21,7 @@ test("renders description", async () => {
 });
 
 test("renders error message when invalid", async () => {
-  await render(
-    <TextArea label="Comment" isInvalid errorMessage="Comment is required." />,
-  );
+  await render(<TextArea label="Comment" isInvalid errorMessage="Comment is required." />);
   await expect.element(page.getByText("Comment is required.")).toBeVisible();
 });
 
@@ -34,8 +32,5 @@ test("renders without label when aria-label is used", async () => {
 
 test("rows attribute is applied", async () => {
   await render(<TextArea label="Comment" rows={6} />);
-  await expect
-    .element(page.getByRole("textbox", { name: "Comment" }))
-    .toHaveAttribute("rows", "6");
+  await expect.element(page.getByRole("textbox", { name: "Comment" })).toHaveAttribute("rows", "6");
 });
-

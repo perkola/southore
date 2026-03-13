@@ -1,14 +1,17 @@
 {
   "name": "southore",
-  "private": false,
   "version": "0.0.3",
+  "private": false,
   "description": "Accessible React component library built on React Aria Components",
+  "homepage": "https://github.com/perkola/southore",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/perkola/southore.git"
   },
-  "homepage": "https://github.com/perkola/southore",
+  "files": [
+    "dist"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -22,25 +25,19 @@
       "import": "./dist/index.css"
     }
   },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "test": "vitest run --project unit && vitest run --project visual && vitest run --project visual-dark",
-    "test:unit": "vitest run --project unit",
-    "test:visual": "vitest run --project visual && vitest run --project visual-dark",
-    "test:update": "vitest run --project visual --project visual-dark -u",
-    "test:watch": "vitest --project unit",
-    "test:watch:visual": "vitest --project visual --project visual-dark",
-    "test:coverage": "vitest run --project unit --coverage",
+    "build": "tsc -b && vp build",
+    "lint": "vp lint .",
+    "test": "vp test run --project unit && vp test run --project visual && vp test run --project visual-dark",
+    "test:unit": "vp test run --project unit",
+    "test:visual": "vp test run --project visual && vp test run --project visual-dark",
+    "test:update": "vp test run --project visual --project visual-dark -u",
+    "test:watch": "vp test --project unit",
+    "test:watch:visual": "vp test --project visual --project visual-dark",
+    "test:coverage": "vp test run --project unit --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "peerDependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "build-storybook": "storybook build",
+    "prepare": "vp config"
   },
   "dependencies": {
     "lucide-react": "^0.563.0",
@@ -57,11 +54,9 @@
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.1",
-    "@vitest/browser-playwright": "^4.1.0",
     "@vitest/coverage-v8": "^4.1.0",
     "@vitest/ui": "^4.1.0",
     "babel-plugin-react-compiler": "^1.0.0",
-    "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.2.6",
@@ -72,11 +67,18 @@
     "storybook": "^10.2.6",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^8.0.0",
-    "vitest": "^4.1.0",
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest",
     "vitest-browser-react": "^2.0.5"
   },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "overrides": {
-    "vite": "^8.0.0"
-  }
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+  },
+  "packageManager": "npm@11.11.1"
 }

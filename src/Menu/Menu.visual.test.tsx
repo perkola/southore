@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Menu } from "./Menu";
 import { Button } from "../Button/Button";
 import { Popover } from "../Popover/Popover";

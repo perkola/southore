@@ -1,7 +1,4 @@
-import {
-  Link as RACLink,
-  type LinkProps as RACLinkProps,
-} from "react-aria-components";
+import { Link as RACLink, type LinkProps as RACLinkProps } from "react-aria-components";
 import "./Link.css";
 
 export type LinkProps = RACLinkProps;

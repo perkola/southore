@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { Tooltip } from "./Tooltip";
 import { Button } from "../Button/Button";
 
@@ -21,9 +21,7 @@ test("tooltip is hidden by default", async () => {
       <Button>Hover me</Button>
     </Tooltip>,
   );
-  await expect
-    .element(page.getByRole("tooltip"))
-    .not.toBeInTheDocument();
+  await expect.element(page.getByRole("tooltip")).not.toBeInTheDocument();
 });
 
 test("disabled tooltip does not appear on focus", async () => {
@@ -47,4 +45,3 @@ test("tooltip respects placement", async () => {
   await expect.element(tooltip).toBeVisible();
   await expect.element(tooltip).toHaveAttribute("data-placement", "bottom");
 });
-

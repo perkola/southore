@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 .react-aria-Tooltip {
   /* Inverted colors for tooltip */
@@ -45,7 +45,7 @@
   }
 }
 
-.react-aria-Tooltip[data-placement^='bottom'] > .react-aria-OverlayArrow {
+.react-aria-Tooltip[data-placement^="bottom"] > .react-aria-OverlayArrow {
   top: -8px;
 
   & svg {
@@ -53,11 +53,11 @@
   }
 }
 
-.react-aria-Tooltip[data-placement^='top'] > .react-aria-OverlayArrow {
+.react-aria-Tooltip[data-placement^="top"] > .react-aria-OverlayArrow {
   bottom: -8px;
 }
 
-.react-aria-Tooltip[data-placement^='left'] > .react-aria-OverlayArrow {
+.react-aria-Tooltip[data-placement^="left"] > .react-aria-OverlayArrow {
   right: -8px;
 
   & svg {
@@ -65,7 +65,7 @@
   }
 }
 
-.react-aria-Tooltip[data-placement^='right'] > .react-aria-OverlayArrow {
+.react-aria-Tooltip[data-placement^="right"] > .react-aria-OverlayArrow {
   left: -8px;
 
   & svg {

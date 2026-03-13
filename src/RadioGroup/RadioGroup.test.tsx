@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { RadioGroup, Radio } from "./RadioGroup";
 
 test("renders label", async () => {
@@ -59,4 +59,3 @@ test("defaultValue pre-selects a radio", async () => {
   );
   await expect.element(page.getByRole("radio", { name: "Baseball" })).toBeChecked();
 });
-

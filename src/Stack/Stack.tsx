@@ -43,13 +43,15 @@ export function Stack({
       {...props}
       className="stack"
       data-direction={direction}
-      style={{
-        ...style,
-        gap: gap !== undefined ? `var(--spacing-${gap})` : undefined,
-        alignItems: align ? alignMap[align] : undefined,
-        justifyContent: justify ? justifyMap[justify] : undefined,
-        flexWrap: wrap ? "wrap" : undefined,
-      } as CSSProperties}
+      style={
+        {
+          ...style,
+          gap: gap !== undefined ? `var(--spacing-${gap})` : undefined,
+          alignItems: align ? alignMap[align] : undefined,
+          justifyContent: justify ? justifyMap[justify] : undefined,
+          flexWrap: wrap ? "wrap" : undefined,
+        } as CSSProperties
+      }
     >
       {children}
     </div>

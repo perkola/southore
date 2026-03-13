@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Select } from "./Select";
 
 test("select closed", async () => {
@@ -18,7 +18,12 @@ test("select closed", async () => {
 test("select error state", async () => {
   const { container } = await render(
     <div style={{ padding: 8, width: 300 }}>
-      <Select label="Fruit" placeholder="Pick a fruit" isInvalid errorMessage="Please select a fruit.">
+      <Select
+        label="Fruit"
+        placeholder="Pick a fruit"
+        isInvalid
+        errorMessage="Please select a fruit."
+      >
         <Select.Item id="apple">Apple</Select.Item>
       </Select>
     </div>,

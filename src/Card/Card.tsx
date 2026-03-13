@@ -13,13 +13,7 @@ export interface CardProps extends ComponentProps<"div"> {
   variant?: "filled" | "elevated";
 }
 
-export function Card({
-  title,
-  titleLevel = 3,
-  variant = "filled",
-  children,
-  ...props
-}: CardProps) {
+export function Card({ title, titleLevel = 3, variant = "filled", children, ...props }: CardProps) {
   const TitleTag = `h${titleLevel}` as const;
   return (
     <div className="card" data-variant={variant} {...props}>

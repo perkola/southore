@@ -17,12 +17,7 @@ export interface BadgeProps extends ComponentProps<"span"> {
   variant?: "default" | "circular";
 }
 
-export function Badge({
-  color = "gray",
-  variant = "default",
-  children,
-  ...props
-}: BadgeProps) {
+export function Badge({ color = "gray", variant = "default", children, ...props }: BadgeProps) {
   return (
     <span {...props} className="badge" data-color={color} data-variant={variant}>
       {children}

@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Select } from "./Select";
 
 test("renders placeholder", async () => {
@@ -69,4 +69,3 @@ test("compound Select.Item renders items", async () => {
   await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
   await expect.element(page.getByRole("option", { name: "Banana" })).toBeVisible();
 });
-

@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Link } from "./Link";
 
 test("renders link text", async () => {
@@ -10,9 +10,7 @@ test("renders link text", async () => {
 
 test("renders with href", async () => {
   await render(<Link href="/about">About</Link>);
-  await expect
-    .element(page.getByRole("link", { name: "About" }))
-    .toHaveAttribute("href", "/about");
+  await expect.element(page.getByRole("link", { name: "About" })).toHaveAttribute("href", "/about");
 });
 
 test("disabled link has data-disabled attribute", async () => {
@@ -25,4 +23,3 @@ test("disabled link has data-disabled attribute", async () => {
     .element(page.getByRole("link", { name: "Disabled" }))
     .toHaveAttribute("data-disabled");
 });
-

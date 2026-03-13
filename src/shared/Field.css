@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 /*
  * Shared form field styles.
@@ -27,7 +27,7 @@
   margin-bottom: var(--spacing-1);
 }
 
-.react-aria-Text[slot='description'] {
+.react-aria-Text[slot="description"] {
   font-family: system-ui, sans-serif;
   font-size: var(--font-size-sm);
   color: var(--color-text-subtle);

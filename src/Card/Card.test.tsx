@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Card } from "./Card";
 
@@ -29,4 +29,3 @@ test("renders children", async () => {
   const { getByText } = await render(<Card>Hello</Card>);
   await expect.element(getByText("Hello")).toBeVisible();
 });
-

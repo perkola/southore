@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Breadcrumbs, BreadcrumbItem } from "./Breadcrumbs";
 
 test("current item renders as span, not a link", async () => {
@@ -50,4 +50,3 @@ test("renders nav with aria-label", async () => {
   );
   await expect.element(page.getByRole("navigation", { name: "Breadcrumb" })).toBeVisible();
 });
-

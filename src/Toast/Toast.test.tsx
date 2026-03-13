@@ -1,6 +1,6 @@
-import { expect, test, vi } from "vitest";
+import { expect, test, vi } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { GlobalToastRegion } from "./Toast";
 import { addToast, removeToast, toastQueue } from "./toastQueue";
 
@@ -54,4 +54,3 @@ test("toast is visible after addToast", async () => {
   await expect.element(page.getByText("Hello world")).toBeVisible();
   toastQueue.close(key);
 });
-

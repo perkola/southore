@@ -33,7 +33,9 @@ export const WithDisabledTab: Story = {
       <>
         <Tabs.TabList aria-label="Navigation">
           <Tabs.Tab id="overview">Overview</Tabs.Tab>
-          <Tabs.Tab id="settings" isDisabled>Settings</Tabs.Tab>
+          <Tabs.Tab id="settings" isDisabled>
+            Settings
+          </Tabs.Tab>
           <Tabs.Tab id="activity">Activity</Tabs.Tab>
         </Tabs.TabList>
         <Tabs.TabPanel id="overview">Overview content</Tabs.TabPanel>

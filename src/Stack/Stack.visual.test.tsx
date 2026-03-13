@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Stack } from "./Stack";
 
@@ -8,7 +8,9 @@ test("stack column", async () => {
       <Stack gap={3}>
         <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item one</div>
         <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item two</div>
-        <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item three</div>
+        <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>
+          Item three
+        </div>
       </Stack>
     </div>,
   );
@@ -21,7 +23,9 @@ test("stack row", async () => {
       <Stack direction="row" gap={3}>
         <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item one</div>
         <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item two</div>
-        <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>Item three</div>
+        <div style={{ padding: "8px 12px", background: "#e5e7eb", borderRadius: 4 }}>
+          Item three
+        </div>
       </Stack>
     </div>,
   );

@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 .react-aria-RangeCalendar {
   width: fit-content;
@@ -91,12 +91,14 @@
 }
 
 /* Row-boundary rounding: CalendarCell is a div inside a td, so use td:first-child > * etc. */
-.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected]:is(td:first-child > *, [aria-disabled] + td > *) {
+.react-aria-RangeCalendar
+  .react-aria-CalendarCell[data-selected]:is(td:first-child > *, [aria-disabled] + td > *) {
   border-start-start-radius: var(--radius-full);
   border-end-start-radius: var(--radius-full);
 }
 
-.react-aria-RangeCalendar .react-aria-CalendarCell[data-selected]:is(td:last-child > *, td:has(+ [aria-disabled]) > *) {
+.react-aria-RangeCalendar
+  .react-aria-CalendarCell[data-selected]:is(td:last-child > *, td:has(+ [aria-disabled]) > *) {
   border-start-end-radius: var(--radius-full);
   border-end-end-radius: var(--radius-full);
 }
@@ -145,7 +147,7 @@
 }
 
 /* Error message */
-.react-aria-RangeCalendar .react-aria-Text[slot='errorMessage'] {
+.react-aria-RangeCalendar .react-aria-Text[slot="errorMessage"] {
   font-size: var(--font-size-sm);
   color: var(--color-error);
   margin-top: var(--spacing-2);

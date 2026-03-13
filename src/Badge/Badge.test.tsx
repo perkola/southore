@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Badge } from "./Badge";
 
@@ -16,9 +16,7 @@ test("applies specified color", async () => {
 
 test("applies circular variant", async () => {
   const { getByText } = await render(<Badge variant="circular">3</Badge>);
-  await expect
-    .element(getByText("3"))
-    .toHaveAttribute("data-variant", "circular");
+  await expect.element(getByText("3")).toHaveAttribute("data-variant", "circular");
 });
 
 test("renders children", async () => {
@@ -40,4 +38,3 @@ test("applies blue color", async () => {
   const { getByText } = await render(<Badge color="blue">Info</Badge>);
   await expect.element(getByText("Info")).toHaveAttribute("data-color", "blue");
 });
-

@@ -1,4 +1,4 @@
-@import '../tokens.css';
+@import "../tokens.css";
 
 /* Menu container */
 .react-aria-Menu {
@@ -75,7 +75,7 @@
 
 /* Selection checkmark */
 .react-aria-MenuItem[data-selected]::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   left: var(--spacing-2);
   font-size: 0.75em;
@@ -106,12 +106,12 @@
 }
 
 /* Text slots */
-.react-aria-MenuItem [slot='label'] {
+.react-aria-MenuItem [slot="label"] {
   flex: 1;
   font-weight: 500;
 }
 
-.react-aria-MenuItem [slot='description'] {
+.react-aria-MenuItem [slot="description"] {
   font-size: var(--font-size-sm);
   color: var(--color-text-subtle);
 }

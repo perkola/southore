@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Checkbox } from "./Checkbox";
 
@@ -17,8 +17,12 @@ test("checkbox disabled states", async () => {
   const { container } = await render(
     <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: 8 }}>
       <Checkbox isDisabled>Disabled unchecked</Checkbox>
-      <Checkbox isDisabled isSelected>Disabled checked</Checkbox>
-      <Checkbox isDisabled isIndeterminate>Disabled indeterminate</Checkbox>
+      <Checkbox isDisabled isSelected>
+        Disabled checked
+      </Checkbox>
+      <Checkbox isDisabled isIndeterminate>
+        Disabled indeterminate
+      </Checkbox>
     </div>,
   );
   await expect(container).toMatchScreenshot("checkbox-disabled-states");

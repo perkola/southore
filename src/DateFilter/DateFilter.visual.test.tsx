@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { parseDate } from "@internationalized/date";
 import { DateFilter } from "./DateFilter";
 
@@ -54,7 +54,9 @@ test("date filter — popover open, no selection", async () => {
   );
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
-  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot("date-filter-popover-empty");
+  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot(
+    "date-filter-popover-empty",
+  );
 });
 
 test("date filter — popover open, range mode", async () => {
@@ -71,5 +73,7 @@ test("date filter — popover open, range mode", async () => {
   );
   await userEvent.click(page.getByRole("button"));
   await expect.element(page.getByText("Last 7 days")).toBeVisible();
-  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot("date-filter-popover-range");
+  await expect(page.getByRole("dialog", { name: "Date filter" })).toMatchScreenshot(
+    "date-filter-popover-range",
+  );
 });

@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { parseDate } from "@internationalized/date";
 import { DateRangePicker } from "./DateRangePicker";
 

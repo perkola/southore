@@ -10,9 +10,7 @@ import {
 import { ChevronRight } from "../icons";
 import "./Breadcrumbs.css";
 
-export interface BreadcrumbsProps<
-  T extends object,
-> extends RACBreadcrumbsProps<T> {
+export interface BreadcrumbsProps<T extends object> extends RACBreadcrumbsProps<T> {
   /**
    * Accessible label for the navigation landmark.
    * @default "Breadcrumb"
@@ -33,10 +31,7 @@ export function Breadcrumbs<T extends object>({
 
 Breadcrumbs.displayName = "Breadcrumbs";
 
-export interface BreadcrumbItemProps extends Omit<
-  RACBreadcrumbProps,
-  "children"
-> {
+export interface BreadcrumbItemProps extends Omit<RACBreadcrumbProps, "children"> {
   /**
    * The content of the breadcrumb item.
    */
@@ -54,12 +49,7 @@ export interface BreadcrumbItemProps extends Omit<
   linkProps?: Omit<RACLinkProps, "href" | "children">;
 }
 
-export function BreadcrumbItem({
-  children,
-  href,
-  linkProps,
-  ...props
-}: BreadcrumbItemProps) {
+export function BreadcrumbItem({ children, href, linkProps, ...props }: BreadcrumbItemProps) {
   return (
     <RACBreadcrumb {...props}>
       {({ isCurrent }) => (
@@ -74,11 +64,7 @@ export function BreadcrumbItem({
             children
           )}
           {!isCurrent && (
-            <ChevronRight
-              size={14}
-              className="breadcrumb-separator"
-              aria-hidden="true"
-            />
+            <ChevronRight size={14} className="breadcrumb-separator" aria-hidden="true" />
           )}
         </>
       )}

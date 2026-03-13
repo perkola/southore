@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Stack } from "./Stack";
 
@@ -49,4 +49,3 @@ test("applies flex-wrap when wrap is true", async () => {
   const el = getByText("Item").element() as HTMLElement;
   expect(el.style.flexWrap).toBe("wrap");
 });
-

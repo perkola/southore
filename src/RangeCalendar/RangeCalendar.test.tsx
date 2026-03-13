@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { I18nProvider } from "react-aria-components";
 import { RangeCalendar } from "./RangeCalendar";
 
@@ -16,9 +16,7 @@ test("renders previous and next buttons", async () => {
 });
 
 test("renders error message when provided", async () => {
-  await render(
-    <RangeCalendar aria-label="Date range" errorMessage="Range is invalid" />,
-  );
+  await render(<RangeCalendar aria-label="Date range" errorMessage="Range is invalid" />);
   await expect.element(page.getByText("Range is invalid")).toBeVisible();
 });
 
@@ -35,4 +33,3 @@ test("renders correctly in RTL locale", async () => {
   );
   await expect.element(page.getByRole("grid")).toBeVisible();
 });
-

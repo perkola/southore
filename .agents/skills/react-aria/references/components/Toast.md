@@ -1,24 +1,26 @@
 # Toast
 
-
-
 ## Vanilla CSS example
 
 ```tsx
-import {MyToastRegion, queue} from 'vanilla-starter/Toast';
-import {Button} from 'vanilla-starter/Button';
+import { MyToastRegion, queue } from "vanilla-starter/Toast";
+import { Button } from "vanilla-starter/Button";
 
 function Example(props) {
   return (
     <div>
       <MyToastRegion />
-      <Button onPress={() => queue.add(
-        {
-          title: props.title || 'Files uploaded',
-          description: props.description || '3 files uploaded successfully.'
-        },
-        props.timeout ? {timeout: props.timeout} : undefined
-      )}>
+      <Button
+        onPress={() =>
+          queue.add(
+            {
+              title: props.title || "Files uploaded",
+              description: props.description || "3 files uploaded successfully.",
+            },
+            props.timeout ? { timeout: props.timeout } : undefined,
+          )
+        }
+      >
         Show Toast
       </Button>
     </div>
@@ -29,19 +31,19 @@ function Example(props) {
 ### Toast.tsx
 
 ```tsx
-'use client';
+"use client";
 import {
   UNSTABLE_ToastRegion as ToastRegion,
   UNSTABLE_Toast as Toast,
   UNSTABLE_ToastQueue as ToastQueue,
   UNSTABLE_ToastContent as ToastContent,
   ToastProps,
-  Text
-} from 'react-aria-components';
-import {Button} from './Button';
-import {X} from 'lucide-react';
-import './Toast.css';
-import {flushSync} from 'react-dom';
+  Text,
+} from "react-aria-components";
+import { Button } from "./Button";
+import { X } from "lucide-react";
+import "./Toast.css";
+import { flushSync } from "react-dom";
 
 // Define the type for your toast content. This interface defines the properties of your toast content, affecting what you
 // pass to the queue calls as arguments.
@@ -54,22 +56,22 @@ interface MyToastContent {
 export const queue = new ToastQueue<MyToastContent>({
   // Wrap state updates in a CSS view transition.
   wrapUpdate(fn) {
-    if ('startViewTransition' in document) {
+    if ("startViewTransition" in document) {
       document.startViewTransition(() => {
         flushSync(fn);
       });
     } else {
       fn();
     }
-  }
+  },
 });
 
 export function MyToastRegion() {
   return (
     // The ToastRegion should be rendered at the root of your app.
     <ToastRegion queue={queue}>
-      {({toast}) => (
-        <MyToast toast={toast} style={{viewTransitionName: toast.key}}>
+      {({ toast }) => (
+        <MyToast toast={toast} style={{ viewTransitionName: toast.key }}>
           <ToastContent>
             <Text slot="title">{toast.content.title}</Text>
             {toast.content.description && (
@@ -88,7 +90,6 @@ export function MyToastRegion() {
 export function MyToast(props: ToastProps<MyToastContent>) {
   return <Toast {...props} />;
 }
-
 ```
 
 ### Toast.css
@@ -136,18 +137,18 @@ export function MyToast(props: ToastProps<MyToastContent>) {
     min-width: 0;
     font: var(--font-size) system-ui;
 
-    [slot=title] {
+    [slot="title"] {
       font-weight: 600;
       color: var(--highlight-foreground);
     }
 
-    [slot=description] {
+    [slot="description"] {
       font-size: var(--font-size-sm);
       color: var(--highlight-foreground);
     }
   }
 
-  .react-aria-Button[slot=close] {
+  .react-aria-Button[slot="close"] {
     flex: 0 0 auto;
     background: none;
     border: none;
@@ -200,26 +201,29 @@ export function MyToast(props: ToastProps<MyToastContent>) {
     opacity: 0;
   }
 }
-
 ```
 
 ## Tailwind example
 
 ```tsx
-import {MyToastRegion, queue} from 'tailwind-starter/Toast';
-import {Button} from 'tailwind-starter/Button';
+import { MyToastRegion, queue } from "tailwind-starter/Toast";
+import { Button } from "tailwind-starter/Button";
 
 function Example(props) {
   return (
     <div>
       <MyToastRegion />
-      <Button onPress={() => queue.add(
-        {
-          title: props.title || 'Files uploaded',
-          description: props.description || '3 files uploaded successfully.'
-        },
-        props.timeout ? {timeout: props.timeout} : undefined
-      )}>
+      <Button
+        onPress={() =>
+          queue.add(
+            {
+              title: props.title || "Files uploaded",
+              description: props.description || "3 files uploaded successfully.",
+            },
+            props.timeout ? { timeout: props.timeout } : undefined,
+          )
+        }
+      >
         Show Toast
       </Button>
     </div>
@@ -230,8 +234,8 @@ function Example(props) {
 ### Toast.tsx
 
 ```tsx
-'use client';
-import React, { CSSProperties } from 'react';
+"use client";
+import React, { CSSProperties } from "react";
 import {
   UNSTABLE_ToastRegion as ToastRegion,
   UNSTABLE_Toast as Toast,
@@ -239,12 +243,12 @@ import {
   UNSTABLE_ToastContent as ToastContent,
   ToastProps,
   Button,
-  Text
-} from 'react-aria-components';
-import {XIcon} from 'lucide-react';
-import {composeTailwindRenderProps} from './utils';
-import {flushSync} from 'react-dom';
-import './Toast.css';
+  Text,
+} from "react-aria-components";
+import { XIcon } from "lucide-react";
+import { composeTailwindRenderProps } from "./utils";
+import { flushSync } from "react-dom";
+import "./Toast.css";
 
 // Define the type for your toast content. This interface defines the properties of your toast content, affecting what you
 // pass to the queue calls as arguments.
@@ -257,14 +261,14 @@ interface MyToastContent {
 export const queue = new ToastQueue<MyToastContent>({
   // Wrap state updates in a CSS view transition.
   wrapUpdate(fn) {
-    if ('startViewTransition' in document) {
+    if ("startViewTransition" in document) {
       document.startViewTransition(() => {
         flushSync(fn);
       });
     } else {
       fn();
     }
-  }
+  },
 });
 
 export function MyToastRegion() {
@@ -272,19 +276,25 @@ export function MyToastRegion() {
     // The ToastRegion should be rendered at the root of your app.
     <ToastRegion
       queue={queue}
-      className="fixed bottom-4 right-4 flex flex-col-reverse gap-2 rounded-lg outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2">
-      {({toast}) => (
+      className="fixed bottom-4 right-4 flex flex-col-reverse gap-2 rounded-lg outline-none focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+    >
+      {({ toast }) => (
         <MyToast toast={toast}>
           <ToastContent className="flex flex-col flex-1 min-w-0">
-            <Text slot="title" className="font-semibold text-white text-sm">{toast.content.title}</Text>
+            <Text slot="title" className="font-semibold text-white text-sm">
+              {toast.content.title}
+            </Text>
             {toast.content.description && (
-              <Text slot="description" className="text-xs text-white">{toast.content.description}</Text>
+              <Text slot="description" className="text-xs text-white">
+                {toast.content.description}
+              </Text>
             )}
           </ToastContent>
           <Button
             slot="close"
             aria-label="Close"
-            className="flex flex-none appearance-none w-8 h-8 rounded-sm bg-transparent border-none text-white p-0 outline-none hover:bg-white/10 pressed:bg-white/15 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 items-center justify-center [-webkit-tap-highlight-color:transparent]">
+            className="flex flex-none appearance-none w-8 h-8 rounded-sm bg-transparent border-none text-white p-0 outline-none hover:bg-white/10 pressed:bg-white/15 focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 items-center justify-center [-webkit-tap-highlight-color:transparent]"
+          >
             <XIcon className="w-4 h-4" />
           </Button>
         </MyToast>
@@ -297,15 +307,14 @@ export function MyToast(props: ToastProps<MyToastContent>) {
   return (
     <Toast
       {...props}
-      style={{viewTransitionName: props.toast.key} as CSSProperties}
+      style={{ viewTransitionName: props.toast.key } as CSSProperties}
       className={composeTailwindRenderProps(
         props.className,
-        "flex items-center gap-4 bg-blue-600 px-4 py-3 rounded-lg outline-none forced-colors:outline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2 [view-transition-class:toast] font-sans w-[230px]"
+        "flex items-center gap-4 bg-blue-600 px-4 py-3 rounded-lg outline-none forced-colors:outline focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2 [view-transition-class:toast] font-sans w-[230px]",
       )}
     />
   );
 }
-
 ```
 
 ## Content
@@ -317,16 +326,18 @@ Use the `"title"` and `"description"` slots within `<ToastContent>` to provide s
 ## Vanilla CSS example
 
 ```tsx
-import {queue} from 'vanilla-starter/Toast';
-import {Button} from 'vanilla-starter/Button';
+import { queue } from "vanilla-starter/Toast";
+import { Button } from "vanilla-starter/Button";
 
 function Example() {
   return (
     <Button
-      onPress={() => queue.add({
-        title: 'Update available',
-        description: 'A new version is ready to install.'
-      })}
+      onPress={() =>
+        queue.add({
+          title: "Update available",
+          description: "A new version is ready to install.",
+        })
+      }
     >
       Check for updates
     </Button>
@@ -337,16 +348,18 @@ function Example() {
 ## Tailwind example
 
 ```tsx
-import {queue} from 'tailwind-starter/Toast';
-import {Button} from 'tailwind-starter/Button';
+import { queue } from "tailwind-starter/Toast";
+import { Button } from "tailwind-starter/Button";
 
 function Example() {
   return (
     <Button
-      onPress={() => queue.add({
-        title: 'Update available',
-        description: 'A new version is ready to install.'
-      })}
+      onPress={() =>
+        queue.add({
+          title: "Update available",
+          description: "A new version is ready to install.",
+        })
+      }
     >
       Check for updates
     </Button>
@@ -370,17 +383,12 @@ Use the `timeout` option to automatically dismiss toasts after a period of time.
 ## Vanilla CSS example
 
 ```tsx
-import {queue} from 'vanilla-starter/Toast';
-import {Button} from 'vanilla-starter/Button';
+import { queue } from "vanilla-starter/Toast";
+import { Button } from "vanilla-starter/Button";
 
 function Example() {
   return (
-    <Button
-      onPress={() => queue.add(
-        {title: 'File has been saved!'},
-        {timeout: 5000}
-      )}
-    >
+    <Button onPress={() => queue.add({ title: "File has been saved!" }, { timeout: 5000 })}>
       Save file
     </Button>
   );
@@ -390,17 +398,12 @@ function Example() {
 ## Tailwind example
 
 ```tsx
-import {queue} from 'tailwind-starter/Toast';
-import {Button} from 'tailwind-starter/Button';
+import { queue } from "tailwind-starter/Toast";
+import { Button } from "tailwind-starter/Button";
 
 function Example() {
   return (
-    <Button
-      onPress={() => queue.add(
-        {title: 'File has been saved!'},
-        {timeout: 5000}
-      )}
-    >
+    <Button onPress={() => queue.add({ title: "File has been saved!" }, { timeout: 5000 })}>
       Save file
     </Button>
   );
@@ -419,9 +422,9 @@ Toasts can be programmatically dismissed using the key returned from `queue.add(
 ## Vanilla CSS example
 
 ```tsx
-import {queue} from 'vanilla-starter/Toast';
-import {Button} from 'vanilla-starter/Button';
-import {useState} from 'react';
+import { queue } from "vanilla-starter/Toast";
+import { Button } from "vanilla-starter/Button";
+import { useState } from "react";
 
 function Example() {
   let [toastKey, setToastKey] = useState<string | null>(null);
@@ -430,16 +433,13 @@ function Example() {
     <Button
       onPress={() => {
         if (!toastKey) {
-          setToastKey(queue.add(
-            {title: 'Processing...'},
-            {onClose: () => setToastKey(null)}
-          ));
+          setToastKey(queue.add({ title: "Processing..." }, { onClose: () => setToastKey(null) }));
         } else {
           queue.close(toastKey);
         }
       }}
     >
-      {toastKey ? 'Cancel' : 'Process'}
+      {toastKey ? "Cancel" : "Process"}
     </Button>
   );
 }
@@ -448,9 +448,9 @@ function Example() {
 ## Tailwind example
 
 ```tsx
-import {queue} from 'tailwind-starter/Toast';
-import {Button} from 'tailwind-starter/Button';
-import {useState} from 'react';
+import { queue } from "tailwind-starter/Toast";
+import { Button } from "tailwind-starter/Button";
+import { useState } from "react";
 
 function Example() {
   let [toastKey, setToastKey] = useState<string | null>(null);
@@ -459,16 +459,13 @@ function Example() {
     <Button
       onPress={() => {
         if (!toastKey) {
-          setToastKey(queue.add(
-            {title: 'Processing...'},
-            {onClose: () => setToastKey(null)}
-          ));
+          setToastKey(queue.add({ title: "Processing..." }, { onClose: () => setToastKey(null) }));
         } else {
           queue.close(toastKey);
         }
       }}
     >
-      {toastKey ? 'Cancel' : 'Process'}
+      {toastKey ? "Cancel" : "Process"}
     </Button>
   );
 }
@@ -484,7 +481,7 @@ When a toast is closed, focus moves to the next toast if any. When the last toas
 
 ```tsx
 <ToastRegion>
-  {({toast}) => (
+  {({ toast }) => (
     <Toast toast={toast}>
       <ToastContent>
         <Text slot="title" />

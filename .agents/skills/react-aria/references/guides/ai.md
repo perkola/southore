@@ -25,7 +25,7 @@ Add the server to your MCP client configuration (the exact file and schema may d
 
 ### Cursor
 
-[Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install.md?name=React%20Aria\&config=eyJjb21tYW5kIjoibnB4IEByZWFjdC1hcmlhL21jcEBsYXRlc3QifQ%3D%3D)
+[Add to Cursor](cursor://anysphere.cursor-deeplink/mcp/install.md?name=React%20Aria&config=eyJjb21tYW5kIjoibnB4IEByZWFjdC1hcmlhL21jcEBsYXRlc3QifQ%3D%3D)
 
 Or follow Cursor's MCP install [guide](https://cursor.com/docs/context/mcp#installing-mcp-servers) and use the standard config above.
 

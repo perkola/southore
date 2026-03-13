@@ -46,15 +46,7 @@ const iconMap = {
 } as const;
 type IconName = keyof typeof iconMap;
 
-function IconPlayground({
-  icon,
-  size,
-  color,
-}: {
-  icon: IconName;
-  size: number;
-  color: string;
-}) {
+function IconPlayground({ icon, size, color }: { icon: IconName; size: number; color: string }) {
   const Icon = iconMap[icon];
   return (
     <div style={{ color: "var(--color-text)" }}>
@@ -160,8 +152,7 @@ export const AllIcons: StoryObj<typeof IconGallery> = {
   parameters: {
     docs: {
       description: {
-        story:
-          "All available icons. Use the controls to adjust size and color.",
+        story: "All available icons. Use the controls to adjust size and color.",
       },
     },
   },

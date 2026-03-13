@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Tabs } from "./Tabs";
 
@@ -32,7 +32,9 @@ test("tabs with disabled tab", async () => {
       <Tabs defaultSelectedKey="overview">
         <Tabs.TabList aria-label="Navigation">
           <Tabs.Tab id="overview">Overview</Tabs.Tab>
-          <Tabs.Tab id="settings" isDisabled>Settings</Tabs.Tab>
+          <Tabs.Tab id="settings" isDisabled>
+            Settings
+          </Tabs.Tab>
           <Tabs.Tab id="activity">Activity</Tabs.Tab>
         </Tabs.TabList>
         <Tabs.TabPanel id="overview">Overview content</Tabs.TabPanel>

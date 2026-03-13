@@ -23,9 +23,7 @@ function StoryLayout({ children }: { children: React.ReactNode }) {
 export const Default: Story = {
   render: () => (
     <StoryLayout>
-      <Button onPress={() => addToast("Your changes have been saved.")}>
-        Show Toast
-      </Button>
+      <Button onPress={() => addToast("Your changes have been saved.")}>Show Toast</Button>
     </StoryLayout>
   ),
   parameters: {
@@ -62,11 +60,7 @@ function MyComponent() {
 export const ManualDismissOnly: Story = {
   render: () => (
     <StoryLayout>
-      <Button
-        onPress={() =>
-          addToast("This toast requires manual dismissal.", { timeout: null })
-        }
-      >
+      <Button onPress={() => addToast("This toast requires manual dismissal.", { timeout: null })}>
         Show Toast
       </Button>
     </StoryLayout>

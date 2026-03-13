@@ -26,28 +26,30 @@ import "southore/styles";
 
 ## Development
 
+This project uses [Vite+](https://viteplus.dev/guide/). Install it globally first, then:
+
 ```bash
 # Install dependencies
-npm install
+vp install
 
 # Start Storybook
-npm run storybook
+vp run storybook
 
 # Build the library
-npm run build
+vp run build
 
 # Run linter
-npm run lint
+vp lint .
 
 # Run all tests
-npm run test
+vp run test
 
 # Run unit tests only
-npm run test:unit
+vp run test:unit
 
 # Run visual screenshot tests
-npm run test:visual
+vp run test:visual
 
 # Update visual baselines after intentional changes
-npm run test:update
+vp run test:update
 ```

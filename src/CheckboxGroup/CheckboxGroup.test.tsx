@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { CheckboxGroup } from "./CheckboxGroup";
 import { Checkbox } from "../Checkbox/Checkbox";
 
@@ -50,4 +50,3 @@ test("renders error message when invalid", async () => {
   );
   await expect.element(page.getByText("Select at least one.")).toBeVisible();
 });
-

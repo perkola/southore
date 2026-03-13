@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { ToggleButtonGroup, ToggleButton } from "./ToggleButtonGroup";
 
 test("renders toggle buttons", async () => {
@@ -21,8 +21,12 @@ test("selected button has data-selected attribute", async () => {
       <ToggleButton id="b">Option B</ToggleButton>
     </ToggleButtonGroup>,
   );
-  await expect.element(page.getByRole("radio", { name: "Option A" })).toHaveAttribute("data-selected");
-  await expect.element(page.getByRole("radio", { name: "Option B" })).not.toHaveAttribute("data-selected");
+  await expect
+    .element(page.getByRole("radio", { name: "Option A" }))
+    .toHaveAttribute("data-selected");
+  await expect
+    .element(page.getByRole("radio", { name: "Option B" }))
+    .not.toHaveAttribute("data-selected");
 });
 
 test("clicking a button selects it", async () => {
@@ -33,8 +37,12 @@ test("clicking a button selects it", async () => {
     </ToggleButtonGroup>,
   );
   await userEvent.click(page.getByRole("radio", { name: "Option B" }));
-  await expect.element(page.getByRole("radio", { name: "Option B" })).toHaveAttribute("data-selected");
-  await expect.element(page.getByRole("radio", { name: "Option A" })).not.toHaveAttribute("data-selected");
+  await expect
+    .element(page.getByRole("radio", { name: "Option B" }))
+    .toHaveAttribute("data-selected");
+  await expect
+    .element(page.getByRole("radio", { name: "Option A" }))
+    .not.toHaveAttribute("data-selected");
 });
 
 test("disallowEmptySelection prevents deselecting active button", async () => {
@@ -45,7 +53,9 @@ test("disallowEmptySelection prevents deselecting active button", async () => {
     </ToggleButtonGroup>,
   );
   await userEvent.click(page.getByRole("radio", { name: "Option A" }));
-  await expect.element(page.getByRole("radio", { name: "Option A" })).toHaveAttribute("data-selected");
+  await expect
+    .element(page.getByRole("radio", { name: "Option A" }))
+    .toHaveAttribute("data-selected");
 });
 
 test("multiple selection allows selecting multiple buttons", async () => {
@@ -84,9 +94,10 @@ test("disabled button has data-disabled attribute", async () => {
   await render(
     <ToggleButtonGroup selectionMode="single" defaultSelectedKeys={["a"]}>
       <ToggleButton id="a">Option A</ToggleButton>
-      <ToggleButton id="b" isDisabled>Option B</ToggleButton>
+      <ToggleButton id="b" isDisabled>
+        Option B
+      </ToggleButton>
     </ToggleButtonGroup>,
   );
   await expect.element(page.getByText("Option B")).toHaveAttribute("data-disabled");
 });
-

@@ -1,4 +1,3 @@
-
 export interface DatePreset {
   id: string;
   label: string;

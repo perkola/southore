@@ -1,7 +1,4 @@
-import {
-  Button as RACButton,
-  type ButtonProps as RACButtonProps,
-} from "react-aria-components";
+import { Button as RACButton, type ButtonProps as RACButtonProps } from "react-aria-components";
 import "./Button.css";
 
 export interface ButtonProps extends RACButtonProps {
@@ -20,10 +17,6 @@ export interface ButtonProps extends RACButtonProps {
   size?: "small" | "medium";
 }
 
-export function Button({
-  variant = "solid",
-  size = "medium",
-  ...props
-}: ButtonProps) {
+export function Button({ variant = "solid", size = "medium", ...props }: ButtonProps) {
   return <RACButton {...props} data-variant={variant} data-size={size} />;
 }

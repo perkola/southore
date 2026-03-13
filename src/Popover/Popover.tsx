@@ -13,12 +13,7 @@ export interface PopoverProps extends Omit<RACPopoverProps, "children"> {
   children?: ReactNode;
 }
 
-export function Popover({
-  showArrow,
-  children,
-  className,
-  ...props
-}: PopoverProps) {
+export function Popover({ showArrow, children, className, ...props }: PopoverProps) {
   return (
     <RACPopover
       {...props}

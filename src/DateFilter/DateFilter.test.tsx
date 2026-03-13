@@ -1,6 +1,6 @@
-import { expect, test, vi } from "vitest";
+import { expect, test, vi } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page, userEvent } from "vitest/browser";
+import { page, userEvent } from "vite-plus/test/browser";
 import { parseDate } from "@internationalized/date";
 import { DateFilter } from "./DateFilter";
 
@@ -66,5 +66,3 @@ test("clicking a preset updates trigger label and closes popover", async () => {
   await expect.element(triggerBtn).toBeVisible();
   await expect.element(triggerBtn).toHaveAttribute("aria-expanded", "false");
 });
-
-

@@ -27,7 +27,13 @@ export const Elevated: Story = {
     title: "Elevated Card",
     children: "This card uses a drop shadow instead of a background fill.",
   },
-  decorators: [(Story) => <div style={{ padding: "1.5rem" }}><Story /></div>],
+  decorators: [
+    (Story) => (
+      <div style={{ padding: "1.5rem" }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Dashboard: Story = {
@@ -35,8 +41,12 @@ export const Dashboard: Story = {
     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem", padding: "1rem" }}>
       <Card title="Total Users">1,284</Card>
       <Card title="Revenue">$48,290</Card>
-      <Card variant="elevated" title="Active Sessions">342</Card>
-      <Card variant="elevated" title="Error Rate">0.4%</Card>
+      <Card variant="elevated" title="Active Sessions">
+        342
+      </Card>
+      <Card variant="elevated" title="Error Rate">
+        0.4%
+      </Card>
     </div>
   ),
   parameters: {

@@ -1,7 +1,4 @@
-import {
-  Switch as RACSwitch,
-  type SwitchProps as RACSwitchProps,
-} from "react-aria-components";
+import { Switch as RACSwitch, type SwitchProps as RACSwitchProps } from "react-aria-components";
 import "./Switch.css";
 
 export interface SwitchProps extends Omit<RACSwitchProps, "children"> {

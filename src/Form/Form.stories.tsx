@@ -47,12 +47,7 @@ const users = [
 export const Default: Story = {
   render: (args) => (
     <Form {...args}>
-      <TextField
-        label="Full name"
-        name="fullName"
-        placeholder="Enter your full name"
-        isRequired
-      />
+      <TextField label="Full name" name="fullName" placeholder="Enter your full name" isRequired />
 
       <TextField
         label="Email"
@@ -64,20 +59,9 @@ export const Default: Story = {
         isRequired
       />
 
-      <TextArea
-        label="Message"
-        name="message"
-        placeholder="Enter your message"
-        rows={4}
-      />
+      <TextArea label="Message" name="message" placeholder="Enter your message" rows={4} />
 
-      <NumberField
-        label="Quantity"
-        name="quantity"
-        minValue={1}
-        maxValue={100}
-        defaultValue={1}
-      />
+      <NumberField label="Quantity" name="quantity" minValue={1} maxValue={100} defaultValue={1} />
 
       <DatePicker label="Start date" name="startDate" />
 
@@ -89,11 +73,7 @@ export const Default: Story = {
         <Select.Item id="fr">France</Select.Item>
       </Select>
 
-      <Autocomplete
-        label="Assign to"
-        name="assignee"
-        placeholder="Select a user..."
-      >
+      <Autocomplete label="Assign to" name="assignee" placeholder="Select a user...">
         {users.map((user) => (
           <Autocomplete.Item key={user.id} id={user.id}>
             {user.name}

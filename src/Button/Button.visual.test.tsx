@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { Button } from "./Button";
 
@@ -27,8 +27,12 @@ test("button disabled", async () => {
   const { container } = await render(
     <div style={{ display: "flex", gap: 8, padding: 8, alignItems: "center" }}>
       <Button isDisabled>Solid</Button>
-      <Button variant="outlined" isDisabled>Outlined</Button>
-      <Button variant="text" isDisabled>Text</Button>
+      <Button variant="outlined" isDisabled>
+        Outlined
+      </Button>
+      <Button variant="text" isDisabled>
+        Text
+      </Button>
     </div>,
   );
   await expect(container).toMatchScreenshot("button-disabled");

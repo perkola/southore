@@ -16,9 +16,7 @@ import { Popover } from "../Popover/Popover";
 import { Calendar as CalendarIcon } from "../icons";
 import "./DateRangePicker.css";
 
-export interface DateRangePickerProps
-  extends RACDateRangePickerProps<DateValue>,
-    FieldProps {}
+export interface DateRangePickerProps extends RACDateRangePickerProps<DateValue>, FieldProps {}
 
 export function DateRangePicker({
   label,
@@ -34,7 +32,9 @@ export function DateRangePicker({
           <DateInput slot="start" className="date-range-picker-input">
             {(segment) => <DateSegment segment={segment} />}
           </DateInput>
-          <span aria-hidden="true" className="date-range-picker-sep">–</span>
+          <span aria-hidden="true" className="date-range-picker-sep">
+            –
+          </span>
           <DateInput slot="end" className="date-range-picker-input">
             {(segment) => <DateSegment segment={segment} />}
           </DateInput>

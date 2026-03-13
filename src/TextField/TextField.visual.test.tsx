@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
 import { TextField } from "./TextField";
 
@@ -14,11 +14,7 @@ test("text field default", async () => {
 test("text field with adornments", async () => {
   const { container } = await render(
     <div style={{ padding: 8, width: 300 }}>
-      <TextField
-        label="Price"
-        startAdornment={<span>$</span>}
-        endAdornment={<span>.00</span>}
-      />
+      <TextField label="Price" startAdornment={<span>$</span>} endAdornment={<span>.00</span>} />
     </div>,
   );
   await expect(container).toMatchScreenshot("text-field-adornments");

@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Switch } from "./Switch";
 
 test("renders switch", async () => {
@@ -25,4 +25,3 @@ test("toggles when clicked", async () => {
   await page.getByText("Toggle me").click();
   await expect.element(sw).toBeChecked();
 });
-

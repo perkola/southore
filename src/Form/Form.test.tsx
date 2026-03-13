@@ -1,6 +1,6 @@
-import { expect, test, vi } from "vitest";
+import { expect, test, vi } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { Form } from "./Form";
 import { Button } from "../Button/Button";
 
@@ -25,4 +25,3 @@ test("calls onReset when reset", async () => {
   await page.getByRole("button", { name: "Reset" }).click();
   expect(onReset).toHaveBeenCalledOnce();
 });
-

@@ -46,7 +46,10 @@ export { Select } from "./Select/Select";
 export type { SelectProps, SelectItemProps } from "./Select/Select";
 export { Switch } from "./Switch/Switch";
 export { ToggleButtonGroup, ToggleButton } from "./ToggleButtonGroup/ToggleButtonGroup";
-export type { ToggleButtonGroupProps, ToggleButtonProps } from "./ToggleButtonGroup/ToggleButtonGroup";
+export type {
+  ToggleButtonGroupProps,
+  ToggleButtonProps,
+} from "./ToggleButtonGroup/ToggleButtonGroup";
 export { Tabs } from "./Tabs/Tabs";
 export type { TabsProps, TabListProps, TabProps, TabPanelProps } from "./Tabs/Tabs";
 export type { SwitchProps } from "./Switch/Switch";

@@ -20,10 +20,7 @@ export interface CalendarProps extends Omit<RACCalendarProps<DateValue>, "visibl
   errorMessage?: string;
 }
 
-export function Calendar({
-  errorMessage,
-  ...props
-}: CalendarProps) {
+export function Calendar({ errorMessage, ...props }: CalendarProps) {
   const { direction } = useLocale();
 
   return (
@@ -49,9 +46,7 @@ export function Calendar({
         <CalendarGridHeader>
           {(day) => <CalendarHeaderCell>{day}</CalendarHeaderCell>}
         </CalendarGridHeader>
-        <CalendarGridBody>
-          {(date) => <CalendarCell date={date} />}
-        </CalendarGridBody>
+        <CalendarGridBody>{(date) => <CalendarCell date={date} />}</CalendarGridBody>
       </CalendarGrid>
       {errorMessage && <Text slot="errorMessage">{errorMessage}</Text>}
     </RACCalendar>

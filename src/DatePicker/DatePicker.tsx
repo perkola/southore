@@ -18,12 +18,7 @@ import "./DatePicker.css";
 
 export interface DatePickerProps extends RACDatePickerProps<DateValue>, FieldProps {}
 
-export function DatePicker({
-  label,
-  description,
-  errorMessage,
-  ...props
-}: DatePickerProps) {
+export function DatePicker({ label, description, errorMessage, ...props }: DatePickerProps) {
   return (
     <RACDatePicker {...props}>
       {label && <Label>{label}</Label>}

@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { TextField } from "./TextField";
 
 test("renders with label", async () => {
@@ -9,16 +9,12 @@ test("renders with label", async () => {
 });
 
 test("renders start adornment", async () => {
-  const { getByText } = await render(
-    <TextField label="Amount" startAdornment={<span>$</span>} />,
-  );
+  const { getByText } = await render(<TextField label="Amount" startAdornment={<span>$</span>} />);
   await expect.element(getByText("$")).toBeVisible();
 });
 
 test("renders end adornment", async () => {
-  const { getByText } = await render(
-    <TextField label="Weight" endAdornment={<span>kg</span>} />,
-  );
+  const { getByText } = await render(<TextField label="Weight" endAdornment={<span>kg</span>} />);
   await expect.element(getByText("kg")).toBeVisible();
 });
 
@@ -51,4 +47,3 @@ test("renders error message when invalid", async () => {
   await render(<TextField label="Email" isInvalid errorMessage="Email is required" />);
   await expect.element(page.getByText("Email is required")).toBeVisible();
 });
-

@@ -45,11 +45,7 @@ export interface MenuSectionProps<T extends object> extends Omit<
   children?: ReactNode;
 }
 
-function Section<T extends object>({
-  header,
-  children,
-  ...props
-}: MenuSectionProps<T>) {
+function Section<T extends object>({ header, children, ...props }: MenuSectionProps<T>) {
   return (
     <RACMenuSection {...props}>
       {header && <Header>{header}</Header>}

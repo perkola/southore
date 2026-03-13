@@ -1,6 +1,6 @@
-import { expect, test } from "vitest";
+import { expect, test } from "vite-plus/test";
 import { render } from "vitest-browser-react";
-import { page } from "vitest/browser";
+import { page } from "vite-plus/test/browser";
 import { I18nProvider } from "react-aria-components";
 import { Calendar } from "./Calendar";
 
@@ -33,4 +33,3 @@ test("renders correctly in RTL locale", async () => {
   );
   await expect.element(page.getByRole("grid")).toBeVisible();
 });
-

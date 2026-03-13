@@ -15,8 +15,10 @@ import { Button } from "../Button/Button";
 import { ChevronLeft, ChevronRight } from "../icons";
 import "./RangeCalendar.css";
 
-export interface RangeCalendarProps
-  extends Omit<RACRangeCalendarProps<DateValue>, "visibleDuration"> {
+export interface RangeCalendarProps extends Omit<
+  RACRangeCalendarProps<DateValue>,
+  "visibleDuration"
+> {
   errorMessage?: string;
 }
 

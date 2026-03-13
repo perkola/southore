@@ -44,13 +44,9 @@ export function TextField({
           inputRef.current?.focus();
         }}
       >
-        {startAdornment && (
-          <span className="text-field-adornment">{startAdornment}</span>
-        )}
+        {startAdornment && <span className="text-field-adornment">{startAdornment}</span>}
         <Input ref={inputRef} placeholder={placeholder} />
-        {endAdornment && (
-          <span className="text-field-adornment">{endAdornment}</span>
-        )}
+        {endAdornment && <span className="text-field-adornment">{endAdornment}</span>}
       </Group>
       {description && <Text slot="description">{description}</Text>}
       <FieldError>{errorMessage}</FieldError>
