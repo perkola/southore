@@ -1,5 +1,10 @@
 # Accessibility Auditor Memory — Southore Design System
 
+## VPAT
+
+Full WCAG 2.2 conformance report (v0.0.4, 2026-03-15): [VPAT.md](./VPAT.md)
+Overall result: **Substantially Conforms to WCAG 2.2 Level AA**. One partial-support finding: SC 1.3.5 (autocomplete attributes are caller-supplied; not a library-level failure).
+
 ## Project Conventions (confirmed)
 
 - React Aria Components wraps all interactive primitives — never reimplement ARIA natively
