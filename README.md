@@ -9,7 +9,7 @@ A design system component library built with React 19, TypeScript, and [React Ar
 
 ## Features
 
-- Accessible by default — built on React Aria Components
+- Accessible by default — built on React Aria Components, fully conformant with WCAG 2.2 Level AA ([VPAT](.claude/agent-memory/a11y-auditor/VPAT.md))
 - Styled with CSS custom properties (design tokens)
 - Tree-shakeable ES module build
 
