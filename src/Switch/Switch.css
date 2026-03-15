@@ -16,7 +16,7 @@
   width: var(--spacing-10);
   height: var(--spacing-6);
   border-radius: var(--radius-full);
-  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  background: var(--color-bg-disabled);
   padding: var(--spacing-0-5);
   box-sizing: border-box;
   transition: background 0.15s;
@@ -33,7 +33,7 @@
 
 /* Hover */
 .react-aria-Switch[data-hovered] .switch-track {
-  background: light-dark(var(--color-gray-400), var(--color-gray-500));
+  background: var(--color-border-control);
 }
 
 /* Focus */
@@ -80,7 +80,7 @@
 }
 
 .react-aria-Switch[data-disabled][data-selected] .switch-track {
-  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  background: var(--color-bg-disabled);
 }
 
 @media (prefers-reduced-motion: reduce) {

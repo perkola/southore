@@ -33,7 +33,7 @@
   -webkit-tap-highlight-color: transparent;
 
   &[data-hovered] {
-    border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+    border-color: var(--color-border-control);
   }
 
   &[data-focus-visible] {

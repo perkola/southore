@@ -102,7 +102,7 @@
 
 /* Disabled */
 .react-aria-Button[data-disabled] {
-  background: light-dark(var(--color-gray-300), var(--color-gray-600));
+  background: var(--color-bg-disabled);
   color: var(--color-text-subtle);
   border-color: transparent;
   opacity: 0.7;

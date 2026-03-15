@@ -22,7 +22,7 @@
   transition: border-color 0.15s;
 
   &[data-hovered] {
-    border-color: light-dark(var(--color-gray-400), var(--color-gray-500));
+    border-color: var(--color-border-control);
   }
 
   &[data-focus-within] {

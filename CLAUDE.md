@@ -25,6 +25,16 @@ This project uses [Vite+](https://viteplus.dev/guide/) — run `vp help` for the
 - Run `vp install` after pulling changes before getting started
 - Use `vp check` for fast format + lint + type validation in a loop
 
+### Known Vite+ bug: `test:update` does not overwrite screenshots (v0.1.11)
+
+`vp run test:update` runs tests with `-u` but **does not actually write new screenshot files** — existing files are silently skipped. Workaround when you need to regenerate baselines:
+
+1. Delete the old screenshots: `rm src/ComponentName/__screenshots__/ComponentName.visual.test.tsx/*.png`
+2. Run `vp run test:visual` — first run creates new baselines (tests fail on missing files)
+3. Run `vp run test:visual` again — all tests pass against the new baselines
+
+**Always scope deletions to only the component(s) you changed.** Never bulk-delete all screenshots unless a global change (e.g. `tokens.css`) intentionally affects everything. Investigate and fix this with the Vite+ team before the next release.
+
 ## Project Structure
 
 ```

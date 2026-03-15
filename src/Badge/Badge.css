@@ -38,24 +38,24 @@
 
 /* Red - using colors with good contrast on muted backgrounds */
 .badge[data-color="red"] {
-  background: light-dark(var(--color-red-100), var(--color-red-900));
+  background: var(--color-bg-error);
   color: var(--color-error);
 }
 
 /* Green */
 .badge[data-color="green"] {
-  background: light-dark(var(--color-green-100), var(--color-green-900));
+  background: var(--color-bg-success);
   color: var(--color-success);
 }
 
 /* Amber */
 .badge[data-color="amber"] {
-  background: light-dark(var(--color-amber-100), var(--color-amber-900));
+  background: var(--color-bg-warning);
   color: var(--color-warning);
 }
 
-/* Blue - needs specific colors for contrast on muted backgrounds */
+/* Blue */
 .badge[data-color="blue"] {
-  background: light-dark(var(--color-blue-100), var(--color-blue-900));
-  color: light-dark(var(--color-blue-800), var(--color-blue-200));
+  background: var(--color-bg-info);
+  color: var(--color-text-info);
 }

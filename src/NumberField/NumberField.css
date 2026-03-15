@@ -98,7 +98,7 @@
 }
 
 .number-field-stepper-button[data-disabled] {
-  color: light-dark(var(--color-gray-300), var(--color-gray-600));
+  color: var(--color-text-disabled);
   cursor: default;
 }
 

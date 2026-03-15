@@ -69,7 +69,7 @@
   cursor: default;
 
   svg {
-    color: light-dark(var(--color-gray-300), var(--color-gray-600));
+    color: var(--color-text-disabled);
   }
 }
 
@@ -102,7 +102,7 @@
 }
 
 .react-aria-MenuItem[data-destructive][data-pressed] {
-  background: light-dark(var(--color-red-100), var(--color-red-900));
+  background: var(--color-bg-error);
 }
 
 /* Text slots */

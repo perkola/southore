@@ -39,8 +39,8 @@ const preview: Preview = {
       const theme = context.globals.theme || "light";
 
       useEffect(() => {
-        document.body.style.colorScheme = theme;
-        document.body.style.backgroundColor = theme === "dark" ? "#0a0a0a" : "#ffffff";
+        document.documentElement.style.colorScheme = theme;
+        document.body.style.background = "var(--color-bg)";
       }, [theme]);
 
       return <Story />;

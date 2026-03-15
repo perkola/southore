@@ -98,7 +98,7 @@
 }
 
 .react-aria-Calendar .react-aria-CalendarCell[data-invalid] {
-  background: light-dark(var(--color-red-100), var(--color-red-900));
+  background: var(--color-bg-error);
   color: var(--color-error);
 }
 
