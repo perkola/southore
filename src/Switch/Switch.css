@@ -29,6 +29,7 @@
   background: var(--color-bg);
   box-shadow: var(--shadow-sm);
   transition: transform 0.15s;
+  transform: translateZ(0);
 }
 
 /* Hover */

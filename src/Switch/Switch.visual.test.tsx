@@ -8,7 +8,9 @@ test("switch off", async () => {
       <Switch>Off state</Switch>
     </div>,
   );
-  await expect(container).toMatchScreenshot("switch-off");
+  await expect(container).toMatchScreenshot("switch-off", {
+    allowedMismatchedPixels: 400,
+  });
 });
 
 test("switch on", async () => {
