@@ -106,13 +106,13 @@
 /* Start/end caps — primary circle on span */
 .react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-start] span,
 .react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-end] span {
-  background: var(--color-primary);
+  background: var(--color-violet-600);
   color: var(--color-white);
 }
 
 .react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-start][data-hovered] span,
 .react-aria-RangeCalendar .react-aria-CalendarCell[data-selection-end][data-hovered] span {
-  background: var(--color-primary-hover);
+  background: var(--color-violet-700);
 }
 
 /* Focus ring */

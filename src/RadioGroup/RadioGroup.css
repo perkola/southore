@@ -49,14 +49,14 @@
 }
 
 .react-aria-Radio[data-selected]::before {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-violet-600);
+  border-color: var(--color-violet-600);
   box-shadow: inset 0 0 0 3px var(--color-bg);
 }
 
 .react-aria-Radio[data-selected][data-hovered]::before {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  background: var(--color-violet-700);
+  border-color: var(--color-violet-700);
 }
 
 .react-aria-Radio[data-invalid]::before {

@@ -33,7 +33,7 @@
 }
 
 .react-aria-DatePicker .react-aria-DateSegment[data-focused] {
-  background: var(--color-primary);
+  background: var(--color-violet-600);
   color: var(--color-white);
 }
 

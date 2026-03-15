@@ -57,6 +57,7 @@ export function DateFilter({
 }: DateFilterProps) {
   const labelId = useId();
   const descId = useId();
+  const popoverId = useId();
   const triggerRef = useRef<HTMLSpanElement>(null);
   const calendarPaneRef = useRef<HTMLDivElement>(null);
   const presetWrapperRef = useRef<HTMLDivElement>(null);
@@ -98,6 +99,7 @@ export function DateFilter({
           isDisabled={isDisabled}
           onPress={() => setIsOpen((o) => !o)}
           aria-expanded={isOpen}
+          aria-controls={popoverId}
           aria-labelledby={label ? labelId : undefined}
           aria-describedby={description ? descId : undefined}
         >
@@ -115,7 +117,7 @@ export function DateFilter({
         onOpenChange={setIsOpen}
         placement="bottom start"
       >
-        <div className="date-filter-panel" role="dialog" aria-label="Date filter">
+        <div id={popoverId} className="date-filter-panel" role="dialog" aria-label="Date filter">
           <div className="date-filter-preset-wrapper" ref={presetWrapperRef}>
             <ListBox
               className="date-filter-preset-list listbox"
@@ -151,11 +153,7 @@ export function DateFilter({
         </div>
       </Popover>
 
-      {description && (
-        <Text id={descId} slot="description">
-          {description}
-        </Text>
-      )}
+      {description && <Text id={descId}>{description}</Text>}
     </div>
   );
 }

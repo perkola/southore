@@ -52,8 +52,8 @@
 
 /* Selected */
 .react-aria-Checkbox[data-selected] .checkbox-indicator {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-violet-600);
+  border-color: var(--color-violet-600);
 }
 
 .react-aria-Checkbox[data-selected] .checkbox-indicator svg {
@@ -61,14 +61,14 @@
 }
 
 .react-aria-Checkbox[data-selected][data-hovered] .checkbox-indicator {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  background: var(--color-violet-700);
+  border-color: var(--color-violet-700);
 }
 
 /* Indeterminate */
 .react-aria-Checkbox[data-indeterminate] .checkbox-indicator {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-violet-600);
+  border-color: var(--color-violet-600);
 }
 
 .react-aria-Checkbox[data-indeterminate] .checkbox-indicator svg {
@@ -77,8 +77,8 @@
 }
 
 .react-aria-Checkbox[data-indeterminate][data-hovered] .checkbox-indicator {
-  background: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
+  background: var(--color-violet-700);
+  border-color: var(--color-violet-700);
 }
 
 /* Invalid */

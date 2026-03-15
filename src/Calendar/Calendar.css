@@ -72,12 +72,12 @@
 }
 
 .react-aria-Calendar .react-aria-CalendarCell[data-selected] {
-  background: var(--color-primary);
+  background: var(--color-violet-600);
   color: var(--color-white);
 }
 
 .react-aria-Calendar .react-aria-CalendarCell[data-selected][data-hovered] {
-  background: var(--color-primary-hover);
+  background: var(--color-violet-700);
 }
 
 .react-aria-Calendar .react-aria-CalendarCell[data-focus-visible] {

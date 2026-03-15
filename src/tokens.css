@@ -113,8 +113,8 @@
   --color-text-info: light-dark(var(--color-blue-800), var(--color-blue-200));
 
   /* Primary */
-  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-300));
-  --color-primary-hover: light-dark(var(--color-violet-700), var(--color-violet-200));
+  --color-primary: light-dark(var(--color-violet-600), var(--color-violet-200));
+  --color-primary-hover: light-dark(var(--color-violet-700), var(--color-violet-100));
 
   /* Status */
   --color-error: light-dark(var(--color-red-700), var(--color-red-300));
