@@ -16,11 +16,7 @@ describe("single-select", () => {
 
   test("renders start adornment", async () => {
     const { getByText } = await render(
-      <Autocomplete
-        label="Country"
-        placeholder="Pick"
-        startAdornment={<span>icon</span>}
-      >
+      <Autocomplete label="Country" placeholder="Pick" startAdornment={<span>icon</span>}>
         <Autocomplete.Item id="us">United States</Autocomplete.Item>
       </Autocomplete>,
     );
@@ -35,12 +31,8 @@ describe("single-select", () => {
       </Autocomplete>,
     );
     await page.getByRole("button", { name: "Fruit" }).click();
-    await expect
-      .element(page.getByRole("option", { name: "Apple" }))
-      .toBeVisible();
-    await expect
-      .element(page.getByRole("option", { name: "Banana" }))
-      .toBeVisible();
+    await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
+    await expect.element(page.getByRole("option", { name: "Banana" })).toBeVisible();
   });
 
   test("renders description", async () => {
@@ -54,7 +46,12 @@ describe("single-select", () => {
 
   test("renders error message when invalid", async () => {
     await render(
-      <Autocomplete label="Country" placeholder="Pick" isInvalid errorMessage="Please select a country">
+      <Autocomplete
+        label="Country"
+        placeholder="Pick"
+        isInvalid
+        errorMessage="Please select a country"
+      >
         <Autocomplete.Item id="us">United States</Autocomplete.Item>
       </Autocomplete>,
     );
@@ -81,12 +78,8 @@ describe("single-select", () => {
     await page.getByRole("button", { name: "Fruit" }).click();
     const searchInput = page.getByRole("searchbox");
     await searchInput.fill("app");
-    await expect
-      .element(page.getByRole("option", { name: "Apple" }))
-      .toBeVisible();
-    await expect
-      .element(page.getByRole("option", { name: "Banana" }))
-      .not.toBeInTheDocument();
+    await expect.element(page.getByRole("option", { name: "Apple" })).toBeVisible();
+    await expect.element(page.getByRole("option", { name: "Banana" })).not.toBeInTheDocument();
   });
 });
 
@@ -118,7 +111,12 @@ describe("multi-select", () => {
 
   test("removing a tag deselects the item", async () => {
     await render(
-      <Autocomplete label="Assign to" placeholder="Select users..." selectionMode="multiple" defaultValue={["alice", "bob"]}>
+      <Autocomplete
+        label="Assign to"
+        placeholder="Select users..."
+        selectionMode="multiple"
+        defaultValue={["alice", "bob"]}
+      >
         <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
         <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
       </Autocomplete>,
@@ -142,12 +140,60 @@ describe("multi-select", () => {
     await expect.element(page.getByRole("listbox")).toBeVisible();
     await page.getByRole("searchbox").fill("bob");
     await expect.element(page.getByRole("option", { name: "Bob Smith" })).toBeVisible();
-    await expect.element(page.getByRole("option", { name: "Alice Johnson" })).not.toBeInTheDocument();
+    await expect
+      .element(page.getByRole("option", { name: "Alice Johnson" }))
+      .not.toBeInTheDocument();
+  });
+
+  test("collapseTags shows overflow count when tags overflow", async () => {
+    await render(
+      <div style={{ width: 320 }}>
+        <Autocomplete
+          label="Assign to"
+          placeholder="Select users..."
+          selectionMode="multiple"
+          collapseTags
+          defaultValue={["alice", "bob", "charlie", "diana"]}
+        >
+          <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
+          <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
+          <Autocomplete.Item id="charlie">Charlie Brown</Autocomplete.Item>
+          <Autocomplete.Item id="diana">Diana Prince</Autocomplete.Item>
+        </Autocomplete>
+      </div>,
+    );
+    await expect.element(page.getByRole("status")).toBeVisible();
+  });
+
+  test("collapseTags visible tags have working remove buttons", async () => {
+    await render(
+      <div style={{ width: 400 }}>
+        <Autocomplete
+          label="Assign to"
+          placeholder="Select users..."
+          selectionMode="multiple"
+          collapseTags
+          defaultValue={["alice", "bob", "charlie"]}
+        >
+          <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
+          <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
+          <Autocomplete.Item id="charlie">Charlie Brown</Autocomplete.Item>
+        </Autocomplete>
+      </div>,
+    );
+    await expect.element(page.getByRole("row", { name: "Alice Johnson" })).toBeVisible();
+    await page.getByRole("button", { name: "Remove Alice Johnson" }).click();
+    await expect.element(page.getByRole("row", { name: "Alice Johnson" })).not.toBeInTheDocument();
   });
 
   test("defaultValue renders pre-selected tags", async () => {
     await render(
-      <Autocomplete label="Assign to" placeholder="Select users..." selectionMode="multiple" defaultValue={["alice", "charlie"]}>
+      <Autocomplete
+        label="Assign to"
+        placeholder="Select users..."
+        selectionMode="multiple"
+        defaultValue={["alice", "charlie"]}
+      >
         <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
         <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
         <Autocomplete.Item id="charlie">Charlie Brown</Autocomplete.Item>

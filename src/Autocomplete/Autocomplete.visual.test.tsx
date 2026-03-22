@@ -31,7 +31,12 @@ describe("single-select", () => {
   test("error state", async () => {
     const { container } = await render(
       <div style={{ padding: 8, width: 300 }}>
-        <Autocomplete label="Country" placeholder="Select a country" isInvalid errorMessage="Please select a country.">
+        <Autocomplete
+          label="Country"
+          placeholder="Select a country"
+          isInvalid
+          errorMessage="Please select a country."
+        >
           <Autocomplete.Item id="us">United States</Autocomplete.Item>
         </Autocomplete>
       </div>,
@@ -135,6 +140,64 @@ describe("multi-select", () => {
     await page.getByRole("button", { name: /Assign to/ }).click();
     await expect.element(page.getByRole("option", { name: "Bob Smith" })).toBeVisible();
     await expect(document.body).toMatchScreenshot("autocomplete-multi-open");
+  });
+
+  test("collapsed with overflow", async () => {
+    const { container } = await render(
+      <div style={{ padding: 8, width: 300 }}>
+        <Autocomplete
+          label="Reviewers"
+          placeholder="Select reviewers..."
+          selectionMode="multiple"
+          collapseTags
+          defaultValue={["alice", "bob", "charlie", "diana"]}
+        >
+          <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
+          <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
+          <Autocomplete.Item id="charlie">Charlie Brown</Autocomplete.Item>
+          <Autocomplete.Item id="diana">Diana Prince</Autocomplete.Item>
+        </Autocomplete>
+      </div>,
+    );
+    await expect(container).toMatchScreenshot("autocomplete-multi-collapsed-overflow");
+  });
+
+  test("collapsed without overflow", async () => {
+    const { container } = await render(
+      <div style={{ padding: 8, width: 300 }}>
+        <Autocomplete
+          label="Reviewers"
+          placeholder="Select reviewers..."
+          selectionMode="multiple"
+          collapseTags
+          defaultValue={["alice"]}
+        >
+          <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
+          <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
+        </Autocomplete>
+      </div>,
+    );
+    await expect(container).toMatchScreenshot("autocomplete-multi-collapsed-no-overflow");
+  });
+
+  test("collapsed disabled", async () => {
+    const { container } = await render(
+      <div style={{ padding: 8, width: 300 }}>
+        <Autocomplete
+          label="Reviewers"
+          placeholder="Select reviewers..."
+          selectionMode="multiple"
+          collapseTags
+          isDisabled
+          defaultValue={["alice", "bob", "charlie"]}
+        >
+          <Autocomplete.Item id="alice">Alice Johnson</Autocomplete.Item>
+          <Autocomplete.Item id="bob">Bob Smith</Autocomplete.Item>
+          <Autocomplete.Item id="charlie">Charlie Brown</Autocomplete.Item>
+        </Autocomplete>
+      </div>,
+    );
+    await expect(container).toMatchScreenshot("autocomplete-multi-collapsed-disabled");
   });
 
   test("invalid", async () => {

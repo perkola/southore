@@ -169,6 +169,21 @@ export const MultiSelectDisabled: Story = {
   },
 };
 
+export const MultiSelectCollapsed: Story = {
+  args: {
+    label: "Reviewers",
+    placeholder: "Select reviewers...",
+    selectionMode: "multiple",
+    collapseTags: true,
+    defaultValue: ["alice", "bob", "charlie", "diana"],
+    children: users.map((user) => (
+      <Autocomplete.Item key={user.id} id={user.id}>
+        {user.name}
+      </Autocomplete.Item>
+    )),
+  },
+};
+
 export const MultiSelectInvalid: Story = {
   args: {
     label: "Reviewers",
