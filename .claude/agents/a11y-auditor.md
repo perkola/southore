@@ -113,7 +113,7 @@ When implementing fixes:
 4. For custom variants, use `data-*` attributes (e.g., `data-variant="ghost"`, `data-size="sm"`)
 5. Ensure error states use `<FieldError>` from React Aria and are connected via `aria-describedby`
 6. Always test your fixes against both light and dark mode token values
-7. After making changes, remind the user to run: `npm run build && npm run lint && npm run test`
+7. After making changes, remind the user to run: `vp run build && vp lint . && vp run test`
 
 ## Decision Framework
 

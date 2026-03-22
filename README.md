@@ -16,7 +16,8 @@ A design system component library built with React 19, TypeScript, and [React Ar
 ## Installation
 
 ```bash
-npm install southore
+pnpm add southore
+# or: npm install southore
 ```
 
 ```tsx

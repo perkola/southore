@@ -4,7 +4,7 @@ Design system component library built with React 19, TypeScript, Vite 8 (via Vit
 
 ## Commands
 
-This project uses [Vite+](https://viteplus.dev/guide/) — run `vp help` for the full command reference. Use `vp` for everything; do not invoke `npm`, `npx`, or tool CLIs directly.
+This project uses [Vite+](https://viteplus.dev/guide/) — run `vp help` for the full command reference. Use `vp` for everything; do not invoke `pnpm`, `npm`, `npx`, or tool CLIs directly.
 
 - `vp run storybook` — start Storybook dev server on port 6006
 - `vp run build` — typecheck and build the library
@@ -124,7 +124,7 @@ Components use `light-dark(lightValue, darkValue)` CSS tokens with `color-scheme
 
 ## Releasing
 
-1. `npm version patch` (or `minor`, `major`) — bumps version in `package.json` and creates a git tag
+1. `pnpm version patch` (or `minor`, `major`) — bumps version in `package.json` and creates a git tag
 2. `git push && git push --tags` — triggers GitHub Actions to publish to npm
 
 CI runs build + lint on all pushes to `main`. Storybook deploys to Vercel automatically (production: https://southore.perko.la).

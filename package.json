@@ -44,6 +44,7 @@
     "react-aria-components": "^1.15.0"
   },
   "devDependencies": {
+    "@internationalized/date": "^3.12.0",
     "@storybook/addon-a11y": "^10.2.19",
     "@storybook/addon-docs": "^10.2.19",
     "@storybook/addon-mcp": "^0.4.1",
@@ -58,6 +59,7 @@
     "eslint-plugin-storybook": "^10.2.6",
     "playwright": "^1.58.1",
     "react": "^19.2.0",
+    "react-aria": "^3.47.0",
     "react-dom": "^19.2.0",
     "storybook": "^10.2.19",
     "typescript": "~5.9.3",
@@ -70,9 +72,11 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
-  "overrides": {
-    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
-  },
-  "packageManager": "npm@11.11.1"
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
+  }
 }
