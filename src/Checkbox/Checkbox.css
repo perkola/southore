@@ -16,6 +16,7 @@
 }
 
 .checkbox-indicator {
+  box-sizing: border-box;
   width: var(--spacing-5);
   height: var(--spacing-5);
   border: 1px solid var(--color-border-control);
