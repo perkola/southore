@@ -19,21 +19,13 @@ This project uses [Vite+](https://viteplus.dev/guide/) — run `vp help` for the
 
 **Always run `vp run build && vp lint . && vp run test` after making changes.**
 
+**Never suggest or initiate `git add`, `git commit`, or any git staging/committing steps. The user initiates all commits.**
+
 ### Key Vite+ rules
 
 - Import from `vite-plus` (not `vite`) and `vite-plus/test` (not `vitest`)
 - Run `vp install` after pulling changes before getting started
 - Use `vp check` for fast format + lint + type validation in a loop
-
-### Known Vite+ bug: `test:update` does not overwrite screenshots (v0.1.11)
-
-`vp run test:update` runs tests with `-u` but **does not actually write new screenshot files** — existing files are silently skipped. Workaround when you need to regenerate baselines:
-
-1. Delete the old screenshots: `rm src/ComponentName/__screenshots__/ComponentName.visual.test.tsx/*.png`
-2. Run `vp run test:visual` — first run creates new baselines (tests fail on missing files)
-3. Run `vp run test:visual` again — all tests pass against the new baselines
-
-**Always scope deletions to only the component(s) you changed.** Never bulk-delete all screenshots unless a global change (e.g. `tokens.css`) intentionally affects everything. Investigate and fix this with the Vite+ team before the next release.
 
 ## Project Structure
 
@@ -48,10 +40,11 @@ src/
     Button.test.tsx         # Unit/interaction tests
     Button.visual.test.tsx  # Visual screenshot tests
     __screenshots__/        # Visual test reference screenshots (macOS only)
-  shared/
+  shared/               # Run `ls src/shared/` for current contents
     Field.ts            # Shared field/label/description/error types
     Field.css           # Shared field layout styles
     Listbox.css         # Shared listbox styles (used by Select, Autocomplete)
+    # ... more shared utilities — check the directory directly
   icons/
     index.ts            # Re-exports from lucide-react
     Icons.stories.tsx   # Icon gallery story
@@ -75,52 +68,6 @@ To add an icon: export it from `src/icons/index.ts`, then add it to the `iconMap
 - Export every public component from `src/index.ts`
 - Shared utilities (types, styles reused across components) go in `src/shared/`
 - Cross-component imports use relative paths: `../Button/Button`, `../shared/Field`, `../icons`
-
-## Visual Testing
-
-Screenshot tests live in `Component.visual.test.tsx`, separate from unit/interaction tests in `Component.test.tsx`. Each visual test file covers every meaningful visual state: default, key variants, open/expanded (for overlays), error state (for field components), and on/off (for toggles).
-
-Both light and dark mode screenshots are captured automatically — the `visual-dark` test project runs all visual tests with dark mode forced, storing references as `{name}-dark-{browser}-{platform}.png` alongside the light ones. No extra test code needed.
-
-### Updating baselines
-
-**Always scope updates to only the component(s) you changed — never run a blanket update:**
-
-```bash
-vp run test:update -- src/Select/Select.visual.test.tsx src/Autocomplete/Autocomplete.visual.test.tsx
-```
-
-After updating, run `git diff src/**/__screenshots__` and verify that only the expected `.png` files changed. Any change outside the component you touched is an unintentional regression, not a baseline to accept.
-
-Commit updated baselines in the same PR as the code change so reviewers see both the implementation and the visual result.
-
-Only use `vp run test:update` with no arguments when a global change intentionally affects all components (e.g. editing `tokens.css`).
-
-Always use accessible queries (`page.getByRole()`, `getByText()`), never `document.querySelector`. Do not commit auto-captured failure screenshots (named `{test-name}-1.png`).
-
-## Styling
-
-- Design tokens are CSS custom properties in `src/tokens.css`
-- Styles target React Aria's default class names (e.g. `.react-aria-Button`) and data attributes (e.g. `[data-hovered]`, `[data-pressed]`, `[data-focus-visible]`, `[data-disabled]`)
-- Custom variants are passed via `data-*` attributes (e.g. `data-variant`, `data-size`)
-- Use `:has()` selectors for conditional styling based on descendants
-- Each component includes browser resets as needed (`appearance: none`, `margin: 0`, `font: inherit`, `outline: none`, etc.)
-
-## Dark Mode
-
-Components use `light-dark(lightValue, darkValue)` CSS tokens with `color-scheme: light dark` on `:root`. All colors meet WCAG AA contrast (4.5:1).
-
-| Token                 | Light       | Dark        |
-| --------------------- | ----------- | ----------- |
-| `--color-bg`          | white       | gray-950    |
-| `--color-bg-subtle`   | gray-50     | gray-900    |
-| `--color-bg-muted`    | gray-100    | gray-800    |
-| `--color-text`        | gray-900    | gray-50     |
-| `--color-text-muted`  | gray-700    | gray-300    |
-| `--color-text-subtle` | gray-500    | gray-400    |
-| `--color-border`      | gray-200    | gray-700    |
-| `--color-primary`     | primary-600 | primary-400 |
-| `--color-error`       | red-700     | red-300     |
 
 ## Releasing
 
