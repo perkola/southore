@@ -9,7 +9,9 @@ test("switch off", async () => {
     </div>,
   );
   await expect(container).toMatchScreenshot("switch-off", {
-    allowedMismatchedPixels: 400,
+    comparatorOptions: {
+      allowedMismatchedPixelRatio: 0.1,
+    },
   });
 });
 
