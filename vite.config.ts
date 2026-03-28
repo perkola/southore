@@ -6,6 +6,18 @@ import { playwright } from "vite-plus/test/browser-playwright";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const browser = {
+  enabled: true,
+  headless: true,
+  provider: playwright({}),
+  instances: [{ browser: "chromium" }],
+};
+
+const screenshotComparatorOptions = {
+  threshold: 0.2,
+  allowedMismatchedPixelRatio: 0.02,
+};
+
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
@@ -197,16 +209,7 @@ export default defineConfig({
           include: ["src/**/*.test.{ts,tsx}"],
           exclude: ["src/**/*.visual.test.{ts,tsx}"],
           setupFiles: ["src/test-setup.ts"],
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [
-              {
-                browser: "chromium",
-              },
-            ],
-          },
+          browser,
         },
       },
       {
@@ -216,20 +219,10 @@ export default defineConfig({
           include: ["src/**/*.visual.test.{ts,tsx}"],
           setupFiles: ["src/test-setup.ts"],
           browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [
-              {
-                browser: "chromium",
-              },
-            ],
+            ...browser,
             expect: {
               toMatchScreenshot: {
-                comparatorOptions: {
-                  threshold: 0.2,
-                  allowedMismatchedPixelRatio: 0.02,
-                },
+                comparatorOptions: screenshotComparatorOptions,
               },
             },
           },
@@ -242,20 +235,10 @@ export default defineConfig({
           include: ["src/**/*.visual.test.{ts,tsx}"],
           setupFiles: ["src/test-setup.ts", "src/test-setup-dark.ts"],
           browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [
-              {
-                browser: "chromium",
-              },
-            ],
+            ...browser,
             expect: {
               toMatchScreenshot: {
-                comparatorOptions: {
-                  threshold: 0.2,
-                  allowedMismatchedPixelRatio: 0.02,
-                },
+                comparatorOptions: screenshotComparatorOptions,
                 resolveScreenshotPath: ({
                   root,
                   testFileDirectory,
