@@ -1,0 +1,115 @@
+@import "../tokens.css";
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgb(0 0 0 / 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-4);
+
+  &[data-entering] {
+    animation: modal-overlay-enter 0.2s ease-out;
+  }
+
+  &[data-exiting] {
+    animation: modal-overlay-exit 0.15s ease-in forwards;
+  }
+}
+
+.modal {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  box-sizing: border-box;
+  width: fit-content;
+  min-width: 320px;
+  max-width: 560px;
+  max-height: calc(100vh - var(--spacing-8));
+  overflow: auto;
+
+  &[data-entering] {
+    animation: modal-enter 0.2s ease-out;
+  }
+
+  &[data-exiting] {
+    animation: modal-exit 0.15s ease-in forwards;
+  }
+}
+
+.modal-dialog {
+  outline: none;
+  padding: var(--spacing-6);
+}
+
+.modal-title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--spacing-4) 0;
+  line-height: 1.3;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-6);
+}
+
+@keyframes modal-overlay-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-overlay-exit {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+}
+
+@keyframes modal-exit {
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+}
+
+@keyframes modal-enter-reduced {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-exit-reduced {
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay[data-entering],
+  .modal-overlay[data-exiting] {
+    animation: none;
+  }
+
+  .modal[data-entering] {
+    animation: modal-enter-reduced 0.2s ease-out;
+  }
+
+  .modal[data-exiting] {
+    animation: modal-exit-reduced 0.15s ease-in forwards;
+  }
+}

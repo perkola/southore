@@ -29,6 +29,14 @@ export type { FormProps } from "./Form/Form";
 export { Link } from "./Link/Link";
 export type { LinkProps } from "./Link/Link";
 export { Menu } from "./Menu/Menu";
+export { Modal } from "./Modal/Modal";
+export type {
+  ModalProps,
+  ModalTriggerProps,
+  ModalTitleProps,
+  ModalFooterProps,
+  ModalCloseButtonProps,
+} from "./Modal/Modal";
 export type {
   MenuProps,
   MenuTriggerProps,
