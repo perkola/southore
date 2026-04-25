@@ -40,11 +40,11 @@
     "prepare": "vp config"
   },
   "dependencies": {
-    "lucide-react": "^0.563.0",
-    "react-aria-components": "^1.15.0"
+    "lucide-react": "^1.8.0",
+    "react-aria-components": "^1.17.0"
   },
   "devDependencies": {
-    "@internationalized/date": "^3.12.0",
+    "@internationalized/date": "^3.12.1",
     "@storybook/addon-a11y": "^10.2.19",
     "@storybook/addon-docs": "^10.2.19",
     "@storybook/addon-mcp": "^0.4.1",

@@ -1,3 +1,4 @@
+import type { ComponentProps } from "react";
 import {
   Text,
   UNSTABLE_Toast as RACToast,
@@ -23,7 +24,7 @@ export function GlobalToastRegion({
   return (
     <ToastRegion queue={toastQueue} aria-label={ariaLabel} className="toast-region">
       {({ toast }) => (
-        <RACToast toast={toast} className="toast">
+        <RACToast toast={toast as ComponentProps<typeof RACToast>["toast"]} className="toast">
           <ToastContent>
             <Text slot="title">{toast.content.message}</Text>
           </ToastContent>
