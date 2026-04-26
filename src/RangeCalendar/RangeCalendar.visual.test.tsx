@@ -6,7 +6,7 @@ import { RangeCalendar } from "./RangeCalendar";
 test("range calendar default", async () => {
   const { container } = await render(
     <div style={{ padding: 8 }}>
-      <RangeCalendar aria-label="Date range" />
+      <RangeCalendar aria-label="Date range" defaultFocusedValue={parseDate("2025-03-15")} />
     </div>,
   );
   await expect(container).toMatchScreenshot("range-calendar-default");

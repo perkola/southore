@@ -7,7 +7,11 @@ import { Calendar } from "./Calendar";
 test("calendar error state", async () => {
   const { container } = await render(
     <div style={{ padding: 8 }}>
-      <Calendar aria-label="Event date" errorMessage="Please select a date." />
+      <Calendar
+        aria-label="Event date"
+        defaultFocusedValue={parseDate("2025-03-15")}
+        errorMessage="Please select a date."
+      />
     </div>,
   );
   await expect(container).toMatchScreenshot("calendar-error");
@@ -16,7 +20,7 @@ test("calendar error state", async () => {
 test("calendar", async () => {
   const { container } = await render(
     <div style={{ padding: 8 }}>
-      <Calendar aria-label="Event date" />
+      <Calendar aria-label="Event date" defaultFocusedValue={parseDate("2025-03-15")} />
     </div>,
   );
   await expect(container).toMatchScreenshot("calendar-default");
@@ -35,7 +39,7 @@ test("calendar rtl", async () => {
   const { container } = await render(
     <div style={{ padding: 8 }}>
       <I18nProvider locale="ar-SA">
-        <Calendar aria-label="RTL calendar" />
+        <Calendar aria-label="RTL calendar" defaultFocusedValue={parseDate("2025-03-15")} />
       </I18nProvider>
     </div>,
   );
