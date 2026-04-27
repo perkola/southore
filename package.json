@@ -1,6 +1,6 @@
 {
   "name": "southore",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "description": "Accessible React component library built on React Aria Components",
   "homepage": "https://github.com/perkola/southore",
